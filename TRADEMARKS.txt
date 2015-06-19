@@ -1,3 +1,0 @@
-MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.:
-
-http://www.mongodb.com/legal/trademark-usage-guidelines

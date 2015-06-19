@@ -1,7 +1,0 @@
-Die.Less is Copyright 2015 InfoReliance Corp:
-
-http://inforeliance.com/
-  
-All third-party libraries redistributed with this software remain the property 
-of their respective copyright owners and are subject to separate license 
-agreements.
