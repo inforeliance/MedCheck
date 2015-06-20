@@ -1,6 +1,7 @@
 {
   "name": "med-check",
   "version": "0.0.0",
+  "directory": "./client",
   "dependencies": {
     "angular": ">=1.2.*",
     "json3": "~3.3.1",
