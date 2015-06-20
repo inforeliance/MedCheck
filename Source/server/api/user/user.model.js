@@ -15,16 +15,6 @@ var UserSchema = new Schema({
   hashedPassword: String,
   provider: String,
   salt: String,
-  profiles: [
-  {    
-    profilename: String,
-    age: String,
-    gender: String,
-    avatar: String,
-    allergens: [ { 
-        name: String 
-    } ] 
-  } ],
   facebook: {},
   twitter: {},
   google: {},
