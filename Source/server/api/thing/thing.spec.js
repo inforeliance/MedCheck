@@ -1,3 +1,4 @@
+/// <reference path="../../../../typings/jasmine/jasmine.d.ts"/>
 'use strict';
 
 var should = require('should');

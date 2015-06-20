@@ -7,6 +7,7 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+var Profile = require('../api/profile/profile.model');
 
 Thing.find({}).remove(function() {
   Thing.create({
@@ -35,7 +36,29 @@ User.find({}).remove(function() {
     provider: 'local',
     name: 'Test User',
     email: 'test@test.com',
-    password: 'test'
+    password: 'test',
+    profiles: [
+    {    
+      profilename: "Gunther",
+      age: "12+",
+      gender: "M",
+      avatar: "/uploads/test.png",
+      allergens: [ 
+          { name: "Bad Wine" },
+          { name: "Grease" },
+          { name: "Sugar" } 
+        ] 
+    },
+    {    
+      profilename: "Saul",
+      age: "12+",
+      gender: "M",
+      avatar: "/uploads/test2.png",
+      allergens: [ 
+          { name: "Sour Beer" },
+          { name: "Pepper" }
+        ] 
+    } ]
   }, {
     provider: 'local',
     role: 'admin',
@@ -47,3 +70,27 @@ User.find({}).remove(function() {
     }
   );
 });
+
+/*
+Profile.find({}).remove(function() {
+  Profile.create({
+    userid: 'local',
+    age: 'Test User',
+    gender: 'test@test.com',
+    avatar: 'test',
+    allergens: [
+      { name: 'Hot Sauce' },
+      { name: 'Cheap Wine' },
+      { name: 'Salt' }
+    ]    
+  }, function() {
+      console.log('finished populating profile');
+    }
+  );
+});
+*/
+
+
+
+
+
