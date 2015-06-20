@@ -35,7 +35,29 @@ User.find({}).remove(function() {
     provider: 'local',
     name: 'Test User',
     email: 'test@test.com',
-    password: 'test'
+    password: 'test',
+    profiles: [
+    {    
+      profilename: "Gunther",
+      age: "12+",
+      gender: "M",
+      avatar: "/uploads/test.png",
+      allergens: [ 
+          { name: "Bad Wine" },
+          { name: "Grease" },
+          { name: "Sugar" } 
+        ] 
+    },
+    {    
+      profilename: "Saul",
+      age: "12+",
+      gender: "M",
+      avatar: "/uploads/test2.png",
+      allergens: [ 
+          { name: "Sour Beer" },
+          { name: "Pepper" }
+        ] 
+    } ]
   }, {
     provider: 'local',
     role: 'admin',
@@ -46,7 +68,6 @@ User.find({}).remove(function() {
       console.log('finished populating users');
     }
   );
-<<<<<<< HEAD
 });
 
 
@@ -54,7 +75,3 @@ User.find({}).remove(function() {
 
 
 
-
-=======
-});
->>>>>>> parent of 37efac6... Added Profile data structure to user model.  Removed independent Profile model and API.
