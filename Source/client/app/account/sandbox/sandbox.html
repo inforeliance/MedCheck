@@ -1,0 +1,21 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+  <h3>{{ user.name }}'s Profile:</h3>
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="profile in profiles">
+        <strong>{{profile.profilename}}</strong><br>
+        <span class="text-muted">Age: {{profile.age}}</span><br>
+        <span class="text-muted">Avatar: {{profile.avatar}}</span><br>
+        <span class="text-muted">Gender: {{profile.gender}}</span><br>
+        <a ng-click="me(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+        <ul class="list-group"><br>
+          <strong>Allergens:</strong><br>
+          <li class="list-group-item" ng-repeat="allergen in profile.allergens">
+              <strong>{{allergen.name}}</strong>
+              <a ng-click="me(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+          </li>
+        </ul>
+    </li>
+  </ul>
+</div>

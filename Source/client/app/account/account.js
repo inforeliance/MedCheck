@@ -18,5 +18,11 @@ angular.module('medCheckApp')
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',
         authenticate: true
+      })
+      .state('sandbox', {
+        url: '/sandbox',
+        templateUrl: 'app/account/sandbox/sandbox.html',
+        controller: 'SandboxCtrl',
+        authenticate: true
       });
   });

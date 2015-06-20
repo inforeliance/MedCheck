@@ -33,7 +33,7 @@ Thing.find({}).remove(function() {
 User.find({}).remove(function() {
   User.create({
     provider: 'local',
-    name: 'Test User',
+    name: 'Frank Rizzo',
     email: 'test@test.com',
     password: 'test',
     profiles: [
@@ -41,21 +41,22 @@ User.find({}).remove(function() {
       profilename: "Gunther",
       age: "12+",
       gender: "M",
-      avatar: "/uploads/test.png",
+      avatar: "todo/uploads/test.png",
       allergens: [ 
-          { name: "Bad Wine" },
-          { name: "Grease" },
-          { name: "Sugar" } 
+          { name: "Penicillin" },
+          { name: "Tetracycline" },
+          { name: "Carbamazepine" } 
         ] 
     },
     {    
-      profilename: "Saul",
+      profilename: "Chang-Chang-Li",
       age: "12+",
       gender: "M",
-      avatar: "/uploads/test2.png",
+      avatar: "todo/uploads/test2.png",
       allergens: [ 
           { name: "Sour Beer" },
-          { name: "Pepper" }
+          { name: "Codeine" },
+          { name: "Sulfa drugs" }
         ] 
     } ]
   }, {
