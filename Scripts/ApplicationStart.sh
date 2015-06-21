@@ -5,4 +5,4 @@ npm install
 bower install
 grunt build
 cd /var/www/MedCheck/Source/dist/server
-grunt serve &
+grunt serve >> /home/ubuntu/gruntlog/gruntlog.log &
