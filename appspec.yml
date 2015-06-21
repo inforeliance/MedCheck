@@ -4,11 +4,11 @@ files:
   - source: /
     destination: /var/www/MedCheck
 hooks:
-	BeforeInstall:
-		- location: Scripts/BeforeInstall.sh
-	AfterInstall:
-		- location: Scripts/AfterInstall.sh
-		  timeout: 180
-	ApplicationStart:
-		- location: Scripts/ApplicationStart.sh
-		  timeout: 3600
+  BeforeInstall:
+    - location: Scripts/BeforeInstall.sh
+  AfterInstall:
+    - location: Scripts/AfterInstall.sh
+      timeout: 180
+  ApplicationStart:
+    - location: Scripts/ApplicationStart.sh
+      timeout: 3600
