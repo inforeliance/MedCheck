@@ -9,7 +9,7 @@
 			// Type of configuration. Possible values: "node", "mono".
 			"type": "node",
 			// Workspace relative or absolute path to the program.
-			"program": "Source/server/app.js",
+			"program": "build/client/app.js",
 			// Automatically stop program after launch.
 			"stopOnEntry": true,
 			// Command line arguments passed to the program.
@@ -25,7 +25,7 @@
 			"name": "Attach",
 			"type": "node",
 			// TCP/IP address. Default is "localhost".
-			"address": "localhost",
+			"address": "127.0.0.1",
 			// Port to attach to.
 			"port": 5858
 		}

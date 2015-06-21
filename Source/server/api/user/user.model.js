@@ -20,6 +20,7 @@ var UserSchema = new Schema({
     profilename: String,
     age: String,
     gender: String,
+    pregnant: Number,
     avatar: String,
     allergens: [ { 
         name: String 

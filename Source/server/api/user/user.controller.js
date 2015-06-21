@@ -4,6 +4,11 @@ var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
+var _ = require('lodash');
+
+/**
+ * User Factory managed by component/auth/user.service.js
+ */
 
 var validationError = function(res, err) {
   return res.json(422, err);
@@ -78,6 +83,54 @@ exports.changePassword = function(req, res, next) {
     }
   });
 };
+
+/**
+ * Update User
+ */
+exports.update = function(req, res, next) {
+  
+  console.log('updateUser Called');
+ 
+  
+  var user = req.user;
+  
+
+
+	user = _.extend(user, req.body);
+  
+  console.log(req.body);
+
+	user.save(function(err) {
+		if (err) {
+			return res.status(400).send({
+				//message: errorHandler.getErrorMessage(err)
+        //res.send(403)
+			});
+		} else {
+			res.json(user);
+		}
+	});
+};
+  
+
+  
+   
+   //res.send('Route to update an edited existing thing');
+   
+  /*
+  exports.update = function(req, res) {
+  var id = req.params.id;
+  var updates = req.body;
+
+  Musician.update({"_id":id}, req.body,
+    function (err, numberAffected) {
+      if (err) return console.log(err);
+      console.log('Updated %d musicians', numberAffected);
+      return res.send(202);
+  });
+} */
+//};
+
 
 /**
  * Get my info

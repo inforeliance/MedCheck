@@ -1,21 +1,66 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-
+  
 <div class="container">
   <h3>{{ user.name }}'s Profile:</h3>
+  <div>
+    <form class="form" name="form" ng-submit="update(form)" novalidate>
+      <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+                                            'has-error': form.name.$invalid && submitted }">
+        <label>New Profile Name:</label>
+        <!-- Name -->  
+        <input type="text" name="name" class="form-control" ng-model="user.name" required/>
+        <p class="help-block" ng-show="form.name.$error.required && submitted">A name is required</p>
+        <br>
+        <!-- Gender -->  
+        <fieldset>
+          <legend>Gender</legend>
+          <input type="radio" name="gender" id="Male" ng-model="user.gender" value="M" class="form-control" required/><label for="Male">Male</label>
+          <input type="radio" name="gender" id="Female" ng-model="user.gender" value="F" class="form-control" required/><label for="Female">Female</label>
+          <p class="help-block" ng-show="form.gender.$error.required && submitted">Gender is required</p></fieldset>
+        <!--Age -->  
+        <fieldset>
+          <legend>Age</legend>
+          <input type="radio" name="age" id="12MonthAndUnder" ng-model="user.age" value="M12MonthAndUnder" class="form-control" required/><label for="12MonthAndUnder">12 months and under</label>
+          <input type="radio" name="age" id="13MonthTo5Years" ng-model="user.age" value="13MonthTo5Years" class="form-control" required/><label for="13MonthTo5Years">13 months-5 years</label>
+          <input type="radio" name="age" id="5to11Years" ng-model="user.age" value="5to11Years" class="form-control" required/><label for="5to11Years">5 years- 11 years</label>
+          <input type="radio" name="age" id="12YearsAndOver" ng-model="user.age" value="12YearsAndOver" class="form-control" required/><label for="12YearsAndOver">12 years and over</label>          
+          <p class="help-block" ng-show="form.age.$error.required && submitted">Age is required</p></fieldset>
+         <!-- Nursing/Pregnant -->  
+         <fieldset>
+          <legend>Nursing/Pregnant</legend>
+          <label for="pregnant">Pregnant or Nursing?</label>&nbsp;<input type="checkbox" name="pregnant" ng-model="user.pregnant" ng-true-value="1" ng-false-value="0"></fieldset>
+         <!-- Avatar -->  
+         <fieldset>
+          <legend>Avatar</legend>
+          <img name="avatar" ng-model="user.avatar" ng-src="{{user.avatar}}"></fieldset>
+         <br>
+      </div>
+      <div>
+        <button class="btn btn-inverse btn-lg btn-login" type="submit">Add</button>
+        <br>
+      </div>
+    </form>
+  </div>
   <ul class="list-group">
     <li class="list-group-item" ng-repeat="profile in profiles">
-        <strong>{{profile.profilename}}</strong><br>
-        <span class="text-muted">Age: {{profile.age}}</span><br>
-        <span class="text-muted">Avatar: {{profile.avatar}}</span><br>
-        <span class="text-muted">Gender: {{profile.gender}}</span><br>
-        <a ng-click="me(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-        <ul class="list-group"><br>
-          <strong>Allergens:</strong><br>
-          <li class="list-group-item" ng-repeat="allergen in profile.allergens">
-              <strong>{{allergen.name}}</strong>
-              <a ng-click="me(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-          </li>
-        </ul>
+      <strong>{{profile.profilename}}</strong>
+      <br>
+      <span class="text-muted">Age: {{profile.age}}</span>
+      <br>
+      <span class="text-muted">Avatar: {{profile.avatar}}</span>
+      <br>
+      <span class="text-muted">Gender: {{profile.gender}}</span>
+      <br>
+      <a ng-click="me(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+      <ul class="list-group">
+        <br>
+        <strong>Allergens:</strong>
+        <br>
+        <li class="list-group-item" ng-repeat="allergen in profile.allergens">
+          <strong>{{allergen.name}}</strong>
+          <a ng-click="me(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+        </li>
+      </ul>
     </li>
   </ul>
 </div>

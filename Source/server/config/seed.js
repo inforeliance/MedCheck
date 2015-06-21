@@ -41,6 +41,7 @@ User.find({}).remove(function() {
       profilename: "Gunther",
       age: "12+",
       gender: "M",
+      pregnant: 0,
       avatar: "todo/uploads/test.png",
       allergens: [ 
           { name: "Penicillin" },
@@ -52,6 +53,7 @@ User.find({}).remove(function() {
       profilename: "Chang-Chang-Li",
       age: "12+",
       gender: "M",
+      pregnant: 0,
       avatar: "todo/uploads/test2.png",
       allergens: [ 
           { name: "Sour Beer" },
