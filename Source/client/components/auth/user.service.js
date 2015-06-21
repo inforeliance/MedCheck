@@ -12,6 +12,9 @@ angular.module('medCheckApp')
           controller:'password'
         }
       },
+      update: {
+        method: 'PATCH'
+      },
       get: {
         method: 'GET',
         params: {

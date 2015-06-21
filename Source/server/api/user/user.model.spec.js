@@ -26,7 +26,7 @@ describe('User Model', function() {
     });
   });
 
-  it('should begin with no users', function(done) {
+  it('should begin with no users', function(done) { 
     User.find({}, function(err, users) {
       users.should.have.length(0);
       done();
