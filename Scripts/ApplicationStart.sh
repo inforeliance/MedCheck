@@ -1,4 +1,5 @@
 #!/bin/sh
-su - ubuntu
-cd /var/www/MedCheck/Source
-npm update && npm install && bower install && grunt build
+/var/www/MedCheck/Source/npm update
+/var/www/MedCheck/Source/npm install
+/var/www/MedCheck/Source/bower install
+/var/www/MedCheck/Source/grunt build
