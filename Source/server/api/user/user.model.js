@@ -15,6 +15,7 @@ var UserSchema = new Schema({
   hashedPassword: String,
   provider: String,
   salt: String,
+  createdAt: { type: Date, default: Date.now },
   profiles: [
   {    
     profilename: String,
@@ -22,6 +23,7 @@ var UserSchema = new Schema({
     gender: String,
     pregnant: Number,
     avatar: String,
+    createdAt: { type: Date, default: Date.now },
     allergens: [ { 
         name: String 
     } ] 

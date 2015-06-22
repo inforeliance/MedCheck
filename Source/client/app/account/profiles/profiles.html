@@ -1,22 +1,106 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
       <h1>Profiles</h1>
     </div>
     <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="fnStub(form)" novalidate>
-
-        <div class="form-group">
-          <label>Page Features</label>
-		  
-		  <p class="help-block"> 
-			+ Manage Profile
-			+ Add
-			+ Edit
-			+ Delete </p>
-         
+      <form class="form" name="form" ng-submit="update(form)" novalidate>
+        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+                                            'has-error': form.name.$invalid && submitted }">
+          <label>New Profile Name:</label>
+          <div class="main">
+            <ul class="nav nav-tabs">
+              <li role="navigation" class="active">
+                <a href="#"><i class="glyphicon glyphicon-user"></i> Donna</a>
+              </li>
+            </ul>
+            <div class="tabContentHeader">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h4>Medication XYZ</h4>
+                </div>
+                <div class="col-sm-2 vcenter">Post to Facebook</div>
+                <div class="col-sm-2 vcenter">Tweet This</div>
+                <div class="col-sm-2 vcenter">
+                  <i class="glyphicon glyphicon-question-sign"></i>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="tabContent">
+              <div class="col-sm-6">
+                <h2>
+                  <i class="glyphicon glyphicon-thumbs-down"></i>Allergy</h2>
+                <p>The following ingredient was found: Nuts</p>
+              </div>
+              <div class="col-sm-6">
+                <h2>
+                  <i class="glyphicon glyphicon-thumbs-up"></i>Age</h2>
+                <p>this medication is safe for all ages</p>
+              </div>
+              <div class="col-sm-6">
+                <h2>
+                  <i class="glyphicon glyphicon-thumbs-up"></i>Breast feeding</h2>
+                <p>this medication is safe for those breastfeeding</p>
+              </div>
+              <div class="col-sm-6">
+                <h2>
+                  <i class="glyphicon glyphicon-thumbs-up"></i>Pregnant</h2>
+                <p>this medication is safe for those pregnant</p>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <!-- Name -->
+          <input type="text" name="name" class="form-control" ng-model="user.name" required/>
+          <p class="help-block" ng-show="form.name.$error.required && submitted">A name is required</p>
+          <br>
+          <!-- Gender -->
+          <div class="panel panel-info">
+            <fieldset>
+              <legend>Gender</legend>
+              <input type="radio" name="gender" id="Male" ng-model="user.gender" value="M" class="form-control" required/>
+              <label for="Male">Male</label>
+              <input type="radio" name="gender" id="Female" ng-model="user.gender" value="F" class="form-control" required/>
+              <label for="Female">Female</label>
+              <p class="help-block" ng-show="form.gender.$error.required && submitted">Gender is required</p>
+            </fieldset>
+          </div>
+          <!--Age -->
+          <fieldset>
+            <legend>Age</legend>
+            <input type="radio" name="age" id="12MonthAndUnder" ng-model="user.age" value="M12MonthAndUnder" class="form-control"
+            required/>
+            <label for="12MonthAndUnder">12 months and under</label>
+            <input type="radio" name="age" id="13MonthTo5Years" ng-model="user.age" value="13MonthTo5Years"
+            class="form-control" required/>
+            <label for="13MonthTo5Years">13 months-5 years</label>
+            <input type="radio" name="age" id="5to11Years" ng-model="user.age" value="5to11Years" class="form-control"
+            required/>
+            <label for="5to11Years">5 years- 11 years</label>
+            <input type="radio" name="age" id="12YearsAndOver" ng-model="user.age" value="12YearsAndOver" class="form-control"
+            required/>
+            <label for="12YearsAndOver">12 years and over</label>
+            <p class="help-block" ng-show="form.age.$error.required && submitted">Age is required</p>
+          </fieldset>
+          <!-- Nursing/Pregnant -->
+          <fieldset>
+            <legend>Nursing/Pregnant</legend>
+            <label for="pregnant">Pregnant or Nursing?</label>&nbsp;
+            <input type="checkbox" name="pregnant" ng-model="user.pregnant" ng-true-value="1" ng-false-value="0">
+          </fieldset>
+          <!-- Avatar -->
+          <fieldset>
+            <legend>Avatar</legend>
+            <img name="avatar" ng-model="user.avatar" ng-src="{{user.avatar}}">
+          </fieldset>
+          <br>
+        </div>
+        <div>
+          <button class="btn btn-inverse btn-lg btn-login" type="submit">Add</button>
+          <br>
+        </div>
       </form>
     </div>
   </div>
