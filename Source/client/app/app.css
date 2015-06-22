@@ -19,6 +19,12 @@
 /**
  * App-wide Styles
  */
+body {
+  background-color: #262c2f;
+}
+#navbar-main .navbar-nav li {
+  background-color: #008ebc;
+}
 #navbar-main .navbar-nav li a {
   height: 100px;
   padding-top: 36px;
@@ -29,15 +35,29 @@
   background-color: #fff;
   color: #3bcc72;
 }
+.maincontainer {
+  background-color: #e8eff4;
+}
 .navbar-default {
-  background-color: #11CBDF;
+  background-color: #008ebc;
   height: 100px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border: none;
 }
 .navbar-brand {
+  margin-top: 18px;
   background-image: url('/assets/images/logo.gif');
-  height: 80px;
-  width: 300px;
+  background-repeat: no-repeat;
+  height: 53px;
+  width: 230px;
   text-indent: -9000em;
+}
+footer {
+  color: white;
+}
+footer small {
+  font-size: 65%;
 }
 .browsehappy {
   margin: 0.2em 0;

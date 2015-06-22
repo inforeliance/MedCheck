@@ -78,9 +78,10 @@ module.exports = function (grunt) {
       },
       injectCss: {
         files: [
-          '<%= yeoman.client %>/{app,components}/**/*.css'
+          '<%= yeoman.client %>/{app,components}/**/*.css',
+          '<%= yeoman.client %>/app/app.less'
         ],
-        tasks: ['injector:css']
+        tasks: ['less','injector:css']
       },
       mochaTest: {
         files: ['server/**/*.spec.js'],

@@ -31,7 +31,13 @@
  * App-wide Styles
  */
 @highlight-color: #3BCC72;
-@navbackground-color: #11CBDF;
+@navbackground-color: #008EBC;
+@body-background: #262C2F;
+@main-container-background: #E8EFF4;
+
+body{
+    background-color:@body-background;
+}
 
 #navbar-main .navbar-nav{
     li{
@@ -41,6 +47,7 @@
             color:white;
             font-size:20px;
         }
+        background-color: @navbackground-color;
     }
     
     li.active>a{
@@ -49,16 +56,32 @@
     }
 }
 
+.maincontainer{
+    background-color: @main-container-background;  
+}
+
 .navbar-default {
   background-color: @navbackground-color;  
   height:100px;
+  padding-bottom:0;
+  margin-bottom: 0;
+  border:none;
 } 
 
 .navbar-brand{
-    background-image: url('/assets/images/logo.gif'); 
-    height:80px;   
-    width:300px;
+    margin-top:18px;
+    background-image: url('/assets/images/logo.gif');
+    background-repeat: no-repeat; 
+    height:53px;   
+    width:230px;
     text-indent: -9000em;
+}
+
+footer{
+    color:white;    
+    small{
+        font-size:65%;
+    }
 }
 
 .browsehappy {
