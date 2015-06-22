@@ -6,3 +6,4 @@ build/
 dist/
 .tmp
 .sass-cache
+source/client/app/app.css
