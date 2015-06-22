@@ -17,7 +17,8 @@ module.exports = function (grunt) {
     cdnify: 'grunt-google-cdn',
     protractor: 'grunt-protractor-runner',
     injector: 'grunt-asset-injector',
-    buildcontrol: 'grunt-build-control'
+    buildcontrol: 'grunt-build-control',
+    less: 'grunt-contrib-less'
   });
 
   // Time how long tasks take. Can help when optimizing build times
@@ -32,6 +33,18 @@ module.exports = function (grunt) {
       // configurable paths
       client: require('./bower.json').appPath || 'client',
       dist: 'dist'
+    },
+    less:{
+      development: {
+         files: {
+           "client/app/app.css": "client/app/app.less"
+         }
+     },
+     production: {        
+        files: {
+          "client/app/app.css": "client/app/app.less"
+        }
+      }
     },
     express: {
       options: {
@@ -247,6 +260,7 @@ module.exports = function (grunt) {
       css: ['<%= yeoman.dist %>/public/{,*/}*.css'],
       js: ['<%= yeoman.dist %>/public/{,*/}*.js'],
       options: {
+        //basedir: ['<%= yeoman.dist %>'],
         assetsDirs: [
           '<%= yeoman.dist %>/public',
           '<%= yeoman.dist %>/public/assets/images'
@@ -521,6 +535,7 @@ module.exports = function (grunt) {
         'clean:server',
         'env:all',
         'concurrent:server',
+        'less',
         'injector',
         'wiredep',
         'autoprefixer',
@@ -532,6 +547,7 @@ module.exports = function (grunt) {
       'clean:server',
       'env:all',
       'concurrent:server',
+      'less',
       'injector',
       'wiredep',
       'autoprefixer',
@@ -590,6 +606,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'concurrent:dist',
+    'less',
     'injector',
     'wiredep',
     'useminPrepare',
