@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "The following node processes were found:"
-ps aux | grep " node " | grep -v grep
+ps aux | grep " node\nodejs " | grep -v grep
 nodepids=$(ps aux | grep " node " | grep -v grep | cut -c10-15)
 
 echo "OK, so we will stop these process/es now..."
