@@ -1,5 +1,7 @@
 'use strict';
 
+//Private State Provider for Admin Accounts
+
 angular.module('medCheckApp')
   .config(function ($stateProvider) {
     $stateProvider
