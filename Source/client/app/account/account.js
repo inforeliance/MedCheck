@@ -1,5 +1,7 @@
 'use strict';
 
+//Private State Provider for Registered Accounts
+
 angular.module('medCheckApp')
   .config(function ($stateProvider) {
     $stateProvider
@@ -23,6 +25,12 @@ angular.module('medCheckApp')
         url: '/sandbox',
         templateUrl: 'app/account/sandbox/sandbox.html',
         controller: 'SandboxCtrl',
+        authenticate: true
+      })
+      .state('profiles', {
+        url: '/profiles',
+        templateUrl: 'app/account/profiles/profiles.html',
+        controller: 'ProfilesCtrl',
         authenticate: true
       });
   });
