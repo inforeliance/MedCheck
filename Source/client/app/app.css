@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic);
 /**
  * Bootstrap Fonts
  */
@@ -21,22 +22,58 @@
  */
 body {
   background-color: #262c2f;
+  font-family: 'Roboto', sans-serif;
 }
 #navbar-main .navbar-nav li {
-  background-color: #008ebc;
+  padding-left: 1px;
 }
 #navbar-main .navbar-nav li a {
   height: 100px;
   padding-top: 36px;
   color: white;
   font-size: 20px;
+  background-color: #008ebc;
+  -o-transition: color 0.2s ease-out, background 0.2s ease-out;
+  -ms-transition: color 0.2s ease-out, background 0.2s ease-out;
+  -moz-transition: color 0.2s ease-out, background 0.2s ease-out;
+  -webkit-transition: color 0.2s ease-out, background 0.2s ease-out;
+  transition: color 0.2s ease-out, background 0.2s ease-out;
+}
+#navbar-main .navbar-nav li > a:hover {
+  background-color: #fff;
+  color: #3bcc72;
 }
 #navbar-main .navbar-nav li.active > a {
   background-color: #fff;
   color: #3bcc72;
 }
+.navbarwrapper {
+  background-color: #008ebc;
+}
 .maincontainer {
   background-color: #e8eff4;
+}
+.bannerholder {
+  position: relative;
+}
+.bannerholder .textcaption {
+  font-weight: bold;
+  position: absolute;
+  color: white;
+  left: 100px;
+  width: 300px;
+}
+@media screen and (max-width: 768px) {
+  .bannerholder .textcaption {
+    left: 20px;
+    width: 430px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .bannerholder .textcaption {
+    left: 20px;
+    width: 630px;
+  }
 }
 .navbar-default {
   background-color: #008ebc;
@@ -53,8 +90,17 @@ body {
   width: 230px;
   text-indent: -9000em;
 }
+.footerlink {
+  color: #55BB70;
+  border-bottom: 1px solid;
+  display: block;
+  text-align: left;
+}
 footer {
   color: white;
+  padding: 30px 0;
+  margin-top: 70px;
+  border-top: 1px solid #E5E5E5;
 }
 footer small {
   font-size: 65%;

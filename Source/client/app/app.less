@@ -1,3 +1,5 @@
+@import "../bower_components/bootstrap/less/variables.less";
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic);
 
 /**
  * Bootstrap Fonts
@@ -37,6 +39,7 @@
 
 body{
     background-color:@body-background;
+    font-family: 'Roboto',sans-serif    
 }
 
 #navbar-main .navbar-nav{
@@ -46,8 +49,21 @@ body{
             padding-top:36px;
             color:white;
             font-size:20px;
-        }
-        background-color: @navbackground-color;
+            background-color: @navbackground-color;    
+            
+            -o-transition:color .2s ease-out, background .2s ease-out;
+        -ms-transition:color .2s ease-out, background .2s ease-out;
+        -moz-transition:color .2s ease-out, background .2s ease-out;
+        -webkit-transition:color .2s ease-out, background .2s ease-out;
+         transition:color .2s ease-out, background .2s ease-out;           
+        }        
+        
+        padding-left: 1px;
+    }
+        
+    li>a:hover{        
+        background-color: #fff;
+        color:@highlight-color;        
     }
     
     li.active>a{
@@ -56,8 +72,30 @@ body{
     }
 }
 
+.navbarwrapper{
+    background-color: @navbackground-color;
+}
 .maincontainer{
     background-color: @main-container-background;  
+}
+
+.bannerholder{
+    position: relative;
+    .textcaption{
+        font-weight: bold;
+        position:absolute;
+        color:white; 
+        left:100px; 
+        width:300px;
+        @media screen and (max-width: @screen-sm-min) {
+         left:20px; 
+         width:430px; 
+        }
+        @media screen and (min-width: @screen-lg-min) {
+         left:20px; 
+         width:630px; 
+        }
+    }     
 }
 
 .navbar-default {
@@ -77,11 +115,23 @@ body{
     text-indent: -9000em;
 }
 
+.footerlink{
+        color: #55BB70;
+        border-bottom: 1px solid;
+        display: block;
+        text-align: left;
+        
+}
+    
 footer{
     color:white;    
     small{
         font-size:65%;
+    
     }
+    padding: 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid #E5E5E5;
 }
 
 .browsehappy {
