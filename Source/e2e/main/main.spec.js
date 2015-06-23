@@ -1,16 +1,20 @@
 'use strict';
 
 describe('Main View', function() {
-  var page;
 
-  beforeEach(function() {
-    browser.get('/');
-    page = require('./main.po');
+  it("should have an email field on the login page", function() {
+      browser.get("http://localhost:9000/login/");
+      browser.wait(element(by.model("user.email")).isPresent(), 2000);
   });
 
-  it('should include jumbotron with correct data', function() {
-    expect(page.h1El.getText()).toBe('\'Allo, \'Allo!');
-    expect(page.imgEl.getAttribute('src')).toMatch(/assets\/images\/yeoman.png$/);
-    expect(page.imgEl.getAttribute('alt')).toBe('I\'m Yeoman');
+  it("should have a name field on the registration page", function() {
+      browser.get("http://localhost:9000/signup/");
+      browser.wait(element(by.model("user.name")).isPresent(), 2000);
+  });
+
+  it("should have a \"Help\" header on the page of the same name", function() {
+      browser.get("http://localhost:9000/help");
+      browser.wait(element(by.css("h1")).isPresent(), 2000);
+      expect(element(by.css("h1")).getText()).toBe("Help");
   });
 });
