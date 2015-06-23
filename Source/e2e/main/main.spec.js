@@ -17,4 +17,18 @@ describe('Main View', function() {
       browser.wait(element(by.css("h1")).isPresent(), 2000);
       expect(element(by.css("h1")).getText()).toBe("Help");
   });
+
+  it("should successfully login", function() {
+      browser.get("http://localhost:9000/login");
+      browser.wait(element(by.css("input[type=email]")).isPresent(), 2000);
+      element(by.css("input[type=email]")).sendKeys("test@test.com");
+      element(by.css("input[type=password]")).sendKeys("test");
+      element(by.css("button[type=submit")).click();
+  });
+
+  it("should click the add button, or something", function() {
+      browser.get("http://localhost:9000/sandbox");
+      browser.wait(element(by.css("button[type=submit]")).isPresent(), 2000);
+      element(by.css("button[type=submit]")).click()
+  });
 });
