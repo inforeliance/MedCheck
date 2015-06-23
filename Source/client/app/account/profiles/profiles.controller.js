@@ -69,7 +69,7 @@ angular.module('medCheckApp')
       _profile.gender = 'M';
       _profile.pregnant = 0;
       _profile.avatar = '/sdsd/sdsd.png';
-      _profile.allergens = _allergen;
+      _profile.allergens = [{name: "foo"},{name: "bar"}];
       //_profile.allergens = arr;
       
       _user.profiles = _profile;

@@ -120,20 +120,22 @@ exports.addProfile = function(req, res, next) {
   console.log('addProfile Called');
    
   var _user = req.user; 
-  
-  _user = _.extend(_user, req.body);
-  
-  console.log(req.body);
+ var foo = req.body.profiles.allergens;
+ 
   console.log('ALLERGIN PRINT' + req.body.profiles.allergens.name);
   //--------------------
+ 
 
+ //console.log(req.body);
+ //console.log(req.body.profiles.allergens);
+   
  User.findByIdAndUpdate(_user._id,    
      //{ $push: {"profiles": req.body.profiles}},
      { $push: {
           profiles: {
             //allergens: [req.body.profiles.allergens.name],
-            allergens: [req.body.profiles.allergens], //-- working
-            //allergens: [{name: 'TEST1'}, {name: 'TEST2'}],
+            //allergens: JSON.stringify(req.body.profiles.allergens), //-- working
+            allergens: _.extend({}, req.body.profiles.allergens),
             name: req.body.profiles.profilename,
             pregnant: req.body.profiles.pregnant,
             gender: req.body.profiles.gender,
