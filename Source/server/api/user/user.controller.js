@@ -112,24 +112,32 @@ exports.update = function(req, res, next) {
 	});
 };
   
-
+/**
+ * Add New Profile
+ */   
+exports.addProfile = function(req, res, next) {
   
+  console.log('addProfile Called');
    
-   //res.send('Route to update an edited existing thing');
-   
-  /*
-  exports.update = function(req, res) {
-  var id = req.params.id;
-  var updates = req.body;
-
-  Musician.update({"_id":id}, req.body,
-    function (err, numberAffected) {
-      if (err) return console.log(err);
-      console.log('Updated %d musicians', numberAffected);
-      return res.send(202);
-  });
-} */
-//};
+  var _user = req.user; 
+  
+  _user = _.extend(_user, req.body);
+  
+  console.log(req.body);
+  
+  User.findByIdAndUpdate(
+     _user._id,
+     { $push: {"profiles": req.body}},
+     {  safe: true, upsert: true},
+       function(err, model) {
+         if(err){
+        	console.log(err);
+        	return res.send(err);
+         }
+          return res.json(model);
+      }); 
+      
+};
 
 
 /**

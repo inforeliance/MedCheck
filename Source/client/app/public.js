@@ -1,7 +1,7 @@
 'use strict';
 
 //Public State Provider
-
+/*
 angular.module('medCheckApp')
   .config(function ($stateProvider) {
     $stateProvider      
@@ -26,5 +26,6 @@ angular.module('medCheckApp')
         controller: 'FeedbackCtrl'
       });
   });
+  */
   
   

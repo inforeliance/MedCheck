@@ -15,6 +15,12 @@ angular.module('medCheckApp')
       update: {
         method: 'PATCH'
       },
+      addProfile: {
+        method: 'PATCH',
+        params: {
+          controller:'profiles'
+        }
+      },
       get: {
         method: 'GET',
         params: {

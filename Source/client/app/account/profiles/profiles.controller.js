@@ -21,16 +21,29 @@ angular.module('medCheckApp')
    // Update existing User
    $scope.update = function () {
       var _user = $scope.user;
+      var _newProfile = $scope.user.profiles; 
 
       console.log(_user._id);
       
       console.log(_user.name);
       
+      
       //_user.name = 'Frunkus';
       
       //console.log(_user.name);
       
-      User.update({_id: _user._id }, _user);
+      //User.addProfile({_id: _user._id }, _user);
+    
+      _newProfile.profilename = 'Test';
+      _newProfile.age = 33;
+      _newProfile.gender = 'M';
+      _newProfile.pregnant = 0;
+      _newProfile.avatar = '/sdsd/sdsd.png';
+      _newProfile.allergens = '[{name: \'goose grease\'}]';
+      
+      console.log('new profile: ' + _newProfile);
+      
+      User.addProfile(_newProfile);
 
 /*
       User.update(function () {

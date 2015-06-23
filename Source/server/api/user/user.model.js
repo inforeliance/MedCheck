@@ -17,13 +17,13 @@ var UserSchema = new Schema({
   salt: String,
   createdAt: { type: Date, default: Date.now },
   profiles: [
-  {    
+  {       
     profilename: String,
     age: String,
     gender: String,
     pregnant: Number,
     avatar: String,
-    createdAt: { type: Date, default: Date.now },
+    createdAt: { type: Date, default: Date.now },    
     allergens: [ { 
         name: String 
     } ] 
