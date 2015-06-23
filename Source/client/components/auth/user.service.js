@@ -29,3 +29,18 @@ angular.module('medCheckApp')
       }
 	  });
   });
+  
+angular.module('medCheckApp')
+  .factory('Profile', function ($resource) {
+    return $resource('/api/profiles/:id/:controller', {
+      id: '@_id'
+    });
+  });
+  
+ angular.module('medCheckApp')
+  .factory('Allergen', function ($resource) {
+    return $resource('/api/allergens/:id/:controller', {
+      id: '@_id'
+    });
+  });
+

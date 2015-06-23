@@ -124,18 +124,52 @@ exports.addProfile = function(req, res, next) {
   _user = _.extend(_user, req.body);
   
   console.log(req.body);
-  
-  User.findByIdAndUpdate(
-     _user._id,
-     { $push: {"profiles": req.body}},
+  console.log('ALLERGIN PRINT' + req.body.profiles.allergens.name);
+  //--------------------
+
+ User.findByIdAndUpdate(_user._id,    
+     //{ $push: {"profiles": req.body.profiles}},
+     { $push: {
+          profiles: {
+            //allergens: [req.body.profiles.allergens.name],
+            allergens: [req.body.profiles.allergens], //-- working
+            //allergens: [{name: 'TEST1'}, {name: 'TEST2'}],
+            name: req.body.profiles.profilename,
+            pregnant: req.body.profiles.pregnant,
+            gender: req.body.profiles.gender,
+            age: req.body.profiles.age,
+            avatar: req.body.profiles.avatar
+          }
+        }
+     },
      {  safe: true, upsert: true},
        function(err, model) {
          if(err){
         	console.log(err);
         	return res.send(err);
          }
+          //console.log(model.profiles);
           return res.json(model);
       }); 
+  
+  //---------------------
+  //Profile
+  /*
+    User.findByIdAndUpdate(
+     _user._id,
+     { $push: {"profiles": req.body.profiles}},
+     {  safe: true, upsert: true},
+       function(err, model) {
+         if(err){
+        	console.log(err);
+        	return res.send(err);
+         }
+          //console.log(model.profiles);
+          return res.json(model);
+      }); 
+      
+      */   
+         
       
 };
 

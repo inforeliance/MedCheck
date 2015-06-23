@@ -25,7 +25,8 @@ var UserSchema = new Schema({
     avatar: String,
     createdAt: { type: Date, default: Date.now },    
     allergens: [ { 
-        name: String 
+        name: String,
+        createdAt: { type: Date, default: Date.now }
     } ] 
   } ],
   facebook: {},
