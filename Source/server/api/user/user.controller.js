@@ -136,7 +136,7 @@ exports.addProfile = function(req, res, next) {
             //allergens: [req.body.profiles.allergens.name],
             //allergens: JSON.stringify(req.body.profiles.allergens), //-- working
             allergens: _.extend({}, req.body.profiles.allergens),
-            name: req.body.profiles.profilename,
+            profilename: req.body.profiles.profilename,
             pregnant: req.body.profiles.pregnant,
             gender: req.body.profiles.gender,
             age: req.body.profiles.age,

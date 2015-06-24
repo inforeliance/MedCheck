@@ -1,11 +1,20 @@
 //'use strict';
 
+<<<<<<< HEAD
 //angular.module('medCheckApp')
 //  .controller('MainCtrl', function ($scope, $http, $openFDA) {
 //    $scope.awesomeThings = [];
 //    $scope.showAllergen = false;
 //    $scope.showAge = false;
 //    $scope.showPregnant = false;
+=======
+angular.module('medCheckApp')
+  .controller('MainCtrl', function ($scope, $http) {
+    $scope.awesomeThings = [];
+    
+    // Display a warning toast, with no title
+    toastr.warning('Prototype demonstration, not for actual medical use.', 'MedCheck Prototype', {timeOut: 5000});
+>>>>>>> Numerous Profile updates, included toastr to bower.
 
 //    $http.get('/api/things').success(function (awesomeThings) {
 //        $scope.awesomeThings = awesomeThings;
