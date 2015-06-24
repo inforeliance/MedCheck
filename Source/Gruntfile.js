@@ -21,6 +21,8 @@ module.exports = function (grunt) {
     less: 'grunt-contrib-less'
   });
 
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
@@ -83,6 +85,7 @@ module.exports = function (grunt) {
         ],
         tasks: ['less','injector:css']
       },
+      cssmin: { generated: { options: { processImport: false } } },
       mochaTest: {
         files: ['server/**/*.spec.js'],
         tasks: ['env:test', 'mochaTest']
