@@ -7,3 +7,4 @@ dist/
 .tmp
 .sass-cache
 source/client/app/app.css
+*.min.*
