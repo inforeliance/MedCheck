@@ -3,7 +3,7 @@
 
 @import "../assets/css/glyphicons.css";
 @import "../assets/css/glyphicons-bootstrap.css";
- 
+
 // <link href="css/glyphicons-bootstrap.css" rel="stylesheet">
 /**
  * Bootstrap Fonts
@@ -12,10 +12,7 @@
 @font-face {
     font-family: 'Glyphicons Halflings';
     src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot');
-    src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
-    url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'),
-    url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
-    url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+    src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
 /**
@@ -25,10 +22,7 @@
 @font-face {
     font-family: 'FontAwesome';
     src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?v=4.1.0');
-    src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'),
-    url('../bower_components/font-awesome/fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'),
-    url('../bower_components/font-awesome/fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'),
-    url('../bower_components/font-awesome/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+    src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('../bower_components/font-awesome/fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'), url('../bower_components/font-awesome/fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url('../bower_components/font-awesome/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -41,97 +35,133 @@
 @body-background: #262C2F;
 @main-container-background: #E8EFF4;
 
-body{
-    background-color:@body-background;
-    font-family: 'Roboto',sans-serif    
+body {
+    background-color: @body-background;
+    font-family: 'Roboto',sans-serif;
+    padding-top:100px;
 }
 
-#navbar-main .navbar-nav{
-    li{
-        a{ 
-            height:100px;
-            padding-top:36px;
-            color:white;
-            font-size:20px;
-            background-color: @navbackground-color;    
-            
-            -o-transition:color .2s ease-out, background .2s ease-out;
-        -ms-transition:color .2s ease-out, background .2s ease-out;
-        -moz-transition:color .2s ease-out, background .2s ease-out;
-        -webkit-transition:color .2s ease-out, background .2s ease-out;
-         transition:color .2s ease-out, background .2s ease-out;           
-        }        
-        
+#navbar-main .navbar-nav {
+    .navbar-text {
+        color: white;
+    }
+
+    li {
+        a {
+            height: 100px;
+            padding-top: 36px;
+            color: white;
+            font-size: 20px;
+            background-color: @navbackground-color;
+            -o-transition: color .2s ease-out, background .2s ease-out;
+            -ms-transition: color .2s ease-out, background .2s ease-out;
+            -moz-transition: color .2s ease-out, background .2s ease-out;
+            -webkit-transition: color .2s ease-out, background .2s ease-out;
+            transition: color .2s ease-out, background .2s ease-out;
+        }
+
         padding-left: 1px;
     }
-        
-    li>a:hover{        
+
+    li > a:hover {
         background-color: #fff;
-        color:@highlight-color;        
+        color: @highlight-color;
     }
-    
-    li.active>a{
+
+    li.active > a {
         background-color: #fff;
-        color:@highlight-color;
+        color: @highlight-color;
     }
 }
 
-.navbarwrapper{
+.navbarwrapper {
     background-color: @navbackground-color;
 }
-.maincontainer{
-    background-color: @main-container-background;  
+
+.maincontainer {
+    background-color: @main-container-background;
 }
 
-.bannerholder{
+.bannerholder {
     position: relative;
-    .textcaption{
+
+    .textcaption {
         font-weight: bold;
-        position:absolute;
-        color:white; 
-        left:100px; 
-        width:300px;
+        position: absolute;
+        color: white;
+        left: 100px;
+        width: 300px;
+        top:-10px;
+
         @media screen and (max-width: @screen-sm-min) {
-         left:20px; 
-         width:430px; 
+            width: auto;
+            position:static;
+            color:black;
+            margin-left:15px;
+            margin-right:15px;
+            h3{
+                color:#58BC70;
+            }
         }
+
         @media screen and (min-width: @screen-lg-min) {
-         left:20px; 
-         width:630px; 
+            left: 20px;
+            width: 630px;
         }
-    }     
+
+        @media screen and (max-width: @screen-xs-min) {
+            
+        }
+    }    
 }
+
+/*@media (min-width: 767px) {
+   .navbar-collapse {
+      max-height: auto;
+      overflow-x: auto;
+   }
+}*/
 
 .navbar-default {
-  background-color: @navbackground-color;  
-  height:100px;
-  padding-bottom:0;
-  margin-bottom: 0;
-  border:none;
-} 
+    background-color: @navbackground-color;
+    height: 100px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border: none;
+}
 
-.navbar-brand{
-    margin-top:18px;
+.navbar-toggle {
+    margin-top: 27px;
+    color: white !important;
+}
+
+.navbar-brand {
+    margin-top: 18px;
     background-image: url('/assets/images/logo.gif');
-    background-repeat: no-repeat; 
-    height:53px;   
-    width:230px;
+    background-repeat: no-repeat;
+    height: 53px;
+    width: 230px;
+
+    @media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+        background-size: 100%;
+        width: 190px;
+    }
 }
 
-.footerlink{
-        color: #55BB70;
-        border-bottom: 1px solid;
-        display: block;
-        text-align: left;
-        
+.footerlink {
+    color: #55BB70;
+    border-bottom: 1px solid;
+    display: block;
+    text-align: left;
 }
-    
-footer{
-    color:white;    
-    small{
-        font-size:65%;
-    
+
+footer {
+    color: white;
+
+    small {
+        font-size: 65%;
     }
+
     padding: 30px 0;
     margin-top: 70px;
     border-top: 1px solid #E5E5E5;
@@ -148,48 +178,108 @@ footer{
  * Profiles
  */
 .tabContent {
-   border-left: 1px solid #ddd;
-   border-right: 1px solid #ddd;
-   border-bottom: 1px solid #ddd;
-   min-height: 100px;   
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    min-height: 100px;
 }
 
 .glyphicon-thumbs-up {
-  color: green;
-} 
+    color: green;
+}
 
 .glyphicon-thumbs-down {
-  color: red;
-} 
+    color: red;
+}
+
 .vcenter {
     margin-top: 8px;
 }
 
-.top5 { margin-top:5px; }
-.top7 { margin-top:7px; }
-.top10 { margin-top:10px; }
-.top15 { margin-top:15px; }
-.top17 { margin-top:17px; }
-.top30 { margin-top:30px; }
-.btn-primary{
+.top5 {
+    margin-top: 5px;
+}
+
+.top7 {
+    margin-top: 7px;
+}
+
+.top10 {
+    margin-top: 10px;
+}
+
+.top15 {
+    margin-top: 15px;
+}
+
+.top17 {
+    margin-top: 17px;
+}
+
+.top30 {
+    margin-top: 30px;
+}
+
+.btn-primary {
     background-color: @navbackground-color;
 }
 
-.search-button{
-    font-size:25px;    
+.search-button {
+    font-size: 25px;
 }
 
-.icon-2x{
-    font-size:2em;
+.icon-2x {
+    font-size: 2em;
 }
 
-.icon-3x{
-    font-size:3em;
+.icon-3x {
+    font-size: 3em;
 }
 
 
- @media screen and (min-width: @screen-md-min) {
-     #medicationSearchForm.form-inline .form-group input[type="text"] {
-         width:400px;
-     }
- }
+@media screen and (min-width: @screen-md-min) {
+    #medicationSearchForm.form-inline .form-group input[type="text"] {
+        width: 400px;
+    }
+}
+
+.panel-options .panel-heading{
+    cursor:pointer;
+}
+
+.transition (@transition) {
+    -moz-transition: @transition;
+    -o-transition: @transition;
+    -webkit-transition: @transition;
+    transition: @transition;
+}
+
+.btn-block{
+        border-radius:0;
+}
+
+.well{
+    border-radius:0;
+    border-top:none;
+}
+
+@media screen and (min-width: @screen-sm-min) {
+    .navbar { 
+        max-width: 750px; /* width of .container */
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: @screen-md-min) {
+    .navbar { 
+        max-width: 970px; /* width of .container */
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: @screen-lg-min) {
+    .navbar { 
+        max-width: 1170px; /* width of .container */
+        margin: 0 auto;
+    }
+}
