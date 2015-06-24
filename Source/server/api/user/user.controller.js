@@ -79,7 +79,7 @@ exports.changePassword = function(req, res, next) {
         res.send(200);
       });
     } else {
-      res.send(403);
+      res.status(403).send('The request is for something forbidden. Authorization will not help.');
     }
   });
 };
@@ -89,23 +89,13 @@ exports.changePassword = function(req, res, next) {
  */
 exports.update = function(req, res, next) {
   
-  console.log('updateUser Called');
- 
-  
+  console.log('updateUser Called');  
   var user = req.user;
-  
-
-
-	user = _.extend(user, req.body);
-  
-  console.log(req.body);
+	//user = _.extend(user, req.body);  
 
 	user.save(function(err) {
 		if (err) {
-			return res.status(400).send({
-				//message: errorHandler.getErrorMessage(err)
-        //res.send(403)
-			});
+			return res.status(400).send('Error updating User');		
 		} else {
 			res.json(user);
 		}
@@ -117,30 +107,18 @@ exports.update = function(req, res, next) {
  */   
 exports.addProfile = function(req, res, next) {
   
-  console.log('addProfile Called');
-   
-  var _user = req.user; 
- var foo = req.body.profiles.allergens;
- 
-  console.log('ALLERGIN PRINT' + req.body.profiles.allergens.name);
-  //--------------------
- 
-
- //console.log(req.body);
- //console.log(req.body.profiles.allergens);
+ console.log('addProfile Called');   
+ var _user = req.user;  ;
    
  User.findByIdAndUpdate(_user._id,    
-     //{ $push: {"profiles": req.body.profiles}},
      { $push: {
-          profiles: {
-            //allergens: [req.body.profiles.allergens.name],
-            //allergens: JSON.stringify(req.body.profiles.allergens), //-- working
+          profiles: {        
             allergens: _.extend({}, req.body.profiles.allergens),
             profilename: req.body.profiles.profilename,
             pregnant: req.body.profiles.pregnant,
             gender: req.body.profiles.gender,
             age: req.body.profiles.age,
-            avatar: req.body.profiles.avatar
+            avatar: req.body.profiles.avatar 
           }
         }
      },
@@ -148,33 +126,11 @@ exports.addProfile = function(req, res, next) {
        function(err, model) {
          if(err){
         	console.log(err);
-        	return res.send(err);
+        	return res.status(403).send('Error Adding Profile');
          }
-          //console.log(model.profiles);
-          return res.json(model);
+          return res.status(200).send('Profile Saved!');       
       }); 
-  
-  //---------------------
-  //Profile
-  /*
-    User.findByIdAndUpdate(
-     _user._id,
-     { $push: {"profiles": req.body.profiles}},
-     {  safe: true, upsert: true},
-       function(err, model) {
-         if(err){
-        	console.log(err);
-        	return res.send(err);
-         }
-          //console.log(model.profiles);
-          return res.json(model);
-      }); 
-      
-      */   
-         
-      
 };
-
 
 /**
  * Get my info
