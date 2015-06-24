@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -15,6 +15,7 @@
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+      <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -62,6 +63,7 @@
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/toastr/toastr.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
 
@@ -82,6 +84,7 @@
           <script src="app/help/help.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
+          <script src="app/openfda/openfda.js"></script>
           <script src="app/policy/policy.controller.js"></script>
           <script src="app/policy/policy.js"></script>
           <script src="app/public.js"></script>
@@ -111,8 +114,9 @@
                 <div class="col-xs-12 col-sm-2">
                   <h5 class="footerlink">Policy</h5>
                   <ul class="list-unstyled">
-                    <li>Terms</li>
-                    <li>Privacy</li>
+                    <li><a href="/policy#terms">Terms</a></li>
+                    <li><a href="/policy#privacy">Privacy</a></li>
+					<li><a href="/policy#security">Security<a></li>
                   </ul>
                 </div>
               </div>

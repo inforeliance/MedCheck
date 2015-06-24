@@ -25,6 +25,10 @@
 body {
   background-color: #262c2f;
   font-family: 'Roboto', sans-serif;
+  padding-top: 100px;
+}
+#navbar-main .navbar-nav .navbar-text {
+  color: white;
 }
 #navbar-main .navbar-nav li {
   padding-left: 1px;
@@ -64,11 +68,18 @@ body {
   color: white;
   left: 100px;
   width: 300px;
+  top: -10px;
 }
 @media screen and (max-width: 768px) {
   .bannerholder .textcaption {
-    left: 20px;
-    width: 430px;
+    width: auto;
+    position: static;
+    color: black;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .bannerholder .textcaption h3 {
+    color: #58BC70;
   }
 }
 @media screen and (min-width: 1200px) {
@@ -77,6 +88,12 @@ body {
     width: 630px;
   }
 }
+/*@media (min-width: 767px) {
+   .navbar-collapse {
+      max-height: auto;
+      overflow-x: auto;
+   }
+}*/
 .navbar-default {
   background-color: #008ebc;
   height: 100px;
@@ -84,12 +101,22 @@ body {
   margin-bottom: 0;
   border: none;
 }
+.navbar-toggle {
+  margin-top: 27px;
+  color: white !important;
+}
 .navbar-brand {
   margin-top: 18px;
   background-image: url('/assets/images/logo.gif');
   background-repeat: no-repeat;
   height: 53px;
   width: 230px;
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .navbar-brand {
+    background-size: 100%;
+    width: 190px;
+  }
 }
 .footerlink {
   color: #55BB70;
@@ -163,5 +190,36 @@ footer small {
 @media screen and (min-width: 992px) {
   #medicationSearchForm.form-inline .form-group input[type="text"] {
     width: 400px;
+  }
+}
+.panel-options .panel-heading {
+  cursor: pointer;
+}
+.btn-block {
+  border-radius: 0;
+}
+.well {
+  border-radius: 0;
+  border-top: none;
+}
+@media screen and (min-width: 768px) {
+  .navbar {
+    max-width: 750px;
+    /* width of .container */
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 992px) {
+  .navbar {
+    max-width: 970px;
+    /* width of .container */
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .navbar {
+    max-width: 1170px;
+    /* width of .container */
+    margin: 0 auto;
   }
 }
