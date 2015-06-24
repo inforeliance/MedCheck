@@ -1,44 +1,48 @@
 //'use strict';
-    
+
 // Code goes here
-(function () {
+(function() {
     var app = angular.module("medCheckApp");
-    
-    app.controller("MainCtrl", ["$scope", "openFDA", function ($scope, openFDA) {
-			
-			// Display a warning toast, with no title
-			// toastr.warning('Prototype demonstration, not for actual medical use.', 'MedCheck Prototype', {timeOut: 5000});
-	
+
+    app.controller("MainCtrl", ["$scope", "openFDA",
+        function($scope, openFDA) {
+
+            try {
+                toastr.warning('Prototype demonstration, not for actual medical use.', 'MedCheck Prototype', {
+                    timeOut: 5000
+                });
+            } catch(e) { /* I'm so sorry */ }
+
             $scope.AppTitle = "Die.Less";
             $scope.UPC = "0075609000935";
             //$scope.MedicationName = "Advil";
-            
+
             $scope.awesomeThings = [];
             $scope.showAllergen = false;
             $scope.showAge = false;
             $scope.showPregnant = false;
-            
+
             function ResetFields() {
                 $scope.ShowBrandNotFoundErrorMessage = false;
                 $scope.ShowNotFoundErrorMessage = false;
                 $scope.ProductModel = null;
                 $scope.BrandProductModels = null;
             }
-            
-            $scope.UPCChanged = function () {
+
+            $scope.UPCChanged = function() {
                 ResetFields();
             };
-            
-            $scope.BrandChanged = function () {
+
+            $scope.BrandChanged = function() {
                 ResetFields();
             };
-            
-            $scope.FindBrand = function () {
+
+            $scope.FindBrand = function() {
                 openFDA.findByBrandName($scope.BrandName).then(
-                    function (products) {
+                    function(products) {
                         $scope.BrandProductModels = products;
                     },
-        function (err) {
+                    function(err) {
                         if (err.not_found) {
                             $scope.ShowBrandNotFoundErrorMessage = true;
                         } else {
@@ -47,13 +51,13 @@
                         }
                     });
             };
-            
-            $scope.scanBarCode = function () {
+
+            $scope.scanBarCode = function() {
                 return openFDA.findByUPC($scope.UPC).then(
-                    function (product) {
+                    function(product) {
                         $scope.ProductModel = product;
                     },
-        function (err) {
+                    function(err) {
                         if (err.not_found) {
                             $scope.ShowNotFoundErrorMessage = true;
                         } else {
@@ -62,6 +66,7 @@
                         }
                     });
             };
-        }]);
+        }
+    ]);
 
 })();
