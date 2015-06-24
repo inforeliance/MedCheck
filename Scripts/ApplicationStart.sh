@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+. ~/.bashrc
+
 cd /var/www/MedCheck/Source/
 npm update
 npm install
