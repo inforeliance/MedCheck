@@ -3,16 +3,22 @@
     <div class="row">
         <div class="view">
             <div class="container">
-                <header>
-                    <h3>
-                        <span class="glyphicon glyphicon-edit"></span>Add Profile</h3>
-                </header>
-                <br>
+                
                 <form class="form" name="form" ng-submit="addProfile(form)" novalidate>
                     <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted }">
-                        <div class="protileTemplate">
+                        <div class="profileTemplate">
+                            
+                            <br />
                             <div class="row">
+                                <!--Profile Input Column -->
+                                <div class="col-md-5">
+                                    <div class="row">
+                                        <header>
+                    <h3>
+                       &nbsp;&nbsp;<span class="glyphicon glyphicon-edit"></span>Add Profile</h3>
+                </header>
+                <br>
                                 <div class="col-md-2">Name:</div>
                                 <div class="col-md-8">
                                     <!-- Name -->
@@ -21,109 +27,106 @@
                                     </span>
                                 </div>
                             </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-md-2">Gender:</div>
-                                <div class="col-md-8">
-                                    <div class="radio">
-                                        <label class="radio">
-                                            <input type="radio" name="gender" value="Male" data-ng-checked="frmProfile.gender == 'Male'" data-ng-model="frmProfile.gender"
-                                            />Male</label>
+                                    <div class="row">
+                                        <div class="col-md-2">Gender:</div>
+                                        <div class="col-md-8">
+                                            <div class="radio">
+                                                <label class="radio">
+                                                    <input type="radio" name="gender" value="Male" data-ng-checked="frmProfile.gender == 'Male'" data-ng-model="frmProfile.gender"
+                                                    />Male</label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio">
+                                                    <input type="radio" name="gender" value="Female" data-ng-checked="frmProfile.gender == 'Female'" data-ng-model="frmProfile.gender"
+                                                    />Female
+                                                    <br />
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="radio">
-                                        <label class="radio">
-                                            <input type="radio" name="gender" value="Female" data-ng-checked="frmProfile.gender == 'Female'" data-ng-model="frmProfile.gender"
-                                            />Female
-                                            <br />
-                                        </label>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-2">Age:</div>
+                                        <div class="col-md-8">
+                                            <div class="radio">
+                                                <label class="radio">
+                                                    <input type="radio" name="age" value="M12MonthAndUnder" data-ng-checked="frmProfile.age == 'M12MonthAndUnder'" data-ng-model="frmProfile.age"
+                                                    />12 months and under</label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio">
+                                                    <input type="radio" name="age" value="13MonthTo5Years" data-ng-checked="frmProfile.age == '13MonthTo5Years'" data-ng-model="frmProfile.age"
+                                                    />13 months-5 years
+                                                    <br />
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio">
+                                                    <input type="radio" name="age" value="5to11Years" data-ng-checked="frmProfile.age == '5to11Years'" data-ng-model="frmProfile.age"
+                                                    />5 years- 11 years
+                                                    <br />
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio">
+                                                    <input type="radio" name="age" value="12YearsAndOver" data-ng-checked="frmProfile.age == '12YearsAndOver'" data-ng-model="frmProfile.age"
+                                                    />12 years and over
+                                                    <br />
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-4">Nursing/Pregnant:</div>
+                                        <div class="col-md-5">
+                                            <input type="checkbox" name="pregnant" ng-model="frmProfile.pregnant" ng-true-value="1" ng-false-value="0">
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">                                        
+                                        <div class="col-md-4">
+                                            <button class="btn btn-inverse btn-lg" type="submit">Save Profile</button>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button class="btn btn-inverse btn-lg" type="submit">Clear</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-md-2">Gender:</div>
-                                <div class="col-md-8">
-                                    <div class="radio">
-                                        <label class="radio">
-                                            <input type="radio" name="age" value="M12MonthAndUnder" data-ng-checked="frmProfile.age == 'M12MonthAndUnder'" data-ng-model="frmProfile.age"
-                                            />12 months and under</label>
-                                    </div>
-                                    <div class="radio">
-                                        <label class="radio">
-                                            <input type="radio" name="age" value="13MonthTo5Years" data-ng-checked="frmProfile.age == '13MonthTo5Years'" data-ng-model="frmProfile.age"
-                                            />13 months-5 years
-                                            <br />
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label class="radio">
-                                            <input type="radio" name="age" value="5to11Years" data-ng-checked="frmProfile.age == '5to11Years'" data-ng-model="frmProfile.age"
-                                            />5 years- 11 years
-                                            <br />
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label class="radio">
-                                            <input type="radio" name="age" value="12YearsAndOver" data-ng-checked="frmProfile.age == '12YearsAndOver'" data-ng-model="frmProfile.age"
-                                            />12 years and over
-                                            <br />
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-md-2">Nursing/Pregnant:</div>
-                                <div class="col-md-8">
-                                    <input type="checkbox" name="pregnant" ng-model="frmProfile.pregnant" ng-true-value="1" ng-false-value="0">
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-md-2">&nbsp;</div>
-                                <div class="col-md-2">
-                                    <button class="btn btn-inverse btn-lg" type="submit">Save Profile</button>
-                                </div>
-                                <div class="col-md-4">
-                                    <button class="btn btn-inverse btn-lg" type="submit">Clear</button>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="profiles view">
-                                <div class="container">
-                                    <header>
-                                        <h3>
-                                            <span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Profiles</h3>
-                                    </header>                                   
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <ul class="list-group">
-                                        <li class="list-group-item" ng-repeat="profile in profiles">
-                                            <strong>{{profile.profilename}}</strong>
-                                            <br>
-                                            <span class="text-muted">Age: {{profile.age}}</span>
-                                            <br>
-                                            <span class="text-muted">Avatar: {{profile.avatar}}</span>
-                                            <br>
-                                            <span class="text-muted">Gender: {{profile.gender}}</span>
-                                            <br>
-                                            <a ng-click="me(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+                                <!--Profile Tab Control -->
+                                <div class="col-md-7">
+                                    <div class="row">
+                                        <div class="col-md-10">
                                             <ul class="list-group">
-                                                <br>
-                                                <strong>Allergens:</strong>
-                                                <br>
-                                                <li class="list-group-item" ng-repeat="allergen in profile.allergens">
-                                                    <strong>{{allergen.name}}</strong>
-                                                    <a ng-click="me(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-                                                </li>
+                                                <tabset>
+                                                    <tab ng-repeat="profile in profiles | orderBy:'-createdAt'" heading="{{profile.profilename}}" >
+                                                        <div ng-controller="ProfilesCtrl" ng-init="profile=profile" class="list-group-item">
+                                                            <span class="text-muted">Age: {{profile.age}}</span>
+                                                            <br>
+                                                            <span class="text-muted"></span>
+                                                            <div ng-attr-id={{profile.avatar}}></div>
+                                                            <br>
+                                                            <span class="text-muted">Gender: {{profile.gender}}</span>
+                                                            <br>
+                                                            <a ng-click="me(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+                                                            <ul class="list-group">
+                                                                <br>
+                                                                <strong>Allergens:</strong>
+                                                                <br>
+                                                                <li class="list-group-item" ng-repeat="allergen in profile.allergens">
+                                                                    <strong>{{allergen.name}}</strong>
+                                                                    <a ng-click="me(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </tab>
+                                                </tabset>
                                             </ul>
-                                        </li>
-                                    </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </div>                            
+                            <br>
                             <br />
                             <div class="statusRow">
                                 <br />

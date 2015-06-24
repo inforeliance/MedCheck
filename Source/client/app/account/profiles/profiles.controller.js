@@ -63,7 +63,12 @@ angular.module('medCheckApp')
     _profile.age = $scope.frmProfile.age;
     _profile.gender = $scope.frmProfile.gender;
     _profile.pregnant = $scope.frmProfile.pregnant;
-    _profile.avatar = '/sdsd/sdsd.png';
+    
+    if ($scope.frmProfile.gender == 'Male')
+    { _profile.avatar = 'div-with-hipster' + getRandomArbitrary(1, 2);} //Random number 3-4 for dynamic male avatar demo
+    else
+    { _profile.avatar = 'div-with-hipster' + getRandomArbitrary(3, 4);} //Random number 3-4 for dynamic female avatar demo
+    
     _profile.allergens = arrAllergen;
 
     _user.profiles = _profile;
@@ -89,5 +94,10 @@ angular.module('medCheckApp')
       //$scope.user = user;
       $scope.profiles = user.profiles;
     });
+    
+    // Returns a random number between min (inclusive) and max (exclusive)
+    function getRandomArbitrary(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
   };
 });
