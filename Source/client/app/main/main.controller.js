@@ -1,51 +1,14 @@
 //'use strict';
-
-<<<<<<< HEAD
-//angular.module('medCheckApp')
-//  .controller('MainCtrl', function ($scope, $http, $openFDA) {
-//    $scope.awesomeThings = [];
-//    $scope.showAllergen = false;
-//    $scope.showAge = false;
-//    $scope.showPregnant = false;
-=======
-angular.module('medCheckApp')
-  .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
     
-    // Display a warning toast, with no title
-    toastr.warning('Prototype demonstration, not for actual medical use.', 'MedCheck Prototype', {timeOut: 5000});
->>>>>>> Numerous Profile updates, included toastr to bower.
-
-//    $http.get('/api/things').success(function (awesomeThings) {
-//        $scope.awesomeThings = awesomeThings;
-//    });
-    
-//    $scope.scanBarCode = function () {
-//        alert("asd");
-//    };
-    
-//    $scope.toggleAlergen = function (){
-//        return $scope.showAllergen = !$scope.showAllergen;
-//    }
-    
-//    $scope.addThing = function () {
-//        if ($scope.newThing === '') {
-//            return;
-//        }
-//        $http.post('/api/things', { name: $scope.newThing });
-//        $scope.newThing = '';
-//    };
-    
-//    $scope.deleteThing = function (thing) {
-//        $http.delete('/api/things/' + thing._id);
-//    };
-//});
-
 // Code goes here
 (function () {
     var app = angular.module("medCheckApp");
     
     app.controller("MainCtrl", ["$scope", "openFDA", function ($scope, openFDA) {
+			
+			// Display a warning toast, with no title
+			toastr.warning('Prototype demonstration, not for actual medical use.', 'MedCheck Prototype', {timeOut: 5000});
+	
             $scope.AppTitle = "Die.Less";
             $scope.UPC = "0075609000935";
             //$scope.MedicationName = "Advil";
