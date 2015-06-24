@@ -465,6 +465,9 @@ module.exports = function (grunt) {
       prod: {
         NODE_ENV: 'production'
       },
+      dev: {
+        NODE_ENV: 'development'
+      },
       all: localConfig
     },
 
@@ -571,7 +574,7 @@ module.exports = function (grunt) {
     if (target === 'server') {
       return grunt.task.run([
         'env:all',
-        'env:test',
+        'env:dev',
         'mochaTest'
       ]);
     }
@@ -591,7 +594,7 @@ module.exports = function (grunt) {
       return grunt.task.run([
         'clean:server',
         'env:all',
-        'env:test',
+        'env:dev',
         'concurrent:test',
         'injector',
         'wiredep',
