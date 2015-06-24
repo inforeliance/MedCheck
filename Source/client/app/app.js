@@ -21,7 +21,8 @@ angular.module('medCheckApp', [
       // Add authorization token to headers
       request: function (config) {
         config.headers = config.headers || {};
-        if ($cookieStore.get('token')) {
+        var isFDARequest =  config.url.indexOf("api.fda.gov") > -1;
+        if ($cookieStore.get('token') && !isFDARequest) {          
           config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
         }
         return config;
