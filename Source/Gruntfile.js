@@ -360,6 +360,9 @@ module.exports = function (grunt) {
             'bower_components/**/*',
             'assets/images/{,*/}*.{webp}',
             'assets/fonts/**/*',
+            'assets/**/*',
+            'components/**/*',
+            'app/**/*.css',
             'index.html'
           ]
         }, {
@@ -619,7 +622,7 @@ module.exports = function (grunt) {
     'cdnify',
     'cssmin',
     'uglify',
-    'rev',
+    // 'rev',
     'usemin'
   ]);
 
