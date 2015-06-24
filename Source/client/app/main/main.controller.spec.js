@@ -21,31 +21,28 @@ describe('Controller: MainCtrl', function() {
         });
     }));
 
-    it('should attach a list of things to the scope', function() {
-        $httpBackend.flush();
-        expect(scope.awesomeThings.length).toBe(4);
-    });
-
     it('should not show an error message when a field is changed', function() {
         scope.UPCChanged();
-        expect(scope.ShowBrandNotFoundErrorMessage).toBe(false);
-        expect(scope.ShowNotFoundErroMessage).toBe(false);
+        expect(scope.ShowBrandNotFoundErrorMessage).not.toBe(true);
+        expect(scope.ShowNotFoundErroMessage).not.toBe(true);
         scope.BrandChanged();
-        expect(scope.ShowBrandNotFoundErrorMessage).toBe(false);
-        expect(scope.ShowNotFoundErroMessage).toBe(false);
+        expect(scope.ShowBrandNotFoundErrorMessage).not.toBe(true);
+        expect(scope.ShowNotFoundErroMessage).not.toBe(true);
     });
 
     it('should find products', function() {
         scope.UPCChanged();
         scope.UPC = "0075609000935";
-        scope.scanBarCode();
-        expect(scope.ShowNotFoundErrorMessage).toBe(false);
+        scope.scanBarCode().then(function() {
+            expect(scope.ShowNotFoundErrorMessage).not.toBe(true);
+        });
     });
 
     it('should not find products', function() {
-        scope.UPCChanged();
+        scope.UPCChanged()
         scope.UPC = "nonexistent product";
-        scope.scanBarCode();
-        expect(scope.ShowNotFoundErrorMessage).toBe(true);
+        scope.scanBarCode().then(function() {
+            expect(scope.ShowNotFoundErrorMessage).toBe(true);
+        });
     });
 });

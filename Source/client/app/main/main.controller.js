@@ -7,7 +7,7 @@
     app.controller("MainCtrl", ["$scope", "openFDA", function ($scope, openFDA) {
 			
 			// Display a warning toast, with no title
-			toastr.warning('Prototype demonstration, not for actual medical use.', 'MedCheck Prototype', {timeOut: 5000});
+			// toastr.warning('Prototype demonstration, not for actual medical use.', 'MedCheck Prototype', {timeOut: 5000});
 	
             $scope.AppTitle = "Die.Less";
             $scope.UPC = "0075609000935";
@@ -49,7 +49,7 @@
             };
             
             $scope.scanBarCode = function () {
-                openFDA.findByUPC($scope.UPC).then(
+                return openFDA.findByUPC($scope.UPC).then(
                     function (product) {
                         $scope.ProductModel = product;
                     },
