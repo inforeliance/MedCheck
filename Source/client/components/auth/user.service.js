@@ -17,6 +17,7 @@ angular.module('medCheckApp')
       },
       addProfile: {
         method: 'PATCH',
+        //isArray: true,
         params: {
           controller:'profiles'
         }
