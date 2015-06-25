@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('medCheckApp')
-  .controller('ProfilesCtrl', function ($scope, $http, Auth, User, Profile, Allergen, $q) {
+  .controller('ProfilesCtrl', function ($scope, $http, Auth, User, Profile, Allergen) {
 
   $scope.getCurrentUser = Auth.getCurrentUser;
 
@@ -65,9 +65,9 @@ angular.module('medCheckApp')
     _profile.pregnant = $scope.frmProfile.pregnant;
     
     if ($scope.frmProfile.gender == 'Male')
-    { _profile.avatar = 'div-with-hipster' + getRandomArbitrary(1, 2);} //Random number 3-4 for dynamic male avatar demo
+    { _profile.avatar = 'div-with-hipster' + getRandomArbitrary(1, 5);} //Random number 1-5 for dynamic male avatar demo
     else
-    { _profile.avatar = 'div-with-hipster' + getRandomArbitrary(3, 4);} //Random number 3-4 for dynamic female avatar demo
+    { _profile.avatar = 'div-with-hipster' + getRandomArbitrary(6, 10);} //Random number 6-10 for dynamic female avatar demo
     
     _profile.allergens = arrAllergen;
 
@@ -80,6 +80,12 @@ angular.module('medCheckApp')
         //console.log(xmessage);
         if (typeof res === 'object') {
           toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');
+          
+          //Get Profile Response
+          $http.get('/api/users/me').success(function (user) {
+            //$scope.user = user;
+            $scope.profiles = user.profiles;
+          });
 
         } else {
           // invalid response            
@@ -89,11 +95,7 @@ angular.module('medCheckApp')
       });
     }   
       
-    //Get Profile Response
-    $http.get('/api/users/me').success(function (user) {
-      //$scope.user = user;
-      $scope.profiles = user.profiles;
-    });
+    
     
     // Returns a random number between min (inclusive) and max (exclusive)
     function getRandomArbitrary(min, max) {

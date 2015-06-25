@@ -3,30 +3,32 @@
     <div class="row">
         <div class="view">
             <div class="container">
-                
                 <form class="form" name="form" ng-submit="addProfile(form)" novalidate>
                     <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted }">
                         <div class="profileTemplate">
-                            
                             <br />
                             <div class="row">
                                 <!--Profile Input Column -->
                                 <div class="col-md-5">
                                     <div class="row">
-                                        <header>
-                    <h3>
-                       &nbsp;&nbsp;<span class="glyphicon glyphicon-edit"></span>Add Profile</h3>
-                </header>
-                <br>
-                                <div class="col-md-2">Name:</div>
-                                <div class="col-md-8">
-                                    <!-- Name -->
-                                    <input type="text" name="name" class="form-control" ng-model="frmProfile.name" required/>
-                                    <p class="help-block" ng-show="form.name.$error.required && submitted">A name is required</p>
-                                    </span>
-                                </div>
-                            </div>
+                                        <div class="col-md-8">
+                                            <header>
+                                                <h3>&nbsp;&nbsp;
+                                                    <span class="glyphicon glyphicon-edit"></span>Add Profile</h3>
+                                            </header>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <br>
+                                        <div class="col-md-2">Name:</div>
+                                        <div class="col-md-8">
+                                            <!-- Name -->
+                                            <input type="text" name="name" class="form-control" ng-model="frmProfile.name" required/>
+                                            <p class="help-block" ng-show="form.name.$error.required && submitted">A name is required</p>
+                                            </span>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-2">Gender:</div>
                                         <div class="col-md-8">
@@ -84,7 +86,7 @@
                                         </div>
                                     </div>
                                     <br />
-                                    <div class="row">                                        
+                                    <div class="row">
                                         <div class="col-md-4">
                                             <button class="btn btn-inverse btn-lg" type="submit">Save Profile</button>
                                         </div>
@@ -95,20 +97,30 @@
                                 </div>
                                 <!--Profile Tab Control -->
                                 <div class="col-md-7">
+                                     <div class="row">
+                                        <div class="col-md-10">
+                                            &nbsp;&nbsp;<p>Add additional family member or patient profiles for MedCheck to monitor your searches.</p>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-10">
                                             <ul class="list-group">
                                                 <tabset>
-                                                    <tab ng-repeat="profile in profiles | orderBy:'-createdAt'" heading="{{profile.profilename}}" >
+                                                    <tab ng-repeat="profile in profiles | orderBy:'-createdAt'" heading="{{profile.profilename}}">
                                                         <div ng-controller="ProfilesCtrl" ng-init="profile=profile" class="list-group-item">
-                                                            <span class="text-muted">Age: {{profile.age}}</span>
-                                                            <br>
-                                                            <span class="text-muted"></span>
-                                                            <div ng-attr-id={{profile.avatar}}></div>
-                                                            <br>
-                                                            <span class="text-muted">Gender: {{profile.gender}}</span>
-                                                            <br>
-                                                            <a ng-click="me(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <div ng-attr-id={{profile.avatar}}></div>
+                                                                </div>
+                                                                <div class="col-md-7"> 
+                                                                    <span><strong>{{profile.profilename}}<strong></span><br>
+                                                                    <span class="text-muted">{{profile.age}}</span><br>
+                                                                    <span class="text-muted">{{profile.gender}}</span>
+                                                                </div>
+                                                                 <div class="col-md-3">
+                                                                     Delete Profile&nbsp;<a ng-click="me(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+                                                                 </div>
+                                                            </div>  
                                                             <ul class="list-group">
                                                                 <br>
                                                                 <strong>Allergens:</strong>
@@ -125,7 +137,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>
                             <br>
                             <br />
                             <div class="statusRow">
