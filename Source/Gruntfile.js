@@ -83,6 +83,7 @@ module.exports = function (grunt) {
         ],
         tasks: ['less','injector:css']
       },
+      // cssmin: { generated: { options: { processImport: false } } },
       mochaTest: {
         files: ['server/**/*.spec.js'],
         tasks: ['env:test', 'mochaTest']
@@ -321,7 +322,7 @@ module.exports = function (grunt) {
           collapseWhitespace: true,
           removeAttributeQuotes: true,
           removeEmptyAttributes: true,
-          removeRedundantAttributes: true,
+          removeRedundantAttributes: false,
           removeScriptTypeAttributes: true,
           removeStyleLinkTypeAttributes: true
         },
@@ -622,7 +623,7 @@ module.exports = function (grunt) {
     'cdnify',
     'cssmin',
     'uglify',
-    // 'rev',
+    'rev',
     'usemin'
   ]);
 
