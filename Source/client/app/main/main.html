@@ -20,7 +20,7 @@
             <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
           </ul>
         </div>-->
-    </div>  
+    </div>
 
     <div class="top30"></div>
     <div class="form-inline" id="medicationSearchForm">
@@ -47,45 +47,77 @@
     <div class="row">
         <div class="col-md-4">
             <button class="btn btn-success btn-block " ng-click="showAllergen = !showAllergen">Allergens</button>
-            <div collapse="!showAllergen">
+            <div collapse="!showAllergen" class="form-inlinae">
                 <div class="well well-lg">
-                    Some content
+                    <ul class="list-group">
+                        <li ng-repeat="allergen in allergens" class="list-group-item">
+                            <div class="allergen-group">
+                                <a class="allergen-group-delete" ng-click="removeAllergen(allergen)">
+                                    <span class="glyphicons glyphicons-circle-remove"></span>
+                                </a>
+                                <input type="text" ng-keypress="$event.keyCode == 13 ? addAllergen() : allergen.invalidIngredient=false" ng-model="allergen.name" class="form-control" id="allergyFocusElement" placeholder="Enter allergy"></input>
+                                <div class="text-danger unknownIngredient" ng-show="allergen.invalidIngredient" data-toggle="tooltip" title="This ingredient was not found in the FDA database. Please check spelling."><i class="glyphicons glyphicons-alert"></i></div>
+                            </div>
+
+                        </li>
+                    </ul>
+
+                    <a href="javascript:{}" ng-click="addAllergen()">
+                        Add More
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <button class="btn btn-success btn-block " ng-click="showAge = !showAge">Age Warnings</button>
+            <button class="btn btn-success btn-block " ng-click="showAge = !showAge">Age Warnings (TODO)</button>
             <div collapse="!showAge">
                 <div class="well well-lg">
-                    Some content
+                    <div ng-repeat="ageChoice in ageChoices">
+                        <button type="button" class="icon-bigger btn btn-block" ng-model="ageChoice.selected" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" ng-class="{'btn-primary' : ageChoice.selected, 'btn-default': !ageChoice.selected}">
+                            <p class="text-left padding left10">
+                                <span class="glyphicons" ng-class="{'glyphicons-check' : ageChoice.selected, 'glyphicons-unchecked': !ageChoice.selected}"></span>
+                                {{ageChoice.label}}
+                            </p>
+                        </button>
+                        <p></p>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <button class="btn btn-success btn-block " ng-click="showPregnant = !showPregnant">Nursing/Pregnant Warnings</button>
+            <button class="btn btn-success btn-block " ng-click="showPregnant = !showPregnant">Nursing/Pregnant Warnings (TODO)</button>
             <div collapse="!showPregnant">
                 <div class="well well-lg">
-                    Some content
+                    <button type="button" class="icon-bigger btn btn-block" ng-model="nursing" btn-checkbox btn-checkbox-true="true"  btn-checkbox-false="false" ng-class="{'btn-primary' : nursing, 'btn-default': !nursing}">
+                        <span class="glyphicons" ng-class="{'glyphicons-check' : nursing, 'glyphicons-unchecked': !nursing}"></span>
+                        Nursing
+                    </button>
+                    <p></p>
+                    <button type="button" class="icon-bigger btn btn-block" ng-model="pregnant" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" ng-class="{'btn-primary' : pregnant, 'btn-default': !pregnant}">
+                        <span class="glyphicons" ng-class="{'glyphicons-check ' : pregnant, 'glyphicons-unchecked ': !pregnant}"></span>
+                        Pregnant
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="row top30">
         <div class="col-xs-12">
-            <button type="submit" class="btn search-button btn-primary btn-block">
+            <button type="submit" class="btn search-button btn-primary btn-block" ng-click="scanBarCode()">
                 <i class="glyphicons glyphicons-search icon-2x"></i>Search
             </button>
         </div>
     </div>
     <div class="top30"></div>
-
     <div class="panel panel-default" ng-show="ProductModel">
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-2"><strong>Brand Name</strong></div>
-                <div class="col-sm-10">{{ProductModel.BrandName}}</div>
+                <div class="col-sm-10">
+                    {{ProductModel.BrandName}}
+                </div>
             </div>
+            <hr />
             <div class="row">
                 <div class="col-sm-2"><strong>Pregnancy</strong></div>
                 <div class="col-sm-10">
@@ -93,7 +125,7 @@
                         Safe!
                     </span>
                     <span ng-show="!ProductModel.SafeForPregnancy">
-
+                        
                     </span>
                 </div>
             </div>
@@ -107,9 +139,15 @@
             <div class="row">
                 <div class="col-sm-2"><strong>Ingredients</strong></div>
                 <div class="col-sm-10">
-                    <div class="list-group ingredient-list">
+                    <!--<div class="list-group ingredient-list">
                         <a href="#" ng-repeat="ingredient in ProductModel.Ingredients | orderBy:['-Active', 'Name']" class="list-group-item">
                             <span class="label label-primary" ng-show="{{ingredient.Active}}">Active</span> {{ingredient.Name}}
+                        </a>
+                    </div>-->
+
+                    <div class="list-group ingredient-list">
+                        <a href="#" ng-repeat="ingredient in ProductModel.BadIngredients" class="list-group-item">
+                            {{ingredient}}                            
                         </a>
                     </div>
                 </div>
