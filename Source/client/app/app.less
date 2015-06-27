@@ -181,12 +181,12 @@ footer {
     min-height: 100px;
 }
 
-.glyphicon-thumbs-up {
-    color: green;
+.glyphicon-thumbs-up,.fa-thumbs-up {
+    color: @alert-success-text;
 }
 
-.glyphicon-thumbs-down {
-    color: red;
+.glyphicon-thumbs-down, .fa-thumbs-down{
+    color: @alert-danger-text;
 }
 
 .vcenter {
@@ -469,3 +469,15 @@ a, a:hover {
     width:100%;
 }
 
+a.anchor{
+    padding-top: 160px; margin-top: -160px;
+    display:block;
+}
+
+.form-group .fa-remove.form-control-feedback{
+    display:none;
+}
+
+.form-group.has-error .fa-remove.form-control-feedback{
+    display:block;
+}

@@ -1,4 +1,4 @@
-<div ng-include="'components/navbar/navbar.html'" ></div>
+<div ng-include="'components/navbar/navbar.html'"></div>
 <div class="container maincontainer">
     <div class="row">
 
@@ -23,91 +23,98 @@
     </div>
 
     <div class="top30"></div>
-    <div class="form-inline" id="medicationSearchForm">
-        <div class="form-group">
-            <label for="medication">Medication</label>
-            <input class="form-control" type="text" id="MedicationName" placeholder="Enter medication name" ng-model="UPC" ng-change="UPCChanged()">
+    <form class="form-inline" id="medicationSearchForm" novalidate name="medicationSearchForm" ng-submit="performSearch(medicationSearchForm.$valid)">
+        <div class="form-group" ng-class="{'has-error has-feedback': medicationSearchForm.MedicationName.$error.required && medicationSearchForm.$submitted}">
+            <label class="control-label" for="medication">Medication/UPC</label>
+            <input class="form-control" type="text" name="MedicationName" id="MedicationName" placeholder="Enter medication name or UPC"
+                   ng-model="SearchValue"
+                   ng-change="UPCChanged()"
+                   required>
+            <span class="fa fa-remove form-control-feedback" aria-hidden="true"></span>
         </div>
 
         <div class="form-group">
             <label class="control-label">or scan a barcode</label>
             <button class="btn btn-primary" ng-click="scanBarCode()">
-                <i class="glyphicon glyphicon-barcode icon-2x"></i>
+                <i class="fa fa-barcode icon-2x"></i>
             </button>
         </div>
-    </div>
 
-    <div class="alert alert-danger" ng-show="ShowNotFoundErrorMessage || ShowBrandNotFoundErrorMessage">
-        <span ng-show="ShowNotFoundErrorMessage">The UPC {{UPC}} was not found. Either this is not a product tracked by the FDA, or you mistyped something.</span>
-        <span ng-show="ShowBrandNotFoundErrorMessage">The brand you entered {{BrandName}} was not found. Either this is not a brandt tracked by the FDA, or you mistyped something.</span>
-    </div>
+        <div class="alert alert-danger" ng-show="ShowNotFoundErrorMessage || ShowBrandNotFoundErrorMessage">
+            <span ng-show="ShowNotFoundErrorMessage">The UPC {{SearchValue}} was not found. Either this is not a product tracked by the FDA, or you mistyped something.</span>
+            <span ng-show="ShowBrandNotFoundErrorMessage">The brand you entered {{SearchValue}} was not found. Either this is not a brand tracked by the FDA, or you mistyped something.</span>
+        </div>
+        <div class="clear"></div>
 
-    <label>Check for the following (must choose at least one)</label>
+        <div class="top10">
+            <label>
+                Check for the following (must choose at least one)
+            </label>
+        </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <button class="btn btn-success btn-block " ng-click="showAllergen = !showAllergen">Allergens</button>
-            <div collapse="!showAllergen" class="form-inlinae">
-                <div class="well well-lg">
-                    <ul class="list-group">
-                        <li ng-repeat="allergen in allergens" class="list-group-item">
-                            <div class="allergen-group">
-                                <a class="allergen-group-delete" ng-click="removeAllergen(allergen)">
-                                    <span class="glyphicons glyphicons-circle-remove"></span>
-                                </a>
-                                <input type="text" ng-keypress="$event.keyCode == 13 ? addAllergen() : allergen.invalidIngredient=false" ng-model="allergen.name" class="form-control" id="allergyFocusElement" placeholder="Enter allergy"></input>
-                                <div class="text-danger unknownIngredient" ng-show="allergen.invalidIngredient" data-toggle="tooltip" title="This ingredient was not found in the FDA database. Please check spelling."><i class="glyphicons glyphicons-alert"></i></div>
-                            </div>
+        <div class="row top10">
+            <div class="col-md-4">
+                <button class="btn btn-success btn-block " ng-click="showAllergen = !showAllergen">Allergens</button>
+                <div collapse="!showAllergen" class="form-inlinae">
+                    <div class="well well-lg">
+                        <ul class="list-group">
+                            <li ng-repeat="allergen in allergens" class="list-group-item">
+                                <div class="allergen-group">
+                                    <a class="allergen-group-delete" ng-click="removeAllergen(allergen)">
+                                        <span class="fa fa-minus-circle"></span>
+                                    </a>
+                                    <input type="text" ng-keypress="$event.keyCode == 13 ? addAllergen() : allergen.invalidIngredient=false" ng-model="allergen.name" class="form-control" id="allergyFocusElement" placeholder="Enter allergy"></input>
+                                    <div class="text-danger unknownIngredient" ng-show="allergen.invalidIngredient" data-toggle="tooltip" title="This ingredient was not found in the FDA database. Please check spelling.">
+                                        <i class="fa fa-exclamation-circle"></i>
+                                    </div>
+                                </div>
 
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
 
-                    <a href="javascript:{}" ng-click="addAllergen()">
-                        Add More
-                    </a>
+                        <a href="javascript:{}" ng-click="addAllergen()">
+                            Add More
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <button class="btn btn-success btn-block " ng-click="showAge = !showAge">Age Warnings (TODO)</button>
-            <div collapse="!showAge">
-                <div class="well well-lg">
-                    <div ng-repeat="ageChoice in ageChoices">
-                        <button type="button" class="icon-bigger btn btn-block" ng-model="ageChoice.selected" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" ng-class="{'btn-primary' : ageChoice.selected, 'btn-default': !ageChoice.selected}">
-                            <p class="text-left padding left10">
-                                <span class="glyphicons" ng-class="{'glyphicons-check' : ageChoice.selected, 'glyphicons-unchecked': !ageChoice.selected}"></span>
-                                {{ageChoice.label}}
-                            </p>
+            <div class="col-md-4">
+                <button class="btn btn-success btn-block " ng-click="showAge = !showAge">Age Warnings </button>
+                <div collapse="!showAge">
+                    <div class="well well-lg">
+                        <div ng-repeat="ageChoice in ageChoices">
+                            <label class="icon-bigger btn btn-block" ng-model="selectedAge.selected" btn-radio="ageChoice" ng-class="selectedAge.selected == ageChoice ? 'btn-primary' : 'btn-default'">
+                                <p class="text-left padding left10">
+                                    <span class="fa " ng-class=" selectedAge.selected == ageChoice ? 'fa-check-square-o' : 'fa-square-o'"></span>
+                                    {{ageChoice.label}}
+                                </p>
+                            </label>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-success btn-block " ng-click="showPregnant = !showPregnant">Nursing/Pregnant Warnings (TODO)</button>
+                <div collapse="!showPregnant">
+                    <div class="well well-lg">
+                        <button type="button" class="icon-bigger btn btn-block" ng-model="nursingOrPregnant" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" ng-class="nursingOrPregnant ? 'btn-primary' : 'btn-default'">
+                            <span class="fa" ng-class="nursingOrPregnant ? 'fa-check-square-o' : 'fa-square-o'"></span>
+                            Nursing / Pregnant
                         </button>
-                        <p></p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <button class="btn btn-success btn-block " ng-click="showPregnant = !showPregnant">Nursing/Pregnant Warnings (TODO)</button>
-            <div collapse="!showPregnant">
-                <div class="well well-lg">
-                    <button type="button" class="icon-bigger btn btn-block" ng-model="nursing" btn-checkbox btn-checkbox-true="true"  btn-checkbox-false="false" ng-class="{'btn-primary' : nursing, 'btn-default': !nursing}">
-                        <span class="glyphicons" ng-class="{'glyphicons-check' : nursing, 'glyphicons-unchecked': !nursing}"></span>
-                        Nursing
-                    </button>
-                    <p></p>
-                    <button type="button" class="icon-bigger btn btn-block" ng-model="pregnant" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" ng-class="{'btn-primary' : pregnant, 'btn-default': !pregnant}">
-                        <span class="glyphicons" ng-class="{'glyphicons-check ' : pregnant, 'glyphicons-unchecked ': !pregnant}"></span>
-                        Pregnant
-                    </button>
-                </div>
+        <div class="row top30">
+            <div class="col-xs-12">
+                <button type="submit" class="btn icon-2x search-button btn-primary btn-block">
+                    <i class="fa fa-search "></i>Search
+                </button>
             </div>
         </div>
-    </div>
-    <div class="row top30">
-        <div class="col-xs-12">
-            <button type="submit" class="btn search-button btn-primary btn-block" ng-click="scanBarCode()">
-                <i class="glyphicons glyphicons-search icon-2x"></i>Search
-            </button>
-        </div>
-    </div>
+    </form>
+
     <div class="top30"></div>
     <div class="panel panel-default" ng-show="ProductModel">
         <div class="panel-body">
@@ -119,36 +126,52 @@
             </div>
             <hr />
             <div class="row">
-                <div class="col-sm-2"><strong>Pregnancy</strong></div>
+                <div class="col-sm-2">
+                    <strong>
+                        <i class="fa fa-2x" ng-class="ProductModel.SafeForPregnancy ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i>
+                        Pregnancy
+                    </strong>
+                </div>
                 <div class="col-sm-10">
                     <span ng-show="ProductModel.SafeForPregnancy">
-                        Safe!
+                        Safe
                     </span>
                     <span ng-show="!ProductModel.SafeForPregnancy">
-                        
+                        {{ProductModel.Pregnancy}}
                     </span>
                 </div>
             </div>
 
             <hr />
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-sm-2"><strong>Purpose</strong></div>
                 <div class="col-sm-10">{{ProductModel.Purpose}}</div>
             </div>
+                <hr/>
+                -->
+
+            <div class="row">
+                <div class="col-sm-2">
+                    <i class="fa fa-2x" ng-class="ProductModel.ShowAgeWarning ? 'fa-thumbs-down' : 'fa-thumbs-up'"></i>
+                    <strong>Age</strong>
+                </div>
+                <div class="col-sm-10">{{ProductModel.MinimumAgeInfo}}</div>
+            </div>
+
             <hr />
             <div class="row">
-                <div class="col-sm-2"><strong>Ingredients</strong></div>
-                <div class="col-sm-10">
-                    <!--<div class="list-group ingredient-list">
-                        <a href="#" ng-repeat="ingredient in ProductModel.Ingredients | orderBy:['-Active', 'Name']" class="list-group-item">
-                            <span class="label label-primary" ng-show="{{ingredient.Active}}">Active</span> {{ingredient.Name}}
-                        </a>
-                    </div>-->
-
+                <div class="col-sm-2">
+                    <strong>
+                        <i class="fa fa-2x" ng-class="ProductModel.BadIngredients.length===0 ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i>
+                        Ingredients
+                    </strong>
+                </div>
+                <div class="col-sm-3">
                     <div class="list-group ingredient-list">
                         <a href="#" ng-repeat="ingredient in ProductModel.BadIngredients" class="list-group-item">
-                            {{ingredient}}                            
+                            {{ingredient}}
                         </a>
+                        <span ng-show="ProductModel.BadIngredients.length==0">No allergens were found</span>
                     </div>
                 </div>
             </div>

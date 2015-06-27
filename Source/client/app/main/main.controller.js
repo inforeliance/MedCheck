@@ -9,7 +9,7 @@
             // Display a warning toast, with no title
             toastr.warning('Prototype demonstration, not for actual medical use.', 'MedCheck Prototype', { timeOut: 5000 });
             
-            $scope.UPC = "0075609000935";
+            $scope.SearchValue = "";  //0075609000935, 0840986023781
             //$scope.MedicationName = "Advil";
             
             $scope.allergens = [{name: ""}];
@@ -17,8 +17,10 @@
             $scope.showAge = false;
             $scope.showPregnant = false;
             $scope.ingredientNamesChecked = {};
-            $scope.ageChoices = [{age: 1*12, label: "12 months and under"}, { age: 5*12, label: "13 months - 5 years" }, {age: 11*12, label: "5 years - 11 years"}, {age: 100*12, label: "12 years and over"}]
-            
+            $scope.ageChoices = [{minAge: 0, maxAge:1, label: "12 months and under"}, { minAge: 1, maxAge:5, label: "13 months - 5 years" }, {minAge: 5, maxAge:12, label: "5 years - 12 years"}, {minAge: 13, maxAge: 100, label: "Over 12"}]
+            $scope.selectedAge = {};
+            $scope.nursingOrPregnant = false;
+
             function ResetFields() {
                 $scope.ShowBrandNotFoundErrorMessage = false;
                 $scope.ShowNotFoundErrorMessage = false;
@@ -44,7 +46,7 @@
                                 $scope.allergens[j].invalidIngredient = data[i].not_found;                                
                                 break;
                             }
-                        }
+                        }                                               
                     }
                     $('[data-toggle="tooltip"]').tooltip();
                 }
@@ -80,7 +82,7 @@
                            
             }
                        
-            $scope.FindBrand = function () {
+            $scope.findBrand = function () {
                 openFDA.findByBrandName($scope.BrandName).then(
                     function (products) {
                         $scope.BrandProductModels = products;
@@ -95,15 +97,34 @@
                     });
             };
             
+            $scope.performSearch = function (isValid) {
+                if (isValid) {
+                    if ($scope.SearchValue.match(/^\d+$/)) {
+                        $scope.scanBarCode();
+                    }
+                    else {
+                        $scope.findBrand();
+                    }
+                }
+            };
+            
             $scope.scanBarCode = function () {
                 
                 verifyIngredients();
                 
-                openFDA.findByUPC($scope.UPC).then(
+                openFDA.findByUPC($scope.SearchValue).then(
                     function (product) {
                         var allergenNames = _.map($scope.allergens, function (x) { return x.name });
-                        var ingredientNames = _.map(product.Ingredients, function (x) { return x.Name });                        
+                        var ingredientNames = _.map(product.Ingredients, function (x) { return x.Name });
                         product.BadIngredients = _.intersection(ingredientNames, allergenNames);
+                        
+                        if (!$scope.selectedAge.selected) {
+                            product.ShowAgeWarning = false;
+                        }
+                        else {
+                            product.ShowAgeWarning = product.MinimumAge >= $scope.selectedAge.selected.maxAge || (product.MinimumAge <= $scope.selectedAge.selected.maxAge && product.MinimumAge >= $scope.selectedAge.selected.minAge);
+                        }
+
                         $scope.ProductModel = product;
                     },
                     function (err) {
