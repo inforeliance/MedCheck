@@ -1,22 +1,87 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-
 <div class="container maincontainer">
-  <div class="row">
-    <div class="col-sm-12">
-      <h1>Feedback</h1>
-    </div>
-    <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="fnStub(form)" novalidate>
-
-        <div class="form-group">
-          <label>Page Features</label>
-		  
-		  <p class="help-block"> 
-			+ Feedback Form (Post to email, Future Feature)
-			+ Contact Info
-			+ Instructions on submitting issues to Git </p>
-         
-      </form>
-    </div>
-  </div>
-</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<h1>App Feedback</h1>
+			<br>
+		</div>
+		<div class="col-sm-12">
+			<div class="form-group">
+				<a id="appfeedback"><label>Feedback</label></a>
+				<div class="boxed">The MedCheck project uses
+					<code>GitHub</code>issues to report and track issues, feature enhancements, and new features. Be sure to be signed-up at GitHub
+					and logged-in before proceeding.
+					<br>
+					<br>We encourage your feedback and suggestions to improve this application. Feature suggestions and discussions are welcome.
+					You may also propose changes by submitting a pull request. You don't need to install any software to suggest a change.
+					<br>
+					<br>
+					<input type="Button" class="btn btn-default" Value="Report an Issue" onclick="window.open('https://github.com/inforeliance/MedCheck/issues/new','_blank','resizable=yes')"
+					</div>
+				</div>
+				<div class="form-group">
+					<a id="appfeedback"><label>Contributing Code</label></a>
+					<div class="boxed">If you know the area you want to contribute to MedCheck, this is great, but if you are looking to make an initial contribution
+						just ping our one of our developers on GitHub to tell us about your desire to work on a particular problem. For more complicated
+						tasks, the best approach is also to bring that to the attention of the MedCheck developers, so they can give you some guidance
+						on how best to tackle a particular problem, discuss implementation ideas and the semantics or scope of the proposed change.
+						<h4>Cloning the code base</h4>To work on the MedCheck code base, you should be proficient enough in git and you should ideally
+						have an account on Github to be able to create pull requests with your changes. If you have git installed on your machine,
+						you should be able to clone the MedCheck repository with the following command:
+						<br>
+						<br>
+						<code>git clone git://github.com/inforeliance/medcheck-core.git</code>
+						</br>
+						</br>Make sure you configure Git appropriately with the same email that you registered with on Github:
+						<br></br>
+						<code>git config --global user.email "YOUR EMAIL"</code>
+						</br>
+						</br>You can verify these are configured appropriately by running:
+						<br>
+						<br>
+						<code>git config --global user.email "YOUR EMAIL"</code>						
+						<br>
+						<br>
+						<code>git config --list</code>
+						</br>
+						</br>
+						<h4>Working on the code base</h4>
+						<br>To run the project ensure you have the following npm repositories updated:<br>
+						<ul>
+							<li>NodeJs</li>
+							<li>Bower</li>
+							<li>MongoDB</li>
+						</ul>
+						MedCheck uses <a href="http://gruntjs.com/">Grunt</a> for JavaScript task runner management, navigate to the
+						<code>/Source</code> directory to build and run the project with the following commands:					
+						<br>
+						<br>Pull in the necessary repositories:						
+						<br><br>						
+						<code>$npm update</code>						
+						<br>
+						<code>$bower update</code>
+						<br>
+						<br>Run MedCheck:
+						<br><br>
+						<code>$grunt serve</code>
+						<br>
+						<br>Test MedCheck:						
+						<br><br>
+						<code>$grunt test</code>
+						<br>
+						<br>Build MedCheck:						
+						<br><br>
+						<code>$grunt serve:build</code>	<br><br>					
+						<h4>Creating a pull request</h4>Once you are satisfied with your changes:
+						<br></br>
+						<ul>
+							<li>commit your changes in your local branch</li>
+							<li>push your changes to your remote branch on Github</li>
+							<li>send us a
+								<a href="https://help.github.com/articles/creating-a-pull-request">pull requests</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
