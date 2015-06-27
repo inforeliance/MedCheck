@@ -6,6 +6,7 @@ angular.module('medCheckApp')
     $scope.help = {};
     $scope.options = {};
     $scope.selectedOption = {};
+   
     
     $scope.options = [ 
         { val: "Can't Access My Account" },
@@ -41,13 +42,19 @@ angular.module('medCheckApp')
   $scope.fireTicket = function (form) {
      $scope.submitted = true;
      if(form.$valid) {
-       
+        $scope.submitted = false;
        //console.log($scope.selectedOption.val);
        
+       $scope.help.issue = "";
+       $scope.help.issue = "";
+       $scope.help.email = "";
+       $scope.help.upload = null;
        
         toastr.warning('Simulated Ticket Submission for Prototype', 'PROTOTYPE: Ticket Submitted');      
      }
   };
+  
+
   
 
 
