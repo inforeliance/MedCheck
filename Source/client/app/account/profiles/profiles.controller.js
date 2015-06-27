@@ -188,27 +188,12 @@ angular.module('medCheckApp')
     if (form.$valid) {
 
      User.addProfile(_user, function (res) {
-        console.log(res);
-        //console.log(xmessage);
+ 
         if (typeof res === 'object') {
-          toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');
-          
-          console.log('-------------');
-          console.log($scope.user.profiles);
-          console.log('-------------');
-          
-         //$http.get('/api/users/me').success(function (user) {
+          toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');   
     
             $scope.user = res;
             $scope.user.profiles = res.profiles;  
-            
-            console.log('new-------------');
-            console.log($scope.user.profiles);
-            console.log('new-------------');
-            
-            console.log('$http.get Just Fired');
-            
-          //});    
          
         } else {
           // invalid response            
