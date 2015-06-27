@@ -193,7 +193,12 @@ angular.module('medCheckApp')
           toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');   
     
             $scope.user = res;
-            $scope.user.profiles = res.profiles;  
+            $scope.user.profiles = res.profiles;
+            if(!$scope.$$phase) {
+              console.log('dropped in $apply');
+              $rootScope.$apply();
+            }  
+            
          
         } else {
           // invalid response            
