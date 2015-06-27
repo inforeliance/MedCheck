@@ -196,6 +196,14 @@ footer {
     margin-top: 8px;
 }
 
+.left5 {
+    margin-left: 5px;
+}
+
+.left10 {
+    margin-left: 10px;
+}
+
 .top5 {
     margin-top: 5px;
 }
@@ -226,6 +234,10 @@ footer {
 
 .search-button {
     font-size: 25px;
+}
+
+.icon-bigger {
+    font-size: 1.5em;
 }
 
 .icon-2x {
@@ -425,3 +437,34 @@ a, a:hover {
   height: 62px; /* Height of new image */
   padding-left: 10px; /* Equal to width of new image */
 }
+
+.allergen-group {
+    display:table;
+    width:100%;
+    .unknownIngredient{
+        display:table-cell;
+        padding-left:5px;
+        .glyphicons {
+            padding-right:0;
+            margin-right:0;
+        }
+    }
+    
+}
+.allergen-group-delete {    
+    display:table-cell;
+    color:@alert-danger-bg !important;
+    cursor:pointer;
+    :hover{
+        color: @alert-danger-text;
+    }
+    :active{
+        color:@alert-danger-bg !important;
+    }
+        
+}
+.allergen-group .form-control {
+    display:table-cell;
+    width:100%;
+}
+
