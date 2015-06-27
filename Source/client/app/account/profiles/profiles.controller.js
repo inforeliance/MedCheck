@@ -86,7 +86,10 @@ angular.module('medCheckApp')
         angular.forEach($scope.user.profiles, function(u, i) {         
         if (objProfile._id === $scope.user.profiles[i]._id) {
           console.log('See me?');
-           $state.reload();           
+           //$state.reload();   
+           
+            $scope.user = res;
+            $scope.user.profiles = res.profiles;         
           
           toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');
         }
@@ -192,14 +195,18 @@ angular.module('medCheckApp')
         if (typeof res === 'object') {
           toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');
           
-          $http.get('/api/users/me').success(function (user) {
+         // console.log('-------------');
+         // console.log(res);
+          // console.log('-------------');
+          
+         //$http.get('/api/users/me').success(function (user) {
     
-            $scope.user = user;
-            $scope.user.profiles = user.profiles;  
+            $scope.user = res;
+            $scope.user.profiles = res.profiles;  
             
             console.log('$http.get Just Fired');
             
-          });    
+          //});    
          
         } else {
           // invalid response            

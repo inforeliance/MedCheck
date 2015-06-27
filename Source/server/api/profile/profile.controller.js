@@ -44,8 +44,16 @@ exports.dropAllergen = function (req, res, next) {
       console.log(err);
       return res.status(500).send('Error Deleting Allergen');
     }
-    console.log(model);
-    return res.status(200).send('Allergen Deleted!');
+    //console.log(model);
+    //return res.status(200).send('Allergen Deleted!');
+    User.findOne({
+            _id: id
+          }, '-salt -hashedPassword', function(err, user) { // don't ever give out the password or salt
+            if (err) return next(err);
+            if (!user) return res.json(401);
+             console.log(user);
+            res.json(user);
+          });    
   });  
 };
 
@@ -84,8 +92,16 @@ exports.addAllergen = function(req, res, next)  {
       console.log(err);
       return res.status(500).send('Error Adding Allergen');
     }
-    console.log(model);
-    return res.status(200).send('Allergen Added!');
+    //console.log(model);
+    //return res.status(200).send('Allergen Added!');
+    User.findOne({
+            _id: id
+          }, '-salt -hashedPassword', function(err, user) { // don't ever give out the password or salt
+            if (err) return next(err);
+            if (!user) return res.json(401);
+             console.log(user);
+            res.json(user);
+          }); 
   });
 };
 
