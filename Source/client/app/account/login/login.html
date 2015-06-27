@@ -3,9 +3,11 @@
     <div class="row">
         <div class="col-sm-12">
             <h1>Login</h1>
-            <p>Due to oAuth app configrations with
+            <p>
+                Due to oAuth app configrations with
                 <code>Facebook</code>, you may only connect under Facebook as a assigned tester.
-                <code>Google</code> and <code>Twitter</code>login work without app permission.</p>
+                <code>Google</code> and <code>Twitter</code>login work without app permission.
+            </p>
         </div>
         <div class="col-sm-12">
             <form class="form" name="form" ng-submit="login(form)" novalidate>
@@ -24,21 +26,19 @@
                 </div>
                 <div>
                     <button class="btn btn-inverse btn-lg btn-login" type="submit">Login</button>
-                    <a class="btn btn-default btn-lg btn-register" href="/signup">
-            Register
-          </a>
+                    <a class="btn btn-default btn-lg btn-register" href="/signup">Register</a>
                 </div>
                 <hr>
-                <div>
+                <div id="socialLogin">
                     <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
-            <i class="fa fa-facebook"></i> Connect with Facebook
-          </a>
+                        <i class="fa fa-facebook"></i> Connect with Facebook
+                    </a>
                     <a class="btn btn-google-plus" href="" ng-click="loginOauth('google')">
-            <i class="fa fa-google-plus"></i> Connect with Google+
-          </a>
+                        <i class="fa fa-google-plus"></i> Connect with Google+
+                    </a>
                     <a class="btn btn-twitter" href="" ng-click="loginOauth('twitter')">
-            <i class="fa fa-twitter"></i> Connect with Twitter
-          </a>
+                        <i class="fa fa-twitter"></i> Connect with Twitter
+                    </a>
                 </div>
             </form>
         </div>
