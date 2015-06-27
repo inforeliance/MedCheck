@@ -19,6 +19,7 @@ var validationError = function(res, err) {
  * restriction: 'admin'
  */
 exports.index = function(req, res) {
+  console.log('index Getting Hit');
   User.find({}, '-salt -hashedPassword', function (err, users) {
     if(err) return res.send(500, err);
     res.json(200, users);
@@ -29,6 +30,7 @@ exports.index = function(req, res) {
  * Creates a new user
  */
 exports.create = function (req, res, next) {
+  console.log('create Getting Hit');
   var newUser = new User(req.body);
   newUser.provider = 'local';
   newUser.role = 'user';
@@ -43,6 +45,7 @@ exports.create = function (req, res, next) {
  * Get a single user
  */
 exports.show = function (req, res, next) {
+  console.log('User Show Getting Hit');
   var userId = req.params.id;
 
   User.findById(userId, function (err, user) {
@@ -57,6 +60,7 @@ exports.show = function (req, res, next) {
  * restriction: 'admin'
  */
 exports.destroy = function(req, res) {
+  console.log('destroy Getting Hit');
   User.findByIdAndRemove(req.params.id, function(err, user) {
     if(err) return res.send(500, err);
     return res.send(204);
@@ -67,6 +71,7 @@ exports.destroy = function(req, res) {
  * Change a users password
  */
 exports.changePassword = function(req, res, next) {
+  console.log('changePassword Getting Hit');
   var userId = req.user._id;
   var oldPass = String(req.body.oldPassword);
   var newPass = String(req.body.newPassword);
@@ -85,30 +90,13 @@ exports.changePassword = function(req, res, next) {
 };
 
 /**
- * Update User
- */
-exports.update = function(req, res, next) {
-  
-  console.log('updateUser Called');  
-  var user = req.user;
-	//user = _.extend(user, req.body);  
-
-	user.save(function(err) {
-		if (err) {
-			return res.status(400).send('Error updating User');		
-		} else {
-			res.json(user);
-		}
-	});
-};
-  
-/**
  * Add New Profile
  */   
 exports.addProfile = function(req, res, next) {
+
   
  console.log('addProfile Called');   
- var _user = req.user;  ;
+ var _user = req.user;
    
  User.findByIdAndUpdate(_user._id,    
      { $push: {
@@ -133,9 +121,61 @@ exports.addProfile = function(req, res, next) {
 };
 
 /**
+ * Drop Profile
+ */
+ exports.dropProfile = function(req, res, next) {
+   
+   console.log('Drop Profile Called');
+   
+    var _user = req.user;
+    
+    console.log(_user.id);
+    console.log(req.body._id);
+    
+     User.findByIdAndUpdate(_user._id,    
+     { $pull: {
+          profiles: {        
+            _id: req.body._id            
+          }
+        }
+     },
+     {  safe: true, upsert: true},
+       function(err, model) {
+         if(err){
+        	console.log(err);
+        	return res.status(403).send('Error Deleting Profile');
+         }
+          return res.status(200).send('Profile Deleted!');       
+      }); 
+    
+    
+   
+ };  
+
+/**
+ * Update User
+ */
+exports.update = function(req, res, next) {
+  
+  console.log('exports.update Getting Hit');  
+  var user = req.user;
+	//user = _.extend(user, req.body);  
+
+	user.save(function(err) {
+		if (err) {
+			return res.status(400).send('Error updating User');		
+		} else {
+			res.json(user);
+		}
+	});
+};
+
+/**
  * Get my info
  */
 exports.me = function(req, res, next) {
+     console.log('exports.me Getting Hit');
+
   var userId = req.user._id;
   User.findOne({
     _id: userId
@@ -150,5 +190,7 @@ exports.me = function(req, res, next) {
  * Authentication callback
  */
 exports.authCallback = function(req, res, next) {
+     console.log('authCallback Getting Hit');
+
   res.redirect('/');
 };
