@@ -93,7 +93,6 @@ exports.changePassword = function(req, res, next) {
  * Add New Profile
  */   
 exports.addProfile = function(req, res, next) {
-
   
  console.log('addProfile Called');   
  var _user = req.user;
@@ -115,20 +114,13 @@ exports.addProfile = function(req, res, next) {
          if(err){
         	console.log(err);
         	return res.status(403).send('Error Adding Profile');
-         }
-          //return res.status(200).send('Profile Saved!');  
-          //console.log(user);
-          //res.json(user);
-          
-           console.log(model); 
-           console.log('------------------'); 
-          
+         } 
            User.findOne({
             _id: _user._id
           }, '-salt -hashedPassword', function(err, user) { // don't ever give out the password or salt
             if (err) return next(err);
             if (!user) return res.json(401);
-             console.log(user);
+             //console.log(user);
             res.json(user);
           });    
       }); 
@@ -159,7 +151,15 @@ exports.addProfile = function(req, res, next) {
         	console.log(err);
         	return res.status(403).send('Error Deleting Profile');
          }
-          return res.status(200).send('Profile Deleted!');       
+          //return res.status(200).send('Profile Deleted!');       
+           User.findOne({
+            _id: _user._id
+          }, '-salt -hashedPassword', function(err, user) { // don't ever give out the password or salt
+            if (err) return next(err);
+            if (!user) return res.json(401);
+             //console.log(user);
+            res.json(user);
+          });   
       }); 
     
     
