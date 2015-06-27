@@ -16,18 +16,16 @@ angular.module('medCheckApp')
   $scope.user = {};
   $scope.user.profiles = {};
   
-   // Use the User $resource to fetch all users
-    $scope.users = User.query();
-
+  // Use the User $resource to fetch all users
+  //$scope.users = User.query();
 
   $http.get('/api/users/me').success(function (user) {
     
     $scope.user = user;
-    $scope.user.profiles = user.profiles;  
+    $scope.user.profiles = user.profiles; 
     
-    console.log('$http.get Just Fired');
-    
-  });   
+  });  
+
 
   $scope.addAllergen = function (objProfile) {
     
@@ -54,8 +52,8 @@ angular.module('medCheckApp')
         if (objProfile._id === $scope.user.profiles[i]._id) {
           console.log('See me?');          
           
-          console.log($scope.frmProfile.allergen);
-          $state.reload();           
+          $scope.user = res;
+          $scope.user.profiles = res.profiles;             
           
           toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');
         }
@@ -195,14 +193,18 @@ angular.module('medCheckApp')
         if (typeof res === 'object') {
           toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');
           
-         // console.log('-------------');
-         // console.log(res);
-          // console.log('-------------');
+          console.log('-------------');
+          console.log($scope.user.profiles);
+          console.log('-------------');
           
          //$http.get('/api/users/me').success(function (user) {
     
             $scope.user = res;
             $scope.user.profiles = res.profiles;  
+            
+            console.log('new-------------');
+            console.log($scope.user.profiles);
+            console.log('new-------------');
             
             console.log('$http.get Just Fired');
             
