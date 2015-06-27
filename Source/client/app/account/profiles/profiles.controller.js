@@ -194,12 +194,7 @@ angular.module('medCheckApp')
     
             $scope.user = res;
             $scope.user.profiles = res.profiles;
-            if(!$scope.$$phase) {
-              console.log('dropped in $apply');
-              $rootScope.$apply();
-            }  
-            
-         
+                     
         } else {
           // invalid response            
           toastr.error('Something is amiss, unable to save profile.', 'Ah, Snap!');
