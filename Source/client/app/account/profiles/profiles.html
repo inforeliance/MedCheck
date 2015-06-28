@@ -4,167 +4,176 @@
         <div class="view">
             <div class="container">
                 <div ng-controller="ProfilesCtrl">
-                        <div class="row">
-                            <form class="form" name="form" ng-submit="addProfile(form)" novalidate>
-                                <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                            'has-error': form.name.$invalid && submitted }">
-                                    <!--Profile Input Column -->
-                                    <div class="col-md-5">
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <header>
-                                                    <h3>&nbsp;&nbsp;
-                                                        <span class="glyphicon glyphicon-edit"></span>Add Profile</h3>
-                                                </header>
+                    <div class="row">
+                        <form class="form" name="form" ng-submit="addProfile(form)" novalidate>
+                           
+                                <!--Profile Input Column -->
+                                <div class="col-md-5">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <header>
+                                                <h3>&nbsp;&nbsp;
+                                                    <span class="glyphicon glyphicon-edit"></span>Add Profile</h3>
+                                            </header>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <br>
+                                        <div class="col-md-2">Name:</div>
+                                        <div class="col-md-8">
+                                            <!-- Name -->
+                                             <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+                                                                'has-error': form.name.$invalid && submitted }">
+                                            <input type="text" name="name" class="form-control" ng-model="frmProfile.name" required/>
+                                            <p class="help-block" ng-show="form.name.$error.required && submitted">A name is required</p>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <br>
-                                            <div class="col-md-2">Name:</div>
-                                            <div class="col-md-8">
-                                                <!-- Name -->
-                                                <input type="text" name="name" class="form-control" ng-model="frmProfile.name" required/>
-                                                <p class="help-block" ng-show="form.name.$error.required && submitted">A name is required</p>
-                                                <span>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-2">Gender:</div>
-                                            <div class="col-md-8">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">Gender:</div>
+                                        <div class="col-md-8">
+                                            <!-- Gender -->
+                                            <div class="form-group" ng-class="{ 'has-success': form.gender.$valid && submitted,
+                                                                                'has-error': form.gender.$invalid && submitted }">
                                                 <div class="radio">
                                                     <label class="radio">
-                                                        <input type="radio" name="gender" value="Male" data-ng-checked="frmProfile.gender == 'Male'" data-ng-model="frmProfile.gender"
+                                                        <input type="radio" name="gender" value="Male" data-ng-checked="frmProfile.gender == 'Male'" data-ng-model="frmProfile.gender" required
                                                         />Male</label>
                                                 </div>
                                                 <div class="radio">
                                                     <label class="radio">
-                                                        <input type="radio" name="gender" value="Female" data-ng-checked="frmProfile.gender == 'Female'" data-ng-model="frmProfile.gender"
+                                                        <input type="radio" name="gender" value="Female" data-ng-checked="frmProfile.gender == 'Female'" data-ng-model="frmProfile.gender" required
                                                         />Female
                                                         <br />
                                                     </label>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-md-2">Age:</div>
-                                            <div class="col-md-8">
-                                                <div class="radio">
-                                                    <label class="radio">
-                                                        <input type="radio" name="age" value="M12MonthAndUnder" data-ng-checked="frmProfile.age == 'M12MonthAndUnder'" data-ng-model="frmProfile.age"
-                                                        />12 months and under</label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label class="radio">
-                                                        <input type="radio" name="age" value="13MonthTo5Years" data-ng-checked="frmProfile.age == '13MonthTo5Years'" data-ng-model="frmProfile.age"
-                                                        />13 months-5 years
-                                                        <br />
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label class="radio">
-                                                        <input type="radio" name="age" value="5to11Years" data-ng-checked="frmProfile.age == '5to11Years'" data-ng-model="frmProfile.age"
-                                                        />5 years- 11 years
-                                                        <br />
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label class="radio">
-                                                        <input type="radio" name="age" value="12YearsAndOver" data-ng-checked="frmProfile.age == '12YearsAndOver'" data-ng-model="frmProfile.age"
-                                                        />12 years and over
-                                                        <br />
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-md-4">Nursing/Pregnant:</div>
-                                            <div class="col-md-5">
-                                                <input type="checkbox" name="pregnant" ng-model="frmProfile.pregnant" ng-true-value="1" ng-false-value="0">
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <button class="btn btn-inverse btn-lg" type="submit">Save Profile</button>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <button class="btn btn-inverse btn-lg" type="submit">Clear</button>
+                                                <p class="help-block" ng-show="form.gender.$error.required && submitted">Gender is required.</p>
                                             </div>
                                         </div>
                                     </div>
-                            </form>
-                            <!--Profile Tab Control -->
-                            <div class="col-md-7">
-                                <div class="row">
-                                    <div class="col-md-10">&nbsp;&nbsp;
-                                        <p>Add additional family member or patient profiles for MedCheck to monitor your searches.</p>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-2">Age:</div>
+                                        <div class="col-md-8">
+                                            <!-- Gender -->
+                                            <div class="form-group" ng-class="{ 'has-success': form.age.$valid && submitted,
+                                                                                'has-error': form.age.$invalid && submitted }">
+                                            <div class="radio">
+                                                <label class="radio">
+                                                    <input type="radio" name="age" value="M12MonthAndUnder" data-ng-checked="frmProfile.age == 'M12MonthAndUnder'" data-ng-model="frmProfile.age" required
+                                                    />12 months and under</label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio">
+                                                    <input type="radio" name="age" value="13MonthTo5Years" data-ng-checked="frmProfile.age == '13MonthTo5Years'" data-ng-model="frmProfile.age" required
+                                                    />13 months-5 years
+                                                    <br />
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio">
+                                                    <input type="radio" name="age" value="5to11Years" data-ng-checked="frmProfile.age == '5to11Years'" data-ng-model="frmProfile.age" required
+                                                    />5 years- 11 years
+                                                    <br />
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio">
+                                                    <input type="radio" name="age" value="12YearsAndOver" data-ng-checked="frmProfile.age == '12YearsAndOver'" data-ng-model="frmProfile.age" required
+                                                    />12 years and over
+                                                    <br />
+                                                </label>
+                                            </div>
+                                            <p class="help-block" ng-show="form.age.$error.required && submitted">Age is required.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-4">Nursing/Pregnant:</div>
+                                        <div class="col-md-5">
+                                            <input type="checkbox" name="pregnant" ng-model="frmProfile.pregnant" ng-true-value="1" ng-false-value="0">
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <button class="btn btn-inverse btn-lg" type="submit">Save Profile</button>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button class="btn btn-inverse btn-lg" type="submit">Clear</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <ul class="list-group">
-                                            <tabset>
-                                                <tab ng-repeat="profile in user.profiles | orderBy:'-createdAt'" heading="{{profile.profilename}}">
-                                                    <div ng-init="profile=profile" class="list-group-item">
-                                                        <div class="row">
-                                                            <div class="col-md-2">
-                                                                <div ng-attr-id={{profile.avatar}}></div>
-                                                            </div>
-                                                            <div class="col-md-7">
-                                                                <span>
-                                                                    <strong>{{profile.profilename}}
-                                                                        <strong>
-                                                                </span>
-                                                                <br>
-                                                                <span class="text-muted">{{profile.age}}</span>
-                                                                <br>
-                                                                <span class="text-muted">{{profile.gender}}</span>
-                                                            </div>
-                                                            <div class="col-md-3">Delete Profile&nbsp;
-                                                                <a ng-click="confirmDelete(profile.profilename, profile)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-                                                            </div>
+                        </form>
+                        <!--Profile Tab Control -->
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-10">&nbsp;&nbsp;
+                                    <p>Add additional family member or patient profiles for MedCheck to monitor your searches.</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <ul class="list-group">
+                                        <tabset>
+                                            <tab ng-repeat="profile in user.profiles | orderBy:'-createdAt'" heading="{{profile.profilename}}">
+                                                <div ng-init="profile=profile" class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <div ng-attr-id={{profile.avatar}}></div>
                                                         </div>
-                                                        <ul class="list-group">
+                                                        <div class="col-md-7">
+                                                            <span>
+                                                                <strong>{{profile.profilename}}
+                                                                    <strong>
+                                                            </span>
                                                             <br>
-                                                            <strong>Allergens:</strong>
+                                                            <span class="text-muted">{{profile.age}}</span>
                                                             <br>
-                                                            <li class="list-group-item" ng-repeat="allergen in profile.allergens">
-                                                                <!--form class="form" name="form" ng-submit="dropallergen(allergen, profile);" novalidate-->
-                                                                <strong>{{allergen.name}}</strong>
-                                                                <!--button class="btn btn-inverse btn-lg" type="submit">Delete</button-->
-                                                                <a ng-click="dropallergen(allergen, profile);" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-                                                                <!--a ng-click="confirmAllergenDelete(allergen.name, allergen, profile);" ng-controller="ProfilesCtrl" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a-->
-                                                                <!--/form-->
-                                                            </li>
-                                                        </ul>
-                                                        <div class="row">
-                                                            <!-- Name -->
-                                                            <!--form class="form2" name="form2" ng-submit="addAllergen(profile)" novalidate-->
-                                                            <div class="col-md-2">Allergen:</div>
-                                                            <div class="col-md-5">
-                                                                <input type="text" name="txtAlergy" class="form-control" ng-model="frmProfile.allergen" />
-                                                            </div>
-                                                            <div class="col-md-1">
-                                                                <button class="btn btn-inverse btn-lg" type="submit" ng-click="addAllergen(profile)">Add</button>
-                                                                <a ng-click="addAllergen(profile)" type="submit" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-                                                            </div>
-                                                            <!--/form-->
+                                                            <span class="text-muted">{{profile.gender}}</span>
+                                                        </div>
+                                                        <div class="col-md-3">Delete Profile&nbsp;
+                                                            <a ng-click="confirmDelete(profile.profilename, profile)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
                                                         </div>
                                                     </div>
-                                                </tab>
-                                            </tabset>
-                                        </ul>
-                                    </div>
+                                                    <ul class="list-group">
+                                                        <br>
+                                                        <strong>Allergens:</strong>
+                                                        <br>
+                                                        <li class="list-group-item" ng-repeat="allergen in profile.allergens">
+                                                            <!--form class="form" name="form" ng-submit="dropallergen(allergen, profile);" novalidate-->
+                                                            <strong>{{allergen.name}}</strong>
+                                                            <!--button class="btn btn-inverse btn-lg" type="submit">Delete</button-->
+                                                            <a ng-click="dropallergen(allergen, profile);" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+                                                            <!--a ng-click="confirmAllergenDelete(allergen.name, allergen, profile);" ng-controller="ProfilesCtrl" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a-->
+                                                            <!--/form-->
+                                                        </li>
+                                                    </ul>
+                                                    <div class="row">
+                                                        <!-- Name -->
+                                                        <!--form class="form2" name="form2" ng-submit="addAllergen(profile)" novalidate-->
+                                                        <div class="col-md-2">Allergen:</div>
+                                                        <div class="col-md-5">
+                                                            <input type="text" name="txtAlergy" class="form-control" ng-model="frmProfile.allergen" />
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <button class="btn btn-inverse btn-lg" type="submit" ng-click="addAllergen(profile)">Add</button>
+                                                            <a ng-click="addAllergen(profile)" type="submit" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+                                                        </div>
+                                                        <!--/form-->
+                                                    </div>
+                                                </div>
+                                            </tab>
+                                        </tabset>
+                                    </ul>
                                 </div>
                             </div>
-                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
