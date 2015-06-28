@@ -7,7 +7,6 @@ angular.module('medCheckApp')
 
   $scope.frmProfile = {};
   $scope.frmProfile.name = "";
-  $scope.frmProfile.name = "";
   $scope.frmProfile.age = "";
   $scope.frmProfile.gender = "";
   $scope.frmProfile.pregnant = "";
@@ -27,42 +26,50 @@ angular.module('medCheckApp')
   });
 
 
-  $scope.addAllergen = function (objProfile) {
+  $scope.addAllergen = function (form2, objProfile) {
 
-    console.log('Add Allergen Called');
-    console.log($scope.frmProfile.allergen);
+    console.log('addAllergen called');
+    $scope.dirty = true;
+
+    if ($scope.frmProfile.allergen != '' && form2.$valid) {
+      console.log('addAllergen passed validation');
+      $scope.dirty = false;
     
-    //Create new instance of Allergin
-    var _allergen = new Allergen({
-      _name: String
-    }); 
+      //Create new instance of Allergin
+      var _allergen = new Allergen({
+        _name: String
+      }); 
       
-    //Populate allergen and load to Array
-    _allergen.name = $scope.frmProfile.allergen;
+      //Populate allergen and load to Array
+      _allergen.name = $scope.frmProfile.allergen;
     
-    //Set local profile's allergen to add
-    objProfile.allergens = _allergen;    
+      //Set local profile's allergen to add
+      objProfile.allergens = _allergen;    
    
-    //Local scope user instance
-    var _user = $scope.user;
-    Profile.addAllergen(objProfile, function (res) {
+      //Local scope user instance
+      var _user = $scope.user;
+      Profile.addAllergen(objProfile, function (res) {
 
-      if (typeof res === 'object') {
-        angular.forEach($scope.user.profiles, function (u, i) {
-          if (objProfile._id === $scope.user.profiles[i]._id) {
-            console.log('See me?');
+        if (typeof res === 'object') {
+          angular.forEach($scope.user.profiles, function (u, i) {
+            if (objProfile._id === $scope.user.profiles[i]._id) {
+              console.log('See me?');
 
-            $scope.user = res;
-            $scope.user.profiles = res.profiles;
+              $scope.user = res;
+              $scope.user.profiles = res.profiles;
+              
+              //Clear Form Scope
+              $scope.frmProfile.allergen = '';
 
-            toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');
-          }
-        });
-      } else {
-        // invalid response            
-        toastr.error('Something is amiss, unable to save profile.', 'Ah, Snap!');
-      }
-    });
+              toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');
+            }
+          });
+        } else {
+          // invalid response            
+          toastr.error('Something is amiss, unable to save profile.', 'Ah, Snap!');
+        }
+      });
+    };
   };
 
   $scope.confirmAllergenDelete = Modal.confirm.delete(function (objAllergen, objProfile) {
@@ -136,11 +143,11 @@ angular.module('medCheckApp')
   $scope.addProfile = function (form) {
 
     console.log('Add Profile Called');
-    
+
     $scope.submitted = true;
-    
+
     if (form.$valid) {
-      
+
       $scope.submitted = false;
       //Local scope user instance
       var _user = $scope.user;      
@@ -156,7 +163,7 @@ angular.module('medCheckApp')
           name: String
         }]
      	});
-  
+
       var i;
       var arrAllergen = new Array();
       for (i = 0; i < 1; i++) {       
@@ -172,40 +179,42 @@ angular.module('medCheckApp')
       };   
       
       // populate profile with data   
-      _profile.profilename = $scope.frmProfile.name;
+      _profile.profilename = angular.uppercase($scope.frmProfile.name);
       _profile.age = $scope.frmProfile.age;
       _profile.gender = $scope.frmProfile.gender;
       _profile.pregnant = $scope.frmProfile.pregnant;
-  
+
       if ($scope.frmProfile.gender == 'Male')
       { _profile.avatar = 'div-with-hipster' + getRandomArbitrary(1, 5); } //Random number 1-5 for dynamic male avatar demo
       else
       { _profile.avatar = 'div-with-hipster' + getRandomArbitrary(6, 10); } //Random number 6-10 for dynamic female avatar demo
       
       _profile.allergens = arrAllergen;
-  
       _user.profiles = _profile;
-  
+
       console.log(_user.profiles);
       console.log(_profile);
-  
-  
-      
-  
-        User.addProfile(_user, function (res) {
-  
-          if (typeof res === 'object') {
-            toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');
-  
-            $scope.user = res;
-            $scope.user.profiles = res.profiles;
-  
-          } else {
-            // invalid response            
-            toastr.error('Something is amiss, unable to save profile.', 'Ah, Snap!');
-          }
-  
-        });
+
+      User.addProfile(_user, function (res) {
+
+        if (typeof res === 'object') {
+          toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');
+
+          $scope.user = res;
+          $scope.user.profiles = res.profiles;
+          
+          //Clear Form Scope
+          $scope.frmProfile.name = '';
+          $scope.frmProfile.age = '';
+          $scope.frmProfile.gender = '';
+          $scope.frmProfile.pregnant = '';
+
+        } else {
+          // invalid response            
+          toastr.error('Something is amiss, unable to save profile.', 'Ah, Snap!');
+        }
+
+      });
     }; 
             
     // Returns a random number between min (inclusive) and max (exclusive)
