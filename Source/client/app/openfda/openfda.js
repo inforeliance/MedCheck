@@ -2,9 +2,14 @@
     
     var ProductModel = function (apiobject) {
         console.log(apiobject);
-        this.BrandName = apiobject.openfda.brand_name[0];
+        this.BrandName = apiobject.openfda.brand_name ? apiobject.openfda.brand_name[0] : "(N/A)";
         this.Purpose = apiobject.purpose ? apiobject.purpose[0].replace("Purpose ", "") : "";
         this.Pregnancy = apiobject.pregnancy_or_breast_feeding ? apiobject.pregnancy_or_breast_feeding[0] : "";
+        
+        if (this.Pregnancy === "" && apiobject.pregnancy) {
+            this.Pregnancy = apiobject.pregnancy[0];
+        }
+
         this.SafeForPregnancy = this.Pregnancy === "";
         this.Ingredients = [];
         this.MinimumAge = 100;

@@ -35,12 +35,19 @@
 
         <div class="form-group">
             <label class="control-label">or scan a barcode</label>
-            <button class="btn btn-primary" ng-click="scanBarCode()">
-                <i class="fa fa-barcode icon-2x"></i>
+            <button type="button" class="btn btn-primary" ng-click="startCamera()" ng-show="!cameraVisible">
+                <i class="fa fa-barcode fa-2x"></i>
+            </button>
+            <button type="button" class=" btn-primary btn" ng-show="cameraVisible" ng-click="stopCamera()">
+                <i class="fa fa-stop fa-2x vertical-middle"></i> Stop Scanning
             </button>
         </div>
 
-        <div class="alert alert-danger" ng-show="ShowNotFoundErrorMessage || ShowBrandNotFoundErrorMessage">
+        <div class="row">
+            <div id="interactive" class="viewport" ng-show="cameraVisible"></div>
+        </div>
+
+        <div class="alert alert-danger top10" ng-show="ShowNotFoundErrorMessage || ShowBrandNotFoundErrorMessage">
             <span ng-show="ShowNotFoundErrorMessage">The UPC {{SearchValue}} was not found. Either this is not a product tracked by the FDA, or you mistyped something.</span>
             <span ng-show="ShowBrandNotFoundErrorMessage">The brand you entered {{SearchValue}} was not found. Either this is not a brand tracked by the FDA, or you mistyped something.</span>
         </div>
@@ -54,7 +61,7 @@
 
         <div class="row top10">
             <div class="col-md-4">
-                <button class="btn btn-success btn-block " ng-click="showAllergen = !showAllergen">Allergens</button>
+                <button type="button" class="btn btn-success btn-block " ng-click="showAllergen = !showAllergen">Allergens</button>
                 <div collapse="!showAllergen" class="form-inlinae">
                     <div class="well well-lg">
                         <ul class="list-group">
@@ -79,7 +86,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <button class="btn btn-success btn-block " ng-click="showAge = !showAge">Age Warnings </button>
+                <button type="button" class="btn btn-success btn-block " ng-click="showAge = !showAge">Age Warnings </button>
                 <div collapse="!showAge">
                     <div class="well well-lg">
                         <div ng-repeat="ageChoice in ageChoices">
@@ -95,7 +102,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <button class="btn btn-success btn-block " ng-click="showPregnant = !showPregnant">Nursing/Pregnant Warnings (TODO)</button>
+                <button type="button" class="btn btn-success btn-block " ng-click="showPregnant = !showPregnant">Nursing/Pregnant Warnings</button>
                 <div collapse="!showPregnant">
                     <div class="well well-lg">
                         <button type="button" class="icon-bigger btn btn-block" ng-model="nursingOrPregnant" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" ng-class="nursingOrPregnant ? 'btn-primary' : 'btn-default'">
@@ -128,7 +135,7 @@
             <div class="row">
                 <div class="col-sm-2">
                     <strong>
-                        <i class="fa fa-2x" ng-class="ProductModel.SafeForPregnancy ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i>
+                        <i class="fa fa-2x vertical-middle" ng-class="ProductModel.SafeForPregnancy ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i>
                         Pregnancy
                     </strong>
                 </div>
@@ -152,7 +159,7 @@
 
             <div class="row">
                 <div class="col-sm-2">
-                    <i class="fa fa-2x" ng-class="ProductModel.ShowAgeWarning ? 'fa-thumbs-down' : 'fa-thumbs-up'"></i>
+                    <i class="fa fa-2x vertical-middle" ng-class="ProductModel.ShowAgeWarning ? 'fa-thumbs-down' : 'fa-thumbs-up'"></i>
                     <strong>Age</strong>
                 </div>
                 <div class="col-sm-10">{{ProductModel.MinimumAgeInfo}}</div>
@@ -162,7 +169,7 @@
             <div class="row">
                 <div class="col-sm-2">
                     <strong>
-                        <i class="fa fa-2x" ng-class="ProductModel.BadIngredients.length===0 ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i>
+                        <i class="fa fa-2x vertical-middle" ng-class="ProductModel.BadIngredients.length===0 ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i>
                         Ingredients
                     </strong>
                 </div>

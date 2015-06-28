@@ -21,6 +21,8 @@ module.exports = function (grunt) {
     less: 'grunt-contrib-less'
   });
 
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
@@ -83,7 +85,7 @@ module.exports = function (grunt) {
         ],
         tasks: ['less','injector:css']
       },
-      // cssmin: { generated: { options: { processImport: false } } },
+      //cssmin: { generated: { options: { processImport: false } } },
       mochaTest: {
         files: ['server/**/*.spec.js'],
         tasks: ['env:test', 'mochaTest']
@@ -466,6 +468,9 @@ module.exports = function (grunt) {
       prod: {
         NODE_ENV: 'production'
       },
+      dev: {
+        NODE_ENV: 'development'
+      },
       all: localConfig
     },
 
@@ -572,7 +577,7 @@ module.exports = function (grunt) {
     if (target === 'server') {
       return grunt.task.run([
         'env:all',
-        'env:test',
+        'env:dev',
         'mochaTest'
       ]);
     }
@@ -592,7 +597,7 @@ module.exports = function (grunt) {
       return grunt.task.run([
         'clean:server',
         'env:all',
-        'env:test',
+        'env:dev',
         'concurrent:test',
         'injector',
         'wiredep',

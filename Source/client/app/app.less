@@ -498,3 +498,39 @@ a.anchor{
 .form-group.has-error .fa-remove.form-control-feedback{
     display:block;
 }
+
+.vertical-middle {
+     vertical-align: middle;
+}
+
+/*barcode scanning*/
+
+#interactive.viewport {
+  width: 640px;
+}
+
+#interactive.viewport canvas, video {
+  float: left;
+  width: 640px;
+}
+
+#interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
+  margin-left: -640px;
+}
+
+@media (max-width: 603px) {
+  #interactive.viewport {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+
+  #interactive.viewport canvas, video {
+    width: 100%;
+    height: auto;
+  }
+
+  #interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
+    margin-left: -300px;
+  }
+}
