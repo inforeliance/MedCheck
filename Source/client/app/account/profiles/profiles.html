@@ -95,7 +95,7 @@
                                 <div class="row">
                                     <div class="col-md-2"></div>
                                     <div class="col-md-8">
-                                        <button class="btn btn-success btn-block" type="submit">SAVE PROFILE</button>
+                                        <button class="btn btn-success btn-block" type="submit">Save Profile</button><br>
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@
                                                             <br>
                                                             <span class="text-muted">{{profile.gender}}</span>
                                                             <br>
-                                                            <span class="text-muted">{{profile.pregnant}}</span>
+                                                            <span class="text-muted">{{profile.pregnant ? 'Currently Pregnant/Nursing' : ''}}</span>
                                                         </div>
                                                         <div class="col-md-3">Delete Profile&nbsp;
                                                             <a ng-click="confirmDelete(profile.profilename, profile)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
@@ -160,7 +160,7 @@
                                                                     <div class="col-md-2"></div>
                                                                     <div class="col-md-5">
                                                                         <br>
-                                                                        <button class="btn btn-success btn-block " type="submit">ADD ALLERGEN</button>
+                                                                        <button class="btn btn-success btn-block " type="submit">Add Allergen</button>
                                                                     </div>
                                                                 </div>
                                                             </form>

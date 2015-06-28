@@ -26,4 +26,10 @@ angular.module('medCheckApp')
     $scope.loginOauth = function(provider) {
       $window.location.href = '/auth/' + provider;
     };
+    
+    $scope.forgotPwd = function() {
+      
+        toastr.warning('Simulated link to forgot password page.', 'PROTOTYPE: Forgot Password');
+ 
+    };
   });

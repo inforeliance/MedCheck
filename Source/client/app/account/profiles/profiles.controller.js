@@ -25,15 +25,9 @@ angular.module('medCheckApp')
 
   });
 
-
   $scope.addAllergen = function (form2, objProfile) {
-
-    console.log('addAllergen called');
-    $scope.dirty = true;
-
+   
     if ($scope.frmProfile.allergen != '' && form2.$valid) {
-      console.log('addAllergen passed validation');
-      $scope.dirty = false;
     
       //Create new instance of Allergin
       var _allergen = new Allergen({
@@ -52,8 +46,7 @@ angular.module('medCheckApp')
 
         if (typeof res === 'object') {
           angular.forEach($scope.user.profiles, function (u, i) {
-            if (objProfile._id === $scope.user.profiles[i]._id) {
-              console.log('See me?');
+            if (objProfile._id === $scope.user.profiles[i]._id) {     
 
               $scope.user = res;
               $scope.user.profiles = res.profiles;
@@ -61,7 +54,7 @@ angular.module('medCheckApp')
               //Clear Form Scope
               $scope.frmProfile.allergen = '';
 
-              toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');
+              toastr.success('You may now use MedCheck to search for possible allergens. ', 'Allergen Saved!');
             }
           });
         } else {
@@ -80,8 +73,6 @@ angular.module('medCheckApp')
     
     //Set local profile's allergen to drop
     objProfile.allergens = objAllergen;
-
-    console.log($scope.user.profiles.allergens);   
     
     //Local scope user instance
     var _user = $scope.user;
@@ -90,12 +81,11 @@ angular.module('medCheckApp')
       if (typeof res === 'object') {
         angular.forEach($scope.user.profiles, function (u, i) {
           if (objProfile._id === $scope.user.profiles[i]._id) {
-            console.log('See me?');          
            
             $scope.user = res;
             $scope.user.profiles = res.profiles;
 
-            toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');
+            toastr.success('You may now use MedCheck to search for possible allergens. ', 'Allergen Removed!');
           }
         });
       } else {
@@ -118,8 +108,7 @@ angular.module('medCheckApp')
       if (typeof res === 'object') {
         angular.forEach($scope.user.profiles, function (u, i) {
           if (obj._id === $scope.user.profiles[i]._id) {
-            console.log('See me?');
-
+ 
             $scope.user.profiles.splice(i, 1);
 
             toastr.success('You may add additional profiles if needed.', 'Profile Deleted!');
@@ -140,8 +129,6 @@ angular.module('medCheckApp')
    * and allergen updates into the User document.   
   */
   $scope.addProfile = function (form) {
-
-    console.log('Add Profile Called');
 
     $scope.submitted = true;
 
@@ -190,9 +177,6 @@ angular.module('medCheckApp')
       
       _profile.allergens = arrAllergen;
       _user.profiles = _profile;
-
-      console.log(_user.profiles);
-      console.log(_profile);
 
       User.addProfile(_user, function (res) {
 
