@@ -41,7 +41,7 @@ angular.module('medCheckApp')
       }); 
       
       //Populate allergen and load to Array
-      _allergen.name = $scope.frmProfile.allergen;
+      _allergen.name = angular.uppercase($scope.frmProfile.allergen);
     
       //Set local profile's allergen to add
       objProfile.allergens = _allergen;    
@@ -90,8 +90,7 @@ angular.module('medCheckApp')
       if (typeof res === 'object') {
         angular.forEach($scope.user.profiles, function (u, i) {
           if (objProfile._id === $scope.user.profiles[i]._id) {
-            console.log('See me?');
-            //$state.reload();   
+            console.log('See me?');          
            
             $scope.user = res;
             $scope.user.profiles = res.profiles;
