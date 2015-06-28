@@ -4,8 +4,7 @@
     angular.module("medCheckApp");
     var app = angular.module("medCheckApp");
     
-    app.controller("MainCtrl", ["$scope", "openFDA", "$q", "$timeout", function ($scope, openFDA, $q, $timeout) {
-            
+    app.controller("MainCtrl", ["$scope", "openFDA", "$q", "$timeout","quagga", function ($scope, openFDA, $q, $timeout, quagga) {
             // Display a warning toast, with no title
             try {
                 toastr.warning('Prototype demonstration, not for actual medical use.', 'MedCheck Prototype', {
@@ -24,6 +23,35 @@
             $scope.ageChoices = [{ minAge: 0, maxAge: 1, label: "12 months and under" }, { minAge: 1, maxAge: 5, label: "13 months - 5 years" }, { minAge: 5, maxAge: 12, label: "5 years - 12 years" }, { minAge: 13, maxAge: 100, label: "Over 12" }]
             $scope.selectedAge = {};
             $scope.nursingOrPregnant = false;
+            $scope.cameraVisible = false;
+            
+            $scope.startCamera = function () {
+                quagga.start();
+                $scope.cameraVisible = true;
+                quagga.onDetected(function (result) {
+                    
+                    var code = result.codeResult.code;
+                    try {
+                        $scope.stopCamera();
+                    } catch (e) { } //seems to be a bug in quaggaJS when you start and stop
+
+                    $scope.SearchValue = code;
+                    
+                    toastr.success('Found barcode: ' + code, 'Scanned UPC code successfully', {
+                        timeOut: 3000
+                    });
+
+                    $timeout(function () {
+                        //make sure apply gets called 
+                    }, 0);
+
+                });
+            }
+            
+            $scope.stopCamera = function () {
+                $scope.cameraVisible = false;
+                quagga.stop();
+            }
             
             function ResetFields() {
                 $scope.ShowBrandNotFoundErrorMessage = false;
@@ -89,7 +117,7 @@
             
             $scope.findBrand = function () {
                 
-                openFDA.findByBrandName($scope.BrandName).then(
+                openFDA.findByBrandName($scope.SearchValue).then(
                     function (products) {
                         $scope.BrandProductModels = products;
                     },
@@ -145,4 +173,6 @@
             };
         }
     ]);
+
+
 })();
