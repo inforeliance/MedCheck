@@ -15,3 +15,4 @@ On Windows you should run docker commands inside `boot2docker` or a similar syst
 - `webdriver-manager update`
 - `webdriver-manager start`
 - From the e2e test directory that you're using: `protractor conf.js`
+
