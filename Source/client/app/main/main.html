@@ -70,7 +70,7 @@
                                     <a class="allergen-group-delete" ng-click="removeAllergen(allergen)">
                                         <span class="fa fa-minus-circle"></span>
                                     </a>
-                                    <input type="text" ng-keypress="$event.keyCode == 13 ? addAllergen() : allergen.invalidIngredient=false" ng-model="allergen.name" class="form-control" id="allergyFocusElement" placeholder="Enter allergy"></input>
+                                    <input type="text" ng-keypress="$event.keyCode == 13 ? addAllergen() : allergen.invalidIngredient=false" ng-model="allergen.name" class="form-control" id="allergyFocusElement" placeholder="Enter allergy"/>
                                     <div class="text-danger unknownIngredient" ng-show="allergen.invalidIngredient" data-toggle="tooltip" title="This ingredient was not found in the FDA database. Please check spelling.">
                                         <i class="fa fa-exclamation-circle"></i>
                                     </div>
@@ -90,12 +90,12 @@
                 <div collapse="!showAge">
                     <div class="well well-lg">
                         <div ng-repeat="ageChoice in ageChoices">
-                            <label class="icon-bigger btn btn-block" ng-model="selectedAge.selected" btn-radio="ageChoice" ng-class="selectedAge.selected == ageChoice ? 'btn-primary' : 'btn-default'">
+                            <div class="icon-bigger btn btn-block" ng-model="selectedAge.selected" btn-radio="ageChoice" ng-class="selectedAge.selected == ageChoice ? 'btn-primary' : 'btn-default'">
                                 <p class="text-left padding left10">
                                     <span class="fa " ng-class=" selectedAge.selected == ageChoice ? 'fa-check-square-o' : 'fa-square-o'"></span>
                                     {{ageChoice.label}}
                                 </p>
-                            </label>
+                            </div>
                             <p></p>
                         </div>
                     </div>
