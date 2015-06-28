@@ -21,31 +21,56 @@ describe('Controller: MainCtrl', function() {
         });
     }));
 
-    it('should attach a list of things to the scope', function() {
-        $httpBackend.flush();
-        expect(scope.awesomeThings.length).toBe(4);
-    });
-
     it('should not show an error message when a field is changed', function() {
         scope.UPCChanged();
-        expect(scope.ShowBrandNotFoundErrorMessage).toBe(false);
-        expect(scope.ShowNotFoundErroMessage).toBe(false);
+        expect(scope.ShowBrandNotFoundErrorMessage).not.toBe(true);
+        expect(scope.ShowNotFoundErroMessage).not.toBe(true);
         scope.BrandChanged();
-        expect(scope.ShowBrandNotFoundErrorMessage).toBe(false);
-        expect(scope.ShowNotFoundErroMessage).toBe(false);
+        expect(scope.ShowBrandNotFoundErrorMessage).not.toBe(true);
+        expect(scope.ShowNotFoundErroMessage).not.toBe(true);
     });
 
     it('should find products', function() {
         scope.UPCChanged();
         scope.UPC = "0075609000935";
-        scope.scanBarCode();
-        expect(scope.ShowNotFoundErrorMessage).toBe(false);
+        scope.scanBarCode().then(function() {
+            expect(scope.ShowNotFoundErrorMessage).not.toBe(true);
+        });
+    });
+    
+    it('should set the active product when a valid upc is passed', function () {
+        scope.UPCChanged();
+        scope.UPC = "0075609000935";
+        expect(scope.ProductModel).toBe(null);
+        scope.scanBarCode().then(function () {
+            expect(scope.ProductModel).not.toBe(null);
+        });
     });
 
     it('should not find products', function() {
-        scope.UPCChanged();
+        scope.UPCChanged()
         scope.UPC = "nonexistent product";
-        scope.scanBarCode();
-        expect(scope.ShowNotFoundErrorMessage).toBe(true);
+        scope.scanBarCode().then(function() {
+            expect(scope.ShowNotFoundErrorMessage).toBe(true);
+        });
+    });
+
+    it('should start with 1 allergen', function () {
+        expect(scope.allergens.length).toBe(1);
+    });
+
+    it('should reset the default allergen when removing the last one', function () {
+        scope.allergens[0].name = "Hello";
+        scope.removeAllergen(scope.allergens[0]);
+        expect(scope.allergens.length).toBe(1);
+        expect(scope.allergens[0].name).toBe("");
+    });
+
+    it('should remove an allergen if there are more than one', function () {
+        
+        scope.addAllergen();
+        expect(scope.allergens.length).toBe(2);
+        scope.removeAllergen(scope.allergens[0]);
+        expect(scope.allergens.length).toBe(1);
     });
 });
