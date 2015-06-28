@@ -160,8 +160,8 @@ angular.module('medCheckApp')
         }); 
         
         //Populate allergen and load to Array
-        _allergen.name = 'Penecillin';
-        arrAllergen[i] = _allergen;
+        //_allergen.name = 'Penicillin';
+        //arrAllergen[i] = _allergen;
       };   
       
       // populate profile with data   
