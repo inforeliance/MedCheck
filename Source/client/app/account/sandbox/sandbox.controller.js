@@ -20,8 +20,8 @@ angular.module('medCheckApp')
 
 	$scope.addItem = function (allergen) {
 		console.log(allergen.name);
-		//$scope.profiles.push(profile);
-		//$scope.profiles = {};
+		$scope.profiles.push(profile);
+		$scope.profiles = {};
 	};
 	
 
