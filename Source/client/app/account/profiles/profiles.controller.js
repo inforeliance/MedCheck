@@ -5,21 +5,17 @@ angular.module('medCheckApp')
 
   $scope.frmProfile = {};
   $scope.frmProfile.name = "";
-  $scope.frmProfile.age = "";
+  $scope.frmProfile.age = getAge();
   $scope.frmProfile.gender = "";
-  $scope.frmProfile.pregnant = "";
+  $scope.frmProfile.pregnant = getIsPregnantNursing();
   $scope.frmProfile.allergen = "";
+  
+
 
   $rootScope.user = User.get(); 
   //$rootScope.user = Auth.getCurrentUser(); 
   var user =  $rootScope.user;
-  $rootScope.profiles = user.profiles; 
-  
-  console.log(localStorageService.get('newAllergens'));
-  console.log(localStorageService.get('newAge'));
-  console.log(localStorageService.get('newPreg')); 
-
-             
+  $rootScope.profiles = user.profiles;              
 
   $scope.addAllergen = function (form2, objProfile) {
    
@@ -33,8 +29,8 @@ angular.module('medCheckApp')
       //Populate allergen and load to Array
       _allergen.name = angular.uppercase($scope.frmProfile.allergen);
     
-      //Set local profile's allergen to add
-      objProfile.allergens = _allergen;    
+      //Set local profile's allergen to add   
+      objProfile.allergens =  _allergen;    
    
       //Local scope user instance
       var _user = $rootScope.user;
@@ -144,21 +140,7 @@ angular.module('medCheckApp')
         _allergens: [{
           name: String
         }]
-     	});
-
-      var i;
-      var arrAllergen = new Array();
-      for (i = 0; i < 1; i++) {       
-             
-        //Create new instance of Allergin
-        var _allergen = new Allergen({
-          _name: String
-        }); 
-        
-        //Populate allergen and load to Array
-        //_allergen.name = 'Penicillin';
-        //arrAllergen[i] = _allergen;
-      };   
+     	});    
       
       // populate profile with data   
       _profile.profilename = angular.uppercase($scope.frmProfile.name);
@@ -171,7 +153,7 @@ angular.module('medCheckApp')
       else
       { _profile.avatar = 'div-with-hipster' + getRandomArbitrary(6, 10); } //Random number 6-10 for dynamic female avatar demo
       
-      _profile.allergens = arrAllergen;
+      _profile.allergens = getAllergens(); //arrAllergen;
       _user.profiles = _profile;
 
       User.addProfile(_user, function (res) {
@@ -201,4 +183,59 @@ angular.module('medCheckApp')
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
   };
+  
+  // When registered or unregistered users perform a search from main, they are given the option
+  // to save their criteria to a new profile, these functions read in the main.controller search
+  // criteria.  LocalStorage is used in the event the user performs registration with oAuth (Google, Twitter..)
+  // to maintian state when leaving the domain to authenticate with those providers.
+  function getAge() {
+     
+      if(localStorageService.get('newAge')){
+        console.log(localStorageService.get('newAge')); 
+        return localStorageService.get('newAge');
+      }
+      return "";
+  }
+  
+  function getAllergens() {      
+      
+      if(localStorageService.get('newAllergens')){
+        
+        var arrAllergen = new Array(); //return array
+        var newAllergen = localStorageService.get('newAllergens'); //stored array values
+        var allergen;
+        var i = 0;
+        
+        for (allergen in newAllergen){
+          
+          //Create new instance of Allergin
+          var _allergen = new Allergen({
+            _name: String
+          }); 
+          
+          //Populate allergen and load to Array
+          _allergen.name = newAllergen[allergen];
+          arrAllergen[i] = _allergen; 
+          i++;
+         
+            //console.log(newAllergen[allergen]);
+          }        
+     
+        return arrAllergen;
+      }
+      return "";
+  }
+          
+  function getIsPregnantNursing() { 
+  
+      if(localStorageService.get('newPreg')){
+        console.log(localStorageService.get('newPreg')); 
+        return localStorageService.get('newPreg');
+      }
+      return 0;
+  }
+  
+  
 });
+
+
