@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('medCheckApp')
-  .controller('ProfilesCtrl', function ($scope, User, Profile, Allergen, $rootScope, Modal) {  
+  .controller('ProfilesCtrl', function ($scope, User, Profile, Allergen, $rootScope, Modal, Auth) {  
 
   $scope.frmProfile = {};
   $scope.frmProfile.name = "";
@@ -10,9 +10,11 @@ angular.module('medCheckApp')
   $scope.frmProfile.pregnant = "";
   $scope.frmProfile.allergen = "";
 
-  $scope.user = User.get(); 
-  var user =  $scope.user;
-  $scope.user.profiles = user.profiles;
+  $rootScope.user = User.get(); 
+  $rootScope.user = Auth.getCurrentUser(); 
+  console.log('rescoped');
+  var user =  $rootScope.user;
+  $rootScope.profiles = user.profiles;
 
   $scope.addAllergen = function (form2, objProfile) {
    
@@ -30,15 +32,15 @@ angular.module('medCheckApp')
       objProfile.allergens = _allergen;    
    
       //Local scope user instance
-      var _user = $scope.user;
+      var _user = $rootScope.user;
       Profile.addAllergen(objProfile, function (res) {
 
         if (typeof res === 'object') {
-          angular.forEach($scope.user.profiles, function (u, i) {
-            if (objProfile._id === $scope.user.profiles[i]._id) {     
+          angular.forEach($rootScope.user.profiles, function (u, i) {
+            if (objProfile._id === $rootScope.user.profiles[i]._id) {     
 
-              $scope.user = res;
-              $scope.user.profiles = res.profiles;
+              $rootScope.user = res;
+              $rootScope.user.profiles = res.profiles;
               
               //Clear Form Scope
               $scope.frmProfile.allergen = '';
@@ -64,15 +66,15 @@ angular.module('medCheckApp')
     objProfile.allergens = objAllergen;
     
     //Local scope user instance
-    var _user = $scope.user;
+    var _user = $rootScope.user;
     Profile.dropAllergen(objProfile, function (res) {
 
       if (typeof res === 'object') {
-        angular.forEach($scope.user.profiles, function (u, i) {
-          if (objProfile._id === $scope.user.profiles[i]._id) {
+        angular.forEach($rootScope.user.profiles, function (u, i) {
+          if (objProfile._id === $rootScope.user.profiles[i]._id) {
            
-            $scope.user = res;
-            $scope.user.profiles = res.profiles;
+            $rootScope.user = res;
+            $rootScope.user.profiles = res.profiles;
 
             toastr.success('You may now use MedCheck to search for possible allergens. ', 'Allergen Removed!');
           }
@@ -91,14 +93,14 @@ angular.module('medCheckApp')
 
   $scope.deleteprofile = function (obj) { 
     //Local scope user instance
-    var _user = $scope.user;
+    var _user = $rootScope.user;
     User.dropProfile(obj, function (res) {
 
       if (typeof res === 'object') {
-        angular.forEach($scope.user.profiles, function (u, i) {
-          if (obj._id === $scope.user.profiles[i]._id) {
+        angular.forEach($rootScope.user.profiles, function (u, i) {
+          if (obj._id === $rootScope.user.profiles[i]._id) {
  
-            $scope.user.profiles.splice(i, 1);
+            $rootScope.user.profiles.splice(i, 1);
 
             toastr.success('You may add additional profiles if needed.', 'Profile Deleted!');
           }
@@ -125,7 +127,7 @@ angular.module('medCheckApp')
 
       $scope.submitted = false;
       //Local scope user instance
-      var _user = $scope.user;      
+      var _user = $rootScope.user;      
   
       //Local empty profile instance
       var _profile = new Profile({
@@ -172,9 +174,9 @@ angular.module('medCheckApp')
         if (typeof res === 'object') {
           toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');
 
-          $scope.user = res;
-          $scope.user.profiles = res.profiles;        
-          
+          $rootScope.user = res;
+          $rootScope.user.profiles = res.profiles;   
+                      
           //Clear Form Scope
           $scope.frmProfile.name = '';
           $scope.frmProfile.age = '';

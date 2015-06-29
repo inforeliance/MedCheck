@@ -5,6 +5,7 @@ angular.module('medCheckApp')
     var currentUser = {};
     if($cookieStore.get('token')) {
       currentUser = User.get();
+      console.log($cookieStore.get('token'));
     }
 
     return {
