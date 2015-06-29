@@ -30,19 +30,21 @@ describe('Controller: MainCtrl', function() {
         expect(scope.ShowNotFoundErroMessage).not.toBe(true);
     });
 
-    it('should find products', function() {
+    it('should find products', function(done) {
         scope.UPCChanged();
         scope.UPC = "0075609000935";
         scope.scanBarCode().then(function() {
             expect(scope.ShowNotFoundErrorMessage).not.toBe(true);
+            done();
         });
     });
 
-    it('should not find products', function() {
+    it('should not find products', function(done) {
         scope.UPCChanged()
         scope.UPC = "nonexistent product";
         scope.scanBarCode().then(function() {
             expect(scope.ShowNotFoundErrorMessage).toBe(true);
+            done();
         });
     });
 });
