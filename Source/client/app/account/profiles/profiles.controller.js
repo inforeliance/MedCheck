@@ -15,6 +15,12 @@ angular.module('medCheckApp')
   console.log('rescoped');
   var user =  $rootScope.user;
   $rootScope.profiles = user.profiles;
+  
+//Temp code to perform test with oAuth - TO BE REMOVED
+  console.log($rootScope.AmIPrego);
+  $rootScope.AmIPrego = "Good, thought so";  
+ 
+               
 
   $scope.addAllergen = function (form2, objProfile) {
    

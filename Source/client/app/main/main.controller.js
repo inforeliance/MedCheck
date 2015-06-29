@@ -4,7 +4,7 @@
     angular.module("medCheckApp");
     var app = angular.module("medCheckApp");
     
-    app.controller("MainCtrl", ["$scope", "$http", "openFDA", "$q", "$timeout", "quagga", "$location", "$anchorScroll", "Auth", "User", function ($scope, $http, openFDA, $q, $timeout, quagga, $location, $anchorScroll, Auth, User) {
+    app.controller("MainCtrl", ["$rootScope", "$scope", "$http", "openFDA", "$q", "$timeout", "quagga", "$location", "$anchorScroll", "Auth", "User", function ($rootScope, $scope, $http, openFDA, $q, $timeout, quagga, $location, $anchorScroll, Auth, User) {
             // Display a warning toast, with no title
             try {
                 toastr.warning('Prototype demonstration, not for actual medical use.', 'MedCheck Prototype', {
@@ -163,24 +163,27 @@
                         if ($scope.user.profiles.hasOwnProperty(profile)) {
                           
                             //Profiles
-                            console.log($scope.user.profiles[profile].profilename);
-                            console.log($scope.user.profiles[profile].age);
-                            console.log($scope.user.profiles[profile].avatar);
-                            console.log($scope.user.profiles[profile].gender);
-                            console.log($scope.user.profiles[profile].pregnant);
-                            console.log($scope.user.profiles[profile]._id);
-                            console.log($scope.user.profiles[profile].createdAt);
+                            //console.log($scope.user.profiles[profile].profilename);
+                           // console.log($scope.user.profiles[profile].age);
+                           // console.log($scope.user.profiles[profile].avatar);
+                           // console.log($scope.user.profiles[profile].gender);
+                           // console.log($scope.user.profiles[profile].pregnant);
+                           // console.log($scope.user.profiles[profile]._id);
+                           // console.log($scope.user.profiles[profile].createdAt);
                             
                             //Allergens
                             for (var allergen in $scope.user.profiles[profile].allergens) {
                                if ($scope.user.profiles[profile].allergens.hasOwnProperty(allergen)) {                                   
-                                   console.log($scope.user.profiles[profile].allergens[allergen].name);
+                                 //  console.log($scope.user.profiles[profile].allergens[allergen].name);
                                }
                             };                             
                         }
                     };
                     
-                   
+                   //Temp code to perform test with oAuth - TO BE REMOVED
+                   console.log($rootScope.AmIPrego);
+                   $rootScope.AmIPrego = "No you are not Pregnant";
+                   console.log($rootScope.AmIPrego);
                    
                    
                 } else {
