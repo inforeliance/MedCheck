@@ -151,12 +151,7 @@
             };
             
             $scope.selectProduct = function (product) {
-                $scope.BrandProductModels = null;
-                
-                //Temp code to perform test with oAuth - TO BE REMOVED
-                   console.log($rootScope.AmIPrego);
-                   $rootScope.AmIPrego = "No you are not Pregnant";
-                   console.log($rootScope.AmIPrego);
+                $scope.BrandProductModels = null;             
                 
                 if($scope.isLoggedIn()){
                     
