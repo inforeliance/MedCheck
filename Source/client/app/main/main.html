@@ -177,7 +177,7 @@
 
                     <div class="col-sm-2">
                         <strong>
-                            <i class="fa fa-2x vertical-middle" ng-class="ProductModel.safeForPregnancy ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i>
+                            <i class="fa fa-2x vertical-middle" ng-class="ProductModel.product.safeForPregnancy ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i>
                             Pregnancy
                         </strong>
                     </div>
@@ -189,9 +189,11 @@
                             {{ProductModel.product.pregnancy}}
                         </span>
                     </div>
-                    <hr />
+                    
                 </div>
-
+                
+                <hr ng-show="ProductModel.showPregnancyWarnings"/>
+                 
                 <div class="row">
                     <div class="col-sm-2">
                         <i class=" fa fa-2x vertical-middle" ng-class="ProductModel.ShowAgeWarning ? 'fa-thumbs-down' : 'fa-thumbs-up'"></i>

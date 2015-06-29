@@ -174,7 +174,7 @@
                 var _preg = 0;
                 
                 localStorageService.set('newAllergens', _allergens);
-                localStorageService.set('newAge', _age);
+                localStorageService.set('newAge', null);
                 localStorageService.set('newPreg', _preg);            
    
                 
