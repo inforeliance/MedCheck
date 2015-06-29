@@ -1,4 +1,5 @@
-﻿(function () {
+﻿'use strict';
+(function () {
     
     var quaggaService = function () {
         var state = {
@@ -51,21 +52,19 @@
             }
         });
         
-        
-        
         function stop(){
             Quagga.stop();
-        };
+        }
         
         function onDetected(callback) {
             Quagga.onDetected(callback);
-        };
+        }
 
-        return  {
+        return {
             start : start,
             stop: stop,
             onDetected: onDetected
-        }
+        };
     };
     
     var quag = quaggaService();

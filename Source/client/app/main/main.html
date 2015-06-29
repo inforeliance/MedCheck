@@ -128,23 +128,23 @@
             <div class="row">
                 <div class="col-sm-2"><strong>Brand Name</strong></div>
                 <div class="col-sm-10">
-                    {{ProductModel.BrandName}}
+                    {{ProductModel.brandName}}
                 </div>
             </div>
             <hr />
             <div class="row">
                 <div class="col-sm-2">
                     <strong>
-                        <i class="fa fa-2x vertical-middle" ng-class="ProductModel.SafeForPregnancy ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i>
+                        <i class="fa fa-2x vertical-middle" ng-class="ProductModel.safeForPregnancy ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i>
                         Pregnancy
                     </strong>
                 </div>
                 <div class="col-sm-10">
-                    <span ng-show="ProductModel.SafeForPregnancy">
+                    <span ng-show="ProductModel.safeForPregnancy">
                         Safe
                     </span>
-                    <span ng-show="!ProductModel.SafeForPregnancy">
-                        {{ProductModel.Pregnancy}}
+                    <span ng-show="!ProductModel.safeForPregnancy">
+                        {{ProductModel.pregnancy}}
                     </span>
                 </div>
             </div>
@@ -162,7 +162,7 @@
                     <i class="fa fa-2x vertical-middle" ng-class="ProductModel.ShowAgeWarning ? 'fa-thumbs-down' : 'fa-thumbs-up'"></i>
                     <strong>Age</strong>
                 </div>
-                <div class="col-sm-10">{{ProductModel.MinimumAgeInfo}}</div>
+                <div class="col-sm-10">{{ProductModel.minimumAgeInfo}}</div>
             </div>
 
             <hr />
