@@ -4,7 +4,7 @@
     angular.module("medCheckApp");
     var app = angular.module("medCheckApp");
     
-    app.controller("MainCtrl", ["$scope", "openFDA", "$q", "$timeout", "quagga", "$location", "$anchorScroll", function ($scope, openFDA, $q, $timeout, quagga, $location, $anchorScroll) {
+    app.controller("MainCtrl", ["$scope", "$http", "openFDA", "$q", "$timeout", "quagga", "$location", "$anchorScroll", "Auth", "User", function ($scope, $http, openFDA, $q, $timeout, quagga, $location, $anchorScroll, Auth, User) {
             // Display a warning toast, with no title
             try {
                 toastr.warning('Prototype demonstration, not for actual medical use.', 'MedCheck Prototype', {
@@ -24,6 +24,11 @@
             $scope.selectedAge = {};
             $scope.nursingOrPregnant = false;
             $scope.cameraVisible = false;
+            
+            //Profile Scopes          
+            $scope.isLoggedIn = Auth.isLoggedIn;
+            $scope.user = Auth.getCurrentUser();
+            $scope.user.profiles =  $scope.user.profiles;  
             
             $scope.startCamera = function () {
                 quagga.start();
@@ -147,9 +152,51 @@
             
             $scope.selectProduct = function (product) {
                 $scope.BrandProductModels = null;
-
+                
+                if($scope.isLoggedIn()){
+                    
+                    console.log($scope.user);
+                    console.log($scope.user.profiles);
+                    
+                    //Prints User Profiles
+                    for (var profile in $scope.user.profiles) {
+                        if ($scope.user.profiles.hasOwnProperty(profile)) {
+                          
+                            //Profiles
+                            console.log($scope.user.profiles[profile].profilename);
+                            console.log($scope.user.profiles[profile].age);
+                            console.log($scope.user.profiles[profile].avatar);
+                            console.log($scope.user.profiles[profile].gender);
+                            console.log($scope.user.profiles[profile].pregnant);
+                            console.log($scope.user.profiles[profile]._id);
+                            console.log($scope.user.profiles[profile].createdAt);
+                            
+                            //Allergens
+                            for (var allergen in $scope.user.profiles[profile].allergens) {
+                               if ($scope.user.profiles[profile].allergens.hasOwnProperty(allergen)) {                                   
+                                   console.log($scope.user.profiles[profile].allergens[allergen].name);
+                               }
+                            };                             
+                        }
+                    };
+                    
+                   
+                   
+                   
+                } else {
+                    
+                    console.log('User Not Logged In');
+                }         
+                
                 var allergenNames = _.map($scope.allergens, function (x) { return x.name.toLowerCase().trim(); });
                 var ingredientNames = _.map(product.Ingredients, function (x) { return x.Name.toLowerCase().trim(); });
+                
+                
+               
+                
+                
+               
+
                 
                 product.BadIngredients = _.filter(ingredientNames, function (ingredient) {
                     return _.find(allergenNames, function (allergen) {
