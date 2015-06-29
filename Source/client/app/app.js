@@ -5,7 +5,8 @@ angular.module('medCheckApp', [
   'ngResource',
   'ngSanitize',
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'LocalStorageModule'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -14,7 +15,16 @@ angular.module('medCheckApp', [
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
     
-  })
+  })  
+ 
+  
+  .config(['localStorageServiceProvider', function (localStorageServiceProvider) {
+    localStorageServiceProvider
+      .setPrefix('medCheckApp')
+      .setStorageType('sessionStorage')
+      .setNotify(true, true);
+  }])
+  
 
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {

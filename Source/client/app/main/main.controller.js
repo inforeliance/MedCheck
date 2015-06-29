@@ -4,7 +4,7 @@
     angular.module("medCheckApp");
     var app = angular.module("medCheckApp");
     
-    app.controller("MainCtrl", ["$rootScope", "$scope", "$http", "openFDA", "$q", "$timeout", "quagga", "$location", "$anchorScroll", "Auth", "User", function ($rootScope, $scope, $http, openFDA, $q, $timeout, quagga, $location, $anchorScroll, Auth, User) {
+    app.controller("MainCtrl", ["$rootScope", "$scope", "$http", "openFDA", "$q", "$timeout", "quagga", "$location", "$anchorScroll", "Auth", "User", "localStorageService", function ($rootScope, $scope, $http, openFDA, $q, $timeout, quagga, $location, $anchorScroll, Auth, User, localStorageService) {
             // Display a warning toast, with no title
             try {
                 toastr.warning('Prototype demonstration, not for actual medical use.', 'MedCheck Prototype', {
@@ -151,7 +151,22 @@
             };
             
             $scope.selectProduct = function (product) {
-                $scope.BrandProductModels = null;             
+                $scope.BrandProductModels = null; 
+                
+                //Loading local data storage with initial search for new profiles.
+                //------------------------------------------------------------------             
+                
+                var _allergens = ["nuts", "bolts", "sugar", "butter"];
+                var _age = 65;
+                var _preg = 0;
+                
+                localStorageService.set('newAllergens', _allergens);
+                localStorageService.set('newAge', _age);
+                localStorageService.set('newPreg', _preg);            
+   
+
+                
+                //-----------------------------------------------------------------
                 
                 if($scope.isLoggedIn()){
                     

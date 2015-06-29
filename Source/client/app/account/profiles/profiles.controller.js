@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('medCheckApp')
-  .controller('ProfilesCtrl', function ($scope, User, Profile, Allergen, $rootScope, Modal, Auth) {  
+  .controller('ProfilesCtrl', function ($scope, User, Profile, Allergen, $rootScope, Modal, Auth, localStorageService) {  
 
   $scope.frmProfile = {};
   $scope.frmProfile.name = "";
@@ -11,10 +11,15 @@ angular.module('medCheckApp')
   $scope.frmProfile.allergen = "";
 
   $rootScope.user = User.get(); 
-  $rootScope.user = Auth.getCurrentUser(); 
-  console.log('rescoped');
+  //$rootScope.user = Auth.getCurrentUser(); 
   var user =  $rootScope.user;
-  $rootScope.profiles = user.profiles;               
+  $rootScope.profiles = user.profiles; 
+  
+  console.log(localStorageService.get('newAllergens'));
+  console.log(localStorageService.get('newAge'));
+  console.log(localStorageService.get('newPreg')); 
+
+             
 
   $scope.addAllergen = function (form2, objProfile) {
    
