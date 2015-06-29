@@ -21,7 +21,7 @@ angular.module('medCheckApp', [
   .config(['localStorageServiceProvider', function (localStorageServiceProvider) {
     localStorageServiceProvider
       .setPrefix('medCheckApp')
-      .setStorageType('sessionStorage')
+      .setStorageType('localStorage')
       .setNotify(true, true);
   }])
   
