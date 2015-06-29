@@ -54,6 +54,7 @@ angular.module('medCheckApp', [
   })
 
   .run(function ($rootScope, $location, Auth) {
+    $rootScope.ageChoices = [{ minAge: 0, maxAge: 1, label: "12 months and under" }, { minAge: 1, maxAge: 5, label: "13 months - 5 years" }, { minAge: 5, maxAge: 12, label: "5 years - 12 years" }, { minAge: 13, maxAge: 100, label: "Over 12" }];
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
       Auth.isLoggedInAsync(function(loggedIn) {

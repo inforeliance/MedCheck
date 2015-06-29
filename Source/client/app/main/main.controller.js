@@ -4,7 +4,7 @@
     angular.module("medCheckApp");
     var app = angular.module("medCheckApp");
     
-    app.controller("MainCtrl", ["$rootScope", "$scope", "$http", "openFDA", "$q", "$timeout", "quagga", "$location", "$anchorScroll", "Auth", "User", "localStorageService", function ($rootScope, $scope, $http, openFDA, $q, $timeout, quagga, $location, $anchorScroll, Auth, User, localStorageService) {
+    app.controller("MainCtrl", ["$scope", "openFDA", "$q", "$timeout", "quagga", "$location", "$anchorScroll", "Auth", "User", "localStorageService", function ($scope, openFDA, $q, $timeout, quagga, $location, $anchorScroll, Auth, User, localStorageService) {
             // Display a warning toast, with no title
             try {
                 toastr.warning('Prototype demonstration, not for actual medical use.', 'MedCheck Prototype', {
@@ -20,21 +20,32 @@
             $scope.showAge = false;
             $scope.showPregnant = false;
             $scope.ingredientNamesChecked = {};
-            $scope.ageChoices = [{ minAge: 0, maxAge: 1, label: "12 months and under" }, { minAge: 1, maxAge: 5, label: "13 months - 5 years" }, { minAge: 5, maxAge: 12, label: "5 years - 12 years" }, { minAge: 13, maxAge: 100, label: "Over 12" }];
             $scope.selectedAge = {};
             $scope.nursingOrPregnant = false;
             $scope.cameraVisible = false;
+            $scope.profileProductModels = [];
             
-            //Profile Scopes          
-            $scope.isLoggedIn = Auth.isLoggedIn;
-            $scope.user = Auth.getCurrentUser();
-            $scope.user.profiles =  $scope.user.profiles;  
+            $scope.hasProfiles = false;
+            
+            Auth.isLoggedInAsync(function (loggedIn) {
+                if (loggedIn) {
+                    User.get(function (user) {
+                        $scope.user = user;
+                        if ($scope.user.profiles && $scope.user.profiles.length > 0) {
+                            $scope.profiles = $scope.user.profiles;
+                            $scope.hasProfiles = true;
+                        }
+                    });
+                }
+            });
+
+            //$scope.user.profiles =  $scope.user.profiles;  
             
             $scope.startCamera = function () {
                 quagga.start();
                 $scope.cameraVisible = true;
                 quagga.onDetected(function (result) {
-                    
+
                     var code = result.codeResult.code;
                     try {
                         $scope.stopCamera();
@@ -61,7 +72,7 @@
             function resetFields() {
                 $scope.ShowBrandNotFoundErrorMessage = false;
                 $scope.ShowNotFoundErrorMessage = false;
-                $scope.ProductModel = null;
+                $scope.profileProductModels.length = 0;
                 $scope.BrandProductModels = null;
             }
             
@@ -140,7 +151,7 @@
             $scope.performSearch = function (isValid) {
                 if (isValid) {
                     verifyIngredients();
-
+                    $scope.profileProductModels.length = 0;
                     if ($scope.SearchValue.match(/^\d+$/)) {
                         $scope.scanBarCode();
                     }
@@ -151,8 +162,10 @@
             };
             
             $scope.selectProduct = function (product) {
-                $scope.BrandProductModels = null; 
+                $scope.profileProductModels.length = 0; 
                 
+                
+
                 //Loading local data storage with initial search for new profiles.
                 //------------------------------------------------------------------             
                 
@@ -164,69 +177,42 @@
                 localStorageService.set('newAge', _age);
                 localStorageService.set('newPreg', _preg);            
    
-
                 
                 //-----------------------------------------------------------------
                 
-                if($scope.isLoggedIn()){
-                    
-                    console.log($scope.user);
-                    console.log($scope.user.profiles);
-                    
-                    //Prints User Profiles
-                    for (var profile in $scope.user.profiles) {
-                        if ($scope.user.profiles.hasOwnProperty(profile)) {
-                          
-                            //Profiles
-                            //console.log($scope.user.profiles[profile].profilename);
-                           // console.log($scope.user.profiles[profile].age);
-                           // console.log($scope.user.profiles[profile].avatar);
-                           // console.log($scope.user.profiles[profile].gender);
-                           // console.log($scope.user.profiles[profile].pregnant);
-                           // console.log($scope.user.profiles[profile]._id);
-                           // console.log($scope.user.profiles[profile].createdAt);
-                            
-                            //Allergens
-                            for (var allergen in $scope.user.profiles[profile].allergens) {
-                               if ($scope.user.profiles[profile].allergens.hasOwnProperty(allergen)) {                                   
-                                 //  console.log($scope.user.profiles[profile].allergens[allergen].name);
-                               }
-                            };                             
-                        }
-                    };
-                    
-                   
-                   
-                   
-                } else {
-                    
-                    console.log('User Not Logged In');
-                }         
-                
-                var allergenNames = _.map($scope.allergens, function (x) { return x.name.toLowerCase().trim(); });
-                var ingredientNames = _.map(product.Ingredients, function (x) { return x.Name.toLowerCase().trim(); });
-                
-                
-               
-                
-                
-               
+                function makeProductViewModelInfo(allergenNames, selectedAge, pregnant, profileName, profile){
+                    var productViewModel = { product: product, showPregnancyWarnings : pregnant, profileName: profileName, profile: profile || {} };
 
-                
-                product.BadIngredients = _.filter(ingredientNames, function (ingredient) {
-                    return _.find(allergenNames, function (allergen) {
-                        return ingredient.indexOf(allergen) > -1 && allergen !== "";
+                    var ingredientNames = _.map(product.Ingredients, function (x) { return x.Name.toLowerCase().trim(); });
+                    
+                    productViewModel.BadIngredients = _.filter(ingredientNames, function (ingredient) {
+                        return _.find(allergenNames, function (allergen) {
+                            return ingredient.indexOf(allergen) > -1 && allergen !== "";
+                        });
                     });
-                });
-                
-                if (!$scope.selectedAge.selected) {
-                    product.ShowAgeWarning = false;
+                    
+                    if (selectedAge === null) {
+                        productViewModel.ShowAgeWarning = false;
+                    }
+                    else {
+                        productViewModel.ShowAgeWarning = product.minimumAge >= selectedAge.maxAge || (product.minimumAge <= selectedAge.maxAge && product.minimumAge >= selectedAge.minAge);
+                    }
+
+                    return productViewModel;
+                }
+
+                if($scope.hasProfiles) {                   
+                    angular.forEach($scope.profiles, function (profile) {
+                        var allergenNamesForProfile = _.map(profile.allergens, function (x) { return x.name.toLowerCase().trim(); });
+                        var age = _.find($scope.ageChoices, 'label', profile.age);
+                        $scope.profileProductModels.push(makeProductViewModelInfo(allergenNamesForProfile, age || null, profile.pregnant==1, profile.profilename, profile));
+                    });                                                           
                 }
                 else {
-                    product.ShowAgeWarning = product.minimumAge >= $scope.selectedAge.selected.maxAge || (product.minimumAge <= $scope.selectedAge.selected.maxAge && product.minimumAge >= $scope.selectedAge.selected.minAge);
+                    var allergenNames = _.map($scope.allergens, function (x) { return x.name.toLowerCase().trim(); });
+                    $scope.profileProductModels.push(makeProductViewModelInfo(allergenNames, $scope.selectedAge.selected ? $scope.selectedAge.selected : null, $scope.nursingOrPregnant, "Info For You"));
                 }
-                
-                $scope.ProductModel = product;
+                                               
             };
 
             $scope.scanBarCode = function () {               

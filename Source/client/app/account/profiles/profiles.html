@@ -55,32 +55,14 @@
                                         <!-- Gender -->
                                         <div class="form-group" ng-class="{ 'has-success': form.age.$valid && submitted,
                                                                                 'has-error': form.age.$invalid && submitted }">
-                                            <div class="radio">
+
+                                            <div ng-repeat="ageChoice in ageChoices" class="radio">
                                                 <label class="radio">
-                                                    <input type="radio" name="age" value="12 Month And Under" data-ng-checked="frmProfile.age == '12 Month And Under'" data-ng-model="frmProfile.age"
-                                                           required />12 months and under</label>
-                                            </div>
-                                            <div class="radio">
-                                                <label class="radio">
-                                                    <input type="radio" name="age" value="13 Month To 5 Years" data-ng-checked="frmProfile.age == '13 Month To 5 Years'" data-ng-model="frmProfile.age"
-                                                           required />13 months-5 years
-                                                    <br />
+                                                    <input type="radio" name="age" ng-value="ageChoice.label" data-ng-model="frmProfile.age" required />{{ageChoice.label}}
                                                 </label>
+                                                
                                             </div>
-                                            <div class="radio">
-                                                <label class="radio">
-                                                    <input type="radio" name="age" value="5 to 11 Years" data-ng-checked="frmProfile.age == '5 to 11 Years'" data-ng-model="frmProfile.age"
-                                                           required />5 years- 11 years
-                                                    <br />
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label class="radio">
-                                                    <input type="radio" name="age" value="12 Years And Over" data-ng-checked="frmProfile.age == '12 Years And Over'" data-ng-model="frmProfile.age"
-                                                           required />12 years and over
-                                                    <br />
-                                                </label>
-                                            </div>
+                                           
                                             <p class="help-block" ng-show="form.age.$error.required && submitted">Age is required.</p>
                                         </div>
                                     </div>

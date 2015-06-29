@@ -53,72 +53,70 @@
         </div>
         <div class="clear"></div>
 
-        <div class="top10">
-            <label>
-                Check for the following (must choose at least one)
-            </label>
-        </div>
-
-        <div class="row top10">
-            <div class="col-md-4">
-                <button type="button" class="btn btn-success btn-block " ng-click="showAllergen = !showAllergen">Allergens</button>
-                <div collapse="!showAllergen" class="form-inlinae">
-                    <div class="well well-lg">
-                        <ul class="list-group">
-                            <li ng-repeat="allergen in allergens" class="list-group-item">
-                                <div class="allergen-group">
-                                    <a class="allergen-group-delete" ng-click="removeAllergen(allergen)">
-                                        <span class="fa fa-minus-circle"></span>
-                                    </a>
-                                    <input type="text" ng-keypress="$event.keyCode == 13 ? addAllergen() : allergen.invalidIngredient=false" ng-model="allergen.name" class="form-control" id="allergyFocusElement" placeholder="Enter allergy" />
-                                    <div class="text-danger unknownIngredient" ng-show="allergen.invalidIngredient" data-toggle="tooltip" title="This ingredient was not found in the FDA database. Please check spelling.">
-                                        <i class="fa fa-exclamation-circle"></i>
+        <div ng-show="!hasProfiles">
+            <div class="top10">
+                <label>
+                    Check for the following (must choose at least one)
+                </label>
+            </div>
+            <div class="row top10">
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-success btn-block " ng-click="showAllergen = !showAllergen">Allergens</button>
+                    <div collapse="!showAllergen" class="form-inlinae">
+                        <div class="well well-lg">
+                            <ul class="list-group">
+                                <li ng-repeat="allergen in allergens" class="list-group-item">
+                                    <div class="allergen-group">
+                                        <a class="allergen-group-delete" ng-click="removeAllergen(allergen)">
+                                            <span class="fa fa-minus-circle"></span>
+                                        </a>
+                                        <input type="text" ng-keypress="$event.keyCode == 13 ? addAllergen() : allergen.invalidIngredient=false" ng-model="allergen.name" class="form-control" id="allergyFocusElement" placeholder="Enter allergy" />
+                                        <div class="text-danger unknownIngredient" ng-show="allergen.invalidIngredient" data-toggle="tooltip" title="This ingredient was not found in the FDA database. Please check spelling.">
+                                            <i class="fa fa-exclamation-circle"></i>
+                                        </div>
                                     </div>
-                                </div>
-
-                            </li>
-                        </ul>
-
-                        <a href="javascript:{}" ng-click="addAllergen()">
-                            Add More
-                        </a>
+                                </li>
+                            </ul>
+                            <a href="javascript:{}" ng-click="addAllergen()">
+                                Add More
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="top30 hidden-md hidden-lg"></div>
-
-            <div class="col-md-4">
-                <button type="button" class="btn btn-success btn-block " ng-click="showAge = !showAge">Age Warnings </button>
-                <div collapse="!showAge">
-                    <div class="well well-lg">
-                        <div ng-repeat="ageChoice in ageChoices">
-                            <div class="icon-bigger btn btn-block" ng-model="selectedAge.selected" btn-radio="ageChoice" ng-class="selectedAge.selected == ageChoice ? 'btn-primary' : 'btn-default'">
-                                <p class="text-left padding left10">
-                                    <span class="fa " ng-class=" selectedAge.selected == ageChoice ? 'fa-check-square-o' : 'fa-square-o'"></span>
-                                    {{ageChoice.label}}
-                                </p>
+                <div class="top30 hidden-md hidden-lg"></div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-success btn-block " ng-click="showAge = !showAge">Age Warnings </button>
+                    <div collapse="!showAge">
+                        <div class="well well-lg">
+                            <div ng-repeat="ageChoice in ageChoices">
+                                <div class="icon-bigger btn btn-block" ng-model="selectedAge.selected" btn-radio="ageChoice" ng-class="selectedAge.selected == ageChoice ? 'btn-primary' : 'btn-default'">
+                                    <p class="text-left padding left10">
+                                        <span class="fa " ng-class=" selectedAge.selected == ageChoice ? 'fa-check-square-o' : 'fa-square-o'"></span>
+                                        {{ageChoice.label}}
+                                    </p>
+                                </div>
+                                <p></p>
                             </div>
-                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="top30 hidden-md hidden-lg"></div>
+
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-success btn-block " ng-click="showPregnant = !showPregnant">Nursing/Pregnant Warnings</button>
+                    <div collapse="!showPregnant">
+                        <div class="well well-lg">
+                            <button type="button" class="icon-bigger btn btn-block" ng-model="nursingOrPregnant" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" ng-class="nursingOrPregnant ? 'btn-primary' : 'btn-default'">
+                                <span class="fa" ng-class="nursingOrPregnant ? 'fa-check-square-o' : 'fa-square-o'"></span>
+                                Nursing / Pregnant
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="top30 hidden-md hidden-lg"></div>
-
-            <div class="col-md-4">
-                <button type="button" class="btn btn-success btn-block " ng-click="showPregnant = !showPregnant">Nursing/Pregnant Warnings</button>
-                <div collapse="!showPregnant">
-                    <div class="well well-lg">
-                        <button type="button" class="icon-bigger btn btn-block" ng-model="nursingOrPregnant" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" ng-class="nursingOrPregnant ? 'btn-primary' : 'btn-default'">
-                            <span class="fa" ng-class="nursingOrPregnant ? 'fa-check-square-o' : 'fa-square-o'"></span>
-                            Nursing / Pregnant
-                        </button>
-                    </div>
-                </div>
-            </div>
         </div>
+
         <div class="row top30">
             <div class="col-xs-12">
                 <button type="submit" class="btn icon-2x search-button btn-primary btn-block">
@@ -129,7 +127,7 @@
     </form>
 
 
-    <div class="row top30" ng-show="BrandProductModels != null">
+    <div class="row top30" ng-show="BrandProductModels != null && profileProductModels.length == 0">
         <div class="col-xs-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -147,67 +145,82 @@
         </div>
     </div>
 
-    <div class="top30"></div>
+    <div class="top30" ng-show="profileProductModels.length > 0">
 
-    <div class="panel panel-default" ng-show="ProductModel">
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-sm-2"><strong>Brand Name</strong></div>
-                <div class="col-sm-10">
-                    {{ProductModel.brandName}}
+        <div class="panel panel-primary" ng-repeat="ProductModel in profileProductModels">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <h4>
+                        {{ProductModel.profileName}}
+                    </h4>
                 </div>
             </div>
-            <hr />
-            <div class="row">
-                <div class="col-sm-2">
-                    <strong>
-                        <i class="fa fa-2x vertical-middle" ng-class="ProductModel.safeForPregnancy ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i>
-                        Pregnancy
-                    </strong>
-                </div>
-                <div class="col-sm-10">
-                    <span ng-show="ProductModel.safeForPregnancy">
-                        Safe
-                    </span>
-                    <span ng-show="!ProductModel.safeForPregnancy">
-                        {{ProductModel.pregnancy}}
-                    </span>
-                </div>
-            </div>
+            <div class="panel-body">
 
-            <hr />
-            <!--<div class="row">
-                <div class="col-sm-2"><strong>Purpose</strong></div>
-                <div class="col-sm-10">{{ProductModel.purpose}}</div>
-            </div>
-                <hr/>
-                -->
-
-            <div class="row">
-                <div class="col-sm-2">
-                    <i class=" fa fa-2x vertical-middle" ng-class="ProductModel.ShowAgeWarning ? 'fa-thumbs-down' : 'fa-thumbs-up'"></i>
-                    <strong>Age</strong>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <h4 class="text-info">Brand Name</h4>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="pull-left">
+                            <h4 class="text-info">{{ProductModel.product.brandName}}</h4>
+                        </div>
+                        <div class="pull-right">
+                            <div ng-attr-id={{ProductModel.profile.avatar}}></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-10">{{ProductModel.minimumAgeInfo}}</div>
-            </div>
 
-            <hr />
-            <div class="row">
-                <div class="col-sm-2">
-                    <strong>
-                        <i class="fa fa-2x vertical-middle" ng-class="ProductModel.BadIngredients.length===0 ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i>
-                        Ingredients
-                    </strong>
+                <hr />
+
+                <div class="row" ng-show="ProductModel.showPregnancyWarnings">
+
+                    <div class="col-sm-2">
+                        <strong>
+                            <i class="fa fa-2x vertical-middle" ng-class="ProductModel.safeForPregnancy ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i>
+                            Pregnancy
+                        </strong>
+                    </div>
+                    <div class="col-sm-10">
+                        <span ng-show="ProductModel.product.safeForPregnancy">
+                            Safe
+                        </span>
+                        <span ng-show="!ProductModel.product.safeForPregnancy">
+                            {{ProductModel.product.pregnancy}}
+                        </span>
+                    </div>
+                    <hr />
                 </div>
-                <div class="col-sm-3">
-                    <div class="list-group ingredient-list">
-                        <a href="#" ng-repeat="ingredient in ProductModel.BadIngredients" class="list-group-item">
-                            {{ingredient}}
-                        </a>
-                        <span ng-show="ProductModel.BadIngredients.length==0">No allergens were found</span>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <i class=" fa fa-2x vertical-middle" ng-class="ProductModel.ShowAgeWarning ? 'fa-thumbs-down' : 'fa-thumbs-up'"></i>
+                        <strong>Age</strong>
+                    </div>
+                    <div class="col-sm-10">{{ProductModel.product.minimumAgeInfo}}</div>
+                </div>
+
+                <hr />
+                <div class="row">
+                    <div class="col-sm-2">
+                        <strong>
+                            <i class="fa fa-2x vertical-middle" ng-class="ProductModel.BadIngredients.length===0 ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i>
+                            Ingredients
+                        </strong>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="list-group ingredient-list">
+                            <a href="#" ng-repeat="ingredient in ProductModel.BadIngredients" class="list-group-item">
+                                {{ingredient}}
+                            </a>
+                            <span ng-show="ProductModel.BadIngredients.length==0">No allergens were found</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
+
+    <div class="top30"></div>
 </div>
