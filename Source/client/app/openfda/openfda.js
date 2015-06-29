@@ -4,8 +4,9 @@
     var ProductModel = function (apiobject) {
         console.log(apiobject);
         this.brandName = apiobject.openfda.brand_name ? apiobject.openfda.brand_name[0] : "(N/A)";
-        this.Purpose = apiobject.purpose ? apiobject.purpose[0].replace("Purpose ", "") : "";
+        this.purpose = apiobject.purpose ? apiobject.purpose[0].replace(/^.+?purpose\S*\s/i, "").replace(/(^.{150}\S*\S+).+/, "$1...") : "";
         this.pregnancy = apiobject.pregnancy_or_breast_feeding ? apiobject.pregnancy_or_breast_feeding[0] : "";
+
         
         if (this.pregnancy === "" && apiobject.pregnancy) {
             this.pregnancy = apiobject.pregnancy[0];
@@ -16,7 +17,7 @@
         this.minimumAge = 100;
         this.minimumAgeInfo = "";
         
-        var dosageInfo = apiobject.dosage_and_administration.toString() + "";
+        var dosageInfo = apiobject.dosage_and_administration ? apiobject.dosage_and_administration.toString() : "";
         
         var match = dosageInfo.match(/(?:children )?under\s+(?:age )?(\d+):?\s*:\s*?do not/i);       
         if (match) {
@@ -51,6 +52,7 @@
             this.minimumAgeInfo = "Not recommended for children";
         }      
         else {
+            this.minimumAge = -1;
             this.minimumAgeInfo = "Everyone";
         }
 
@@ -82,8 +84,7 @@
         function findByBrandName(brandName) {
             var def = $q.defer();
             
-            $http.get("https://api.fda.gov/drug/label.json?search=brand_name:" + brandName + "&limit=50")
-        .then(
+            $http.get('https://api.fda.gov/drug/label.json?search=brand_name:"' + encodeURIComponent(brandName) + '"&limit=50').then(
                 function (resp) {
                     var products = [];
                     for (var i = 0; i < resp.data.results.length; i++) {
@@ -111,7 +112,8 @@
         function findByUPC(upc) {
             var def = $q.defer();
             
-            $http.get("https://api.fda.gov/drug/label.json?search=upc:" + upc + "&limit=1").then(
+            //the UPCs in the database seem to sometimes contain a leading zero. so search for both at once
+            $http.get("https://api.fda.gov/drug/label.json?search=upc:" + encodeURIComponent(upc) + encodeURIComponent(" 0" + upc) + "&limit=1").then(
                 function (resp) {
                     def.resolve(new ProductModel(resp.data.results[0]));
                 },
@@ -136,7 +138,7 @@
         function findIngredient(ingredient) {
             var def = $q.defer();
             
-            $http.get("https://api.fda.gov/drug/label.json?search=inactive_ingredient:" + ingredient + "&limit=1").then(
+            $http.get('https://api.fda.gov/drug/label.json?search=inactive_ingredient:"' + encodeURIComponent(ingredient) + '"&limit=1').then(
                 function (resp) {
                     def.resolve({
                         not_found: false,

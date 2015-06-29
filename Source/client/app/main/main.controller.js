@@ -4,7 +4,7 @@
     angular.module("medCheckApp");
     var app = angular.module("medCheckApp");
     
-    app.controller("MainCtrl", ["$scope", "openFDA", "$q", "$timeout","quagga", function ($scope, openFDA, $q, $timeout, quagga) {
+    app.controller("MainCtrl", ["$scope", "openFDA", "$q", "$timeout", "quagga", "$location", "$anchorScroll", function ($scope, openFDA, $q, $timeout, quagga, $location, $anchorScroll) {
             // Display a warning toast, with no title
             try {
                 toastr.warning('Prototype demonstration, not for actual medical use.', 'MedCheck Prototype', {
@@ -87,7 +87,7 @@
                 $q.allSettled(ingredientCalls).then(processResults, processResults);
             }
             
-            $scope.UPCChanged = function () {
+            $scope.SearchChanged = function () {
                 resetFields();
             };
             
@@ -103,8 +103,7 @@
                 }
             };
             
-            $scope.addAllergen = function () {
-                
+            $scope.addAllergen = function () {               
                 $("#allergyFocusElement").removeAttr("id");
                 $scope.allergens.push({ name: "" });
                 $timeout(function () {
@@ -112,7 +111,6 @@
                 }, 0);
                 
                 verifyIngredients();
-                           
             };
             
             $scope.findBrand = function () {
@@ -120,6 +118,8 @@
                 openFDA.findByBrandName($scope.SearchValue).then(
                     function (products) {
                         $scope.BrandProductModels = products;
+                        $location.hash('productSearchList');
+                        $anchorScroll();
                     },
 
                     function (err) {
@@ -134,6 +134,8 @@
             
             $scope.performSearch = function (isValid) {
                 if (isValid) {
+                    verifyIngredients();
+
                     if ($scope.SearchValue.match(/^\d+$/)) {
                         $scope.scanBarCode();
                     }
@@ -143,24 +145,32 @@
                 }
             };
             
-            $scope.scanBarCode = function () {
+            $scope.selectProduct = function (product) {
+                $scope.BrandProductModels = null;
+
+                var allergenNames = _.map($scope.allergens, function (x) { return x.name.toLowerCase().trim(); });
+                var ingredientNames = _.map(product.Ingredients, function (x) { return x.Name.toLowerCase().trim(); });
                 
-                verifyIngredients();
+                product.BadIngredients = _.filter(ingredientNames, function (ingredient) {
+                    return _.find(allergenNames, function (allergen) {
+                        return ingredient.indexOf(allergen) > -1 && allergen !== "";
+                    });
+                });
                 
+                if (!$scope.selectedAge.selected) {
+                    product.ShowAgeWarning = false;
+                }
+                else {
+                    product.ShowAgeWarning = product.minimumAge >= $scope.selectedAge.selected.maxAge || (product.minimumAge <= $scope.selectedAge.selected.maxAge && product.minimumAge >= $scope.selectedAge.selected.minAge);
+                }
+                
+                $scope.ProductModel = product;
+            };
+
+            $scope.scanBarCode = function () {               
                 return openFDA.findByUPC($scope.SearchValue).then(
-                    function (product) {
-                        var allergenNames = _.map($scope.allergens, function (x) { return x.name; });
-                        var ingredientNames = _.map(product.Ingredients, function (x) { return x.Name; });
-                        product.BadIngredients = _.intersection(ingredientNames, allergenNames);
-                        
-                        if (!$scope.selectedAge.selected) {
-                            product.ShowAgeWarning = false;
-                        }
-                        else {
-                            product.ShowAgeWarning = product.minimumAge >= $scope.selectedAge.selected.maxAge || (product.minimumAge <= $scope.selectedAge.selected.maxAge && product.minimumAge >= $scope.selectedAge.selected.minAge);
-                        }
-                        
-                        $scope.ProductModel = product;
+                    function (product) {                        
+                        $scope.selectProduct(product);
                     },
                     function (err) {
                         if (err.not_found) {

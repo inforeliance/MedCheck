@@ -22,7 +22,7 @@ describe('Controller: MainCtrl', function() {
     }));
 
     it('should not show an error message when a field is changed', function() {
-        scope.UPCChanged();
+        scope.SearchChanged();
         expect(scope.ShowBrandNotFoundErrorMessage).not.toBe(true);
         expect(scope.ShowNotFoundErroMessage).not.toBe(true);
         scope.BrandChanged();
@@ -31,7 +31,7 @@ describe('Controller: MainCtrl', function() {
     });
 
     it('should find products', function() {
-        scope.UPCChanged();
+        scope.SearchChanged();
         scope.UPC = "0075609000935";
         scope.scanBarCode().then(function() {
             expect(scope.ShowNotFoundErrorMessage).not.toBe(true);
@@ -39,7 +39,7 @@ describe('Controller: MainCtrl', function() {
     });
     
     it('should set the active product when a valid upc is passed', function () {
-        scope.UPCChanged();
+        scope.SearchChanged();
         scope.UPC = "0075609000935";
         expect(scope.ProductModel).toBe(null);
         scope.scanBarCode().then(function () {
@@ -48,7 +48,7 @@ describe('Controller: MainCtrl', function() {
     });
 
     it('should not find products', function() {
-        scope.UPCChanged()
+        scope.SearchChanged()
         scope.UPC = "nonexistent product";
         scope.scanBarCode().then(function() {
             expect(scope.ShowNotFoundErrorMessage).toBe(true);
