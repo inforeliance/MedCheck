@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('medCheckApp')
-  .controller('ProfilesCtrl', function ($scope, $http, $state, Auth, User, Profile, Allergen, $rootScope, Modal) {
-
-  $scope.getCurrentUser = Auth.getCurrentUser;
+  .controller('ProfilesCtrl', function ($scope, User, Profile, Allergen, $rootScope, Modal) {  
 
   $scope.frmProfile = {};
   $scope.frmProfile.name = "";
@@ -12,18 +10,9 @@ angular.module('medCheckApp')
   $scope.frmProfile.pregnant = "";
   $scope.frmProfile.allergen = "";
 
-  $scope.user = {};
-  $scope.user.profiles = {};
-  
-  // Use the User $resource to fetch all users
-  //$scope.users = User.query();
-
-  $http.get('/api/users/me').success(function (user) {
-
-    $scope.user = user;
-    $scope.user.profiles = user.profiles;
-
-  });
+  $scope.user = User.get(); 
+  var user =  $scope.user;
+  $scope.user.profiles = user.profiles;
 
   $scope.addAllergen = function (form2, objProfile) {
    
@@ -184,7 +173,7 @@ angular.module('medCheckApp')
           toastr.success('You may now use MedCheck to search for possible allergens. ', 'Profile Saved!');
 
           $scope.user = res;
-          $scope.user.profiles = res.profiles;
+          $scope.user.profiles = res.profiles;        
           
           //Clear Form Scope
           $scope.frmProfile.name = '';
