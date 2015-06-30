@@ -46,7 +46,6 @@ angular.module('medCheckApp')
        //console.log($scope.selectedOption.val);
        
        $scope.help.issue = "";
-       $scope.help.issue = "";
        $scope.help.email = "";
        $scope.help.upload = null;
        

@@ -9,6 +9,7 @@ angular.module('medCheckApp')
   $scope.frmProfile.gender = "";
   $scope.frmProfile.pregnant = getIsPregnantNursing();
   $scope.frmProfile.allergen = "";
+  $scope.IsThereLocalStorageSearchCriteria = false; //Tracks if any user is building a profile based on main.controller search.
   
 
 
@@ -169,6 +170,12 @@ angular.module('medCheckApp')
           $scope.frmProfile.age = '';
           $scope.frmProfile.gender = '';
           $scope.frmProfile.pregnant = '';
+          
+          //Profile Saved, delete stored search criteria for next use.
+          if($scope.IsThereLocalStorageSearchCriteria){
+            localStorageService.clearAll();
+            $scope.IsThereLocalStorageSearchCriteria = false;            
+          }
 
         } else {
           // invalid response            
@@ -191,6 +198,7 @@ angular.module('medCheckApp')
   function getAge() {
      
       if(localStorageService.get('newAge')){
+        $scope.IsThereLocalStorageSearchCriteria = true;
         console.log(localStorageService.get('newAge')); 
         return localStorageService.get('newAge');
       }
@@ -200,6 +208,7 @@ angular.module('medCheckApp')
   function getAllergens() {      
       
       if(localStorageService.get('newAllergens')){
+        $scope.IsThereLocalStorageSearchCriteria = true;
         
         var arrAllergen = new Array(); //return array
         var newAllergen = localStorageService.get('newAllergens'); //stored array values
@@ -229,6 +238,8 @@ angular.module('medCheckApp')
   function getIsPregnantNursing() { 
   
       if(localStorageService.get('newPreg')){
+        $scope.IsThereLocalStorageSearchCriteria = true;
+        
         console.log(localStorageService.get('newPreg')); 
         return localStorageService.get('newPreg');
       }
