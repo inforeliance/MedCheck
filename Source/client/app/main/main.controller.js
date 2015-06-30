@@ -158,27 +158,21 @@
                     else {
                         $scope.findBrand();
                     }
+
+                    if (!$scope.hasProfiles) {
+                        //Loading local data storage with initial search for new profiles. We're using local storage even though we're a SPA because we have oAuth, and the user can jump off the domain to authenticate. 
+                        //------------------------------------------------------------------                                 
+                        localStorageService.set('newAllergens', _.map($scope.allergens, function (x) { return x.name.toLowerCase().trim(); }));
+                        localStorageService.set('newAge', $scope.selectedAge.selected ? $scope.selectedAge.selected.label : null);
+                        localStorageService.set('newPreg', $scope.nursingOrPregnant ? 1 : 0);
+                    //-----------------------------------------------------------------
+                    }
                 }
             };
             
             $scope.selectProduct = function (product) {
                 $scope.profileProductModels.length = 0; 
                 
-                
-
-                //Loading local data storage with initial search for new profiles.
-                //------------------------------------------------------------------             
-                
-                var _allergens = ["nuts", "bolts", "sugar", "butter"];
-                var _age = 65;
-                var _preg = 0;
-                
-                localStorageService.set('newAllergens', _allergens);
-                localStorageService.set('newAge', null);
-                localStorageService.set('newPreg', _preg);            
-   
-                
-                //-----------------------------------------------------------------
                 
                 function makeProductViewModelInfo(allergenNames, selectedAge, pregnant, profileName, profile){
                     var productViewModel = { product: product, showPregnancyWarnings : pregnant, profileName: profileName, profile: profile || {} };
@@ -210,9 +204,8 @@
                 }
                 else {
                     var allergenNames = _.map($scope.allergens, function (x) { return x.name.toLowerCase().trim(); });
-                    $scope.profileProductModels.push(makeProductViewModelInfo(allergenNames, $scope.selectedAge.selected ? $scope.selectedAge.selected : null, $scope.nursingOrPregnant, "Info For You"));
-                }
-                                               
+                    $scope.profileProductModels.push(makeProductViewModelInfo(allergenNames, $scope.selectedAge.selected ? $scope.selectedAge.selected : null, $scope.nursingOrPregnant, "Info For You"));                    
+                }                                               
             };
 
             $scope.scanBarCode = function () {               

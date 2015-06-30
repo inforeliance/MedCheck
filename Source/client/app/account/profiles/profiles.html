@@ -52,13 +52,13 @@
                                 <div class="row">
                                     <div class="col-md-2">Age:</div>
                                     <div class="col-md-8">
-                                        <!-- Gender -->
+                                        <!-- Age -->
                                         <div class="form-group" ng-class="{ 'has-success': form.age.$valid && submitted,
                                                                                 'has-error': form.age.$invalid && submitted }">
 
                                             <div ng-repeat="ageChoice in ageChoices" class="radio">
                                                 <label class="radio">
-                                                    <input type="radio" name="age" ng-value="ageChoice.label" data-ng-model="frmProfile.age" required />{{ageChoice.label}}
+                                                    <input type="radio" name="age" ng-value="ageChoice.label" ng-model="frmProfile.age" ng-checked="frmProfile.age == ageChoice.label" required />{{ageChoice.label}}
                                                 </label>
                                                 
                                             </div>
