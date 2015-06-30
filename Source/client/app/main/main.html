@@ -12,14 +12,6 @@
                 </p>
             </div>
         </div>
-
-
-        <!--<div class="col-lg-12">
-          <h1 class="page-header">Features:</h1>
-          <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-            <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
-          </ul>
-        </div>-->
     </div>
 
     <div class="top30"></div>
@@ -62,7 +54,7 @@
             <div class="row top10">
                 <div class="col-md-4">
                     <button type="button" class="btn btn-success btn-block " ng-click="showAllergen = !showAllergen">Allergens</button>
-                    <div collapse="!showAllergen" class="form-inlinae">
+                    <div collapse="!showAllergen">
                         <div class="well well-lg">
                             <ul class="list-group">
                                 <li ng-repeat="allergen in allergens" class="list-group-item">
@@ -70,7 +62,7 @@
                                         <a class="allergen-group-delete" ng-click="removeAllergen(allergen)">
                                             <span class="fa fa-minus-circle"></span>
                                         </a>
-                                        <input type="text" ng-keypress="$event.keyCode == 13 ? addAllergen() : allergen.invalidIngredient=false" ng-model="allergen.name" class="form-control" id="allergyFocusElement" placeholder="Enter allergy" />
+                                        <input type="text" ng-keypress="allergyKeyPress($event.keyCode,allergen, $event)" ng-model="allergen.name" class="form-control" id="allergyFocusElement" placeholder="Enter allergy" />
                                         <div class="text-danger unknownIngredient" ng-show="allergen.invalidIngredient" data-toggle="tooltip" title="This ingredient was not found in the FDA database. Please check spelling.">
                                             <i class="fa fa-exclamation-circle"></i>
                                         </div>
@@ -189,11 +181,11 @@
                             {{ProductModel.product.pregnancy}}
                         </span>
                     </div>
-                    
+
                 </div>
-                
+
                 <hr ng-show="ProductModel.showPregnancyWarnings"/>
-                 
+
                 <div class="row">
                     <div class="col-sm-2">
                         <i class=" fa fa-2x vertical-middle" ng-class="ProductModel.ShowAgeWarning ? 'fa-thumbs-down' : 'fa-thumbs-up'"></i>
@@ -222,7 +214,11 @@
             </div>
         </div>
 
+        <div class="top30 well" ng-show="user == null">
+            Want to save your search critera? <a href="signup" class="btn btn-primary"> Register now!</a>
+        </div>
     </div>
+
 
     <div class="top30"></div>
 </div>

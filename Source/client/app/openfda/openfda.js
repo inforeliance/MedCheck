@@ -4,7 +4,7 @@
     var ProductModel = function (apiobject) {
         console.log(apiobject);
         this.brandName = apiobject.openfda.brand_name ? apiobject.openfda.brand_name[0] : "(N/A)";
-        this.purpose = apiobject.purpose ? apiobject.purpose[0].replace(/^.+?purpose\S*\s/i, "").replace(/(^.{150}\S*\S+).+/, "$1...") : "";
+        this.purpose = apiobject.purpose ? apiobject.purpose[0].replace(/^.*?purpose\S*\s/i, "").replace(/(^.{150}\S*\S+).+/, "$1...") : "";
         this.pregnancy = apiobject.pregnancy_or_breast_feeding ? apiobject.pregnancy_or_breast_feeding[0] : "";
 
         

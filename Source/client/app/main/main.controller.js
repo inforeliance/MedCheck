@@ -148,6 +148,17 @@
                     });
             };
             
+            $scope.allergyKeyPress = function (keyCode, allergen, $event) {
+                if (keyCode === 13) {
+                    $scope.addAllergen();
+                    $event.preventDefault();
+                    return false;
+                } 
+                else {
+                    allergen.invalidIngredient = false;
+                }  
+            };
+
             $scope.performSearch = function (isValid) {
                 if (isValid) {
                     verifyIngredients();

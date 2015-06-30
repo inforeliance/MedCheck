@@ -20,7 +20,7 @@ describe('Controller: MainCtrl', function() {
             $scope: scope
         });
     }));
-
+    
     it('should not show an error message when a field is changed', function() {
         scope.SearchChanged();
         expect(scope.ShowBrandNotFoundErrorMessage).not.toBe(true);
