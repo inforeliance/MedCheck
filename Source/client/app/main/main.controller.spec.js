@@ -41,7 +41,7 @@ describe('Controller: MainCtrl', function() {
     it('should set the active product when a valid upc is passed', function () {
         scope.SearchChanged();
         scope.UPC = "0075609000935";
-        expect(scope.ProductModel).toBe(null);
+        expect(scope.ProductModel).toBe(undefined);
         scope.scanBarCode().then(function () {
             expect(scope.ProductModel).not.toBe(null);
         });
