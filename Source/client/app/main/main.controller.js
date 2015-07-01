@@ -3,7 +3,7 @@
 (function () {
     angular.module("medCheckApp");
     var app = angular.module("medCheckApp");
-    
+
     app.controller("MainCtrl", ["$scope", "openFDA", "$q", "$timeout", "quagga", "$location", "$anchorScroll", "Auth", "User", "localStorageService", function ($scope, openFDA, $q, $timeout, quagga, $location, $anchorScroll, Auth, User, localStorageService) {
             // Display a warning toast, with no title
             try {
@@ -11,10 +11,10 @@
                     timeOut: 5000
                 });
             } catch (e) { /* I'm so sorry */ }
-            
+
             $scope.SearchValue = "";  //0075609000935, 0840986023781
             //$scope.MedicationName = "Advil";
-            
+
             $scope.allergens = [{ name: "" }];
             $scope.showAllergen = false;
             $scope.showAge = false;
@@ -24,9 +24,9 @@
             $scope.nursingOrPregnant = false;
             $scope.cameraVisible = false;
             $scope.profileProductModels = [];
-            
+
             $scope.hasProfiles = false;
-            
+
             Auth.isLoggedInAsync(function (loggedIn) {
                 if (loggedIn) {
                     User.get(function (user) {
@@ -39,8 +39,8 @@
                 }
             });
 
-            //$scope.user.profiles =  $scope.user.profiles;  
-            
+            //$scope.user.profiles =  $scope.user.profiles;
+
             $scope.startCamera = function () {
                 quagga.start();
                 $scope.cameraVisible = true;
@@ -50,33 +50,33 @@
                     try {
                         $scope.stopCamera();
                     } catch (e) { } //seems to be a bug in quaggaJS when you start and stop
-                    
+
                     $scope.SearchValue = code;
-                    
+
                     toastr.success('Found barcode: ' + code, 'Scanned UPC code successfully', {
                         timeOut: 3000
                     });
-                    
+
                     $timeout(function () {
-                        //make sure apply gets called 
+                        //make sure apply gets called
                     }, 0);
 
                 });
             };
-            
+
             $scope.stopCamera = function () {
                 $scope.cameraVisible = false;
                 quagga.stop();
             };
-            
+
             function resetFields() {
                 $scope.ShowBrandNotFoundErrorMessage = false;
                 $scope.ShowNotFoundErrorMessage = false;
                 $scope.profileProductModels.length = 0;
                 $scope.BrandProductModels = null;
             }
-            
-            
+
+
             function verifyIngredients() {
                 var ingredientCalls = [];
                 angular.forEach($scope.allergens, function (item) {
@@ -86,7 +86,7 @@
                         }
                     }
                 });
-                
+
                 function processResults(data) {
                     for (var i = 0; i < data.length; i++) {
                         $scope.ingredientNamesChecked[data[i].ingredient] = true;
@@ -99,18 +99,18 @@
                     }
                     $('[data-toggle="tooltip"]').tooltip();
                 }
-                
+
                 $q.allSettled(ingredientCalls).then(processResults, processResults);
             }
-            
+
             $scope.SearchChanged = function () {
                 resetFields();
             };
-            
+
             $scope.BrandChanged = function () {
                 resetFields();
             };
-            
+
             $scope.removeAllergen = function (allergen) {
                 console.log(allergen);
                 $scope.allergens.splice($scope.allergens.indexOf(allergen), 1);
@@ -118,19 +118,19 @@
                     $scope.addAllergen();
                 }
             };
-            
-            $scope.addAllergen = function () {               
+
+            $scope.addAllergen = function () {
                 $("#allergyFocusElement").removeAttr("id");
                 $scope.allergens.push({ name: "" });
                 $timeout(function () {
                     $("#allergyFocusElement").focus();
                 }, 0);
-                
+
                 verifyIngredients();
             };
-            
+
             $scope.findBrand = function () {
-                
+
                 openFDA.findByBrandName($scope.SearchValue).then(
                     function (products) {
                         $scope.BrandProductModels = products;
@@ -147,16 +147,16 @@
                         }
                     });
             };
-            
+
             $scope.allergyKeyPress = function (keyCode, allergen, $event) {
                 if (keyCode === 13) {
                     $scope.addAllergen();
                     $event.preventDefault();
                     return false;
-                } 
+                }
                 else {
                     allergen.invalidIngredient = false;
-                }  
+                }
             };
 
             $scope.performSearch = function (isValid) {
@@ -171,8 +171,8 @@
                     }
 
                     if (!$scope.hasProfiles) {
-                        //Loading local data storage with initial search for new profiles. We're using local storage even though we're a SPA because we have oAuth, and the user can jump off the domain to authenticate. 
-                        //------------------------------------------------------------------                                 
+                        //Loading local data storage with initial search for new profiles. We're using local storage even though we're a SPA because we have oAuth, and the user can jump off the domain to authenticate.
+                        //------------------------------------------------------------------
                         localStorageService.set('newAllergens', _.map($scope.allergens, function (x) { return x.name.toLowerCase().trim(); }));
                         localStorageService.set('newAge', $scope.selectedAge.selected ? $scope.selectedAge.selected.label : null);
                         localStorageService.set('newPreg', $scope.nursingOrPregnant ? 1 : 0);
@@ -180,22 +180,22 @@
                     }
                 }
             };
-            
+
             $scope.selectProduct = function (product) {
-                $scope.profileProductModels.length = 0; 
-                
-                
+                $scope.profileProductModels.length = 0;
+
+
                 function makeProductViewModelInfo(allergenNames, selectedAge, pregnant, profileName, profile){
                     var productViewModel = { product: product, showPregnancyWarnings : pregnant, profileName: profileName, profile: profile || {} };
 
                     var ingredientNames = _.map(product.Ingredients, function (x) { return x.Name.toLowerCase().trim(); });
-                    
+
                     productViewModel.BadIngredients = _.filter(ingredientNames, function (ingredient) {
                         return _.find(allergenNames, function (allergen) {
                             return ingredient.indexOf(allergen) > -1 && allergen !== "";
                         });
                     });
-                    
+
                     if (selectedAge === null) {
                         productViewModel.ShowAgeWarning = false;
                     }
@@ -206,22 +206,22 @@
                     return productViewModel;
                 }
 
-                if($scope.hasProfiles) {                   
+                if($scope.hasProfiles) {
                     angular.forEach($scope.profiles, function (profile) {
                         var allergenNamesForProfile = _.map(profile.allergens, function (x) { return x.name.toLowerCase().trim(); });
-                        var age = _.find($scope.ageChoices, 'label', profile.age);
+                        var age = _.find($scope.ageChoices, {'label': profile.age});
                         $scope.profileProductModels.push(makeProductViewModelInfo(allergenNamesForProfile, age || null, profile.pregnant==1, profile.profilename, profile));
-                    });                                                           
+                    });
                 }
                 else {
                     var allergenNames = _.map($scope.allergens, function (x) { return x.name.toLowerCase().trim(); });
-                    $scope.profileProductModels.push(makeProductViewModelInfo(allergenNames, $scope.selectedAge.selected ? $scope.selectedAge.selected : null, $scope.nursingOrPregnant, "Info For You"));                    
-                }                                               
+                    $scope.profileProductModels.push(makeProductViewModelInfo(allergenNames, $scope.selectedAge.selected ? $scope.selectedAge.selected : null, $scope.nursingOrPregnant, "Info For You"));
+                }
             };
 
-            $scope.scanBarCode = function () {               
+            $scope.scanBarCode = function () {
                 return openFDA.findByUPC($scope.SearchValue).then(
-                    function (product) {                        
+                    function (product) {
                         $scope.selectProduct(product);
                     },
                     function (err) {
