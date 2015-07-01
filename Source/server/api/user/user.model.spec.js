@@ -26,9 +26,9 @@ describe('User Model', function() {
     });
   });
 
-  it('should begin with no users', function(done) { 
+  it('should begin with no users (or 1 in development mode)', function(done) { 
     User.find({}, function(err, users) {
-      users.should.have.length(0);
+      users.should.have.length(process.env.NODE_ENV === "development" ? 1 : 0);
       done();
     });
   });
