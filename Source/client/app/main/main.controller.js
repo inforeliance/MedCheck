@@ -24,10 +24,11 @@
             $scope.nursingOrPregnant = false;
             $scope.cameraVisible = false;
             $scope.profileProductModels = [];
-
-            $scope.hasProfiles = false;
+            $scope.isRegistered = false;
+            $scope.loggedIn = false;
 
             Auth.isLoggedInAsync(function (loggedIn) {
+                $scope.loggedIn = loggedIn;
                 if (loggedIn) {
                     User.get(function (user) {
                         $scope.user = user;
@@ -45,8 +46,12 @@
                 quagga.start();
                 $scope.cameraVisible = true;
                 quagga.onDetected(function (result) {
+                    if (!$scope.cameraVisible){
+                      return;
+                    }
 
                     var code = result.codeResult.code;
+                    $scope.cameraVisible = false;
                     try {
                         $scope.stopCamera();
                     } catch (e) { } //seems to be a bug in quaggaJS when you start and stop
