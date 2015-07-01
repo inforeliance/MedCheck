@@ -1,0 +1,2 @@
+test:
+	cd Source; make
