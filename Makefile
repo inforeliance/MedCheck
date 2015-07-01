@@ -1,3 +1,2 @@
 test:
-	cd Source
-	npm test
+	cd Source; make
