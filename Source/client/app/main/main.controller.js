@@ -139,7 +139,7 @@
                 openFDA.findByBrandName($scope.SearchValue).then(
                     function (products) {
                         $scope.BrandProductModels = products;
-                        $location.hash('productSearchList');
+                        $location.hash('searchList');
                         $anchorScroll();
                     },
 
