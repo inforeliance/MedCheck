@@ -8,9 +8,9 @@ As a consumer, I want to ensure my family members do not get medications that ar
 
 ## Docker setup
 
-[Absolute README link](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/SetupDocker.md)
+[Docker README link](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/SetupDocker.md)
 
 ## Selenium/e2e test setup
 
-[Absolute README link](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/SetupSeleniumTest.md)
+[Selenium README link](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/SetupSeleniumTest.md)
 
