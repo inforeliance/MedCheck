@@ -223,7 +223,7 @@ angular.module('medCheckApp')
           }); 
           
           //Populate allergen and load to Array
-          _allergen.name = newAllergen[allergen];
+          _allergen.name = angular.uppercase(newAllergen[allergen]);
           arrAllergen[i] = _allergen; 
           i++;
          
