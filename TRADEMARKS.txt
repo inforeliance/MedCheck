@@ -1,3 +1,60 @@
-MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.:
+Facebook logo is a registered trademark of Facebook:
+https://www.facebookbrand.com/trademarks
 
+Google+ logo is a registered trademark of Google: 
+http://www.google.com/permissions/trademark/trademark-list.html
+
+Twitter logo is a registered trademark of Twitter:
+https://support.twitter.com/articles/18367-trademark-policy
+
+AWS and EBS, EC2 logos are registered trademarks of AWS Amazon:
+http://aws.amazon.com/trademark-guidelines/
+
+Docker logo is a registered trademark of Docker: 
+https://www.docker.com/trademark-guidelines
+
+Microsoft Visual Studio Code IDE logo is a registered trademark of Microsoft:
+https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx
+
+Yeoman logo has no specific tradmark guidance but is maintained by Yoeman:
+http://yeoman.io/
+
+Grunt logo has no specific tradmark guidance but is maintained by Bocoup:
+http://gruntjs.com/
+
+Bower logo has no specific tradmark guidance but is maintained by Bower:
+http://bower.io/
+
+Boostrap logo has no specific tradmark guidance but is maintained by @mdo and @fat.:
+http://getbootstrap.com/
+
+Less logo has no specific tradmark guidance but is maintained by LESSCSS:
+http://lesscss.org/usage/
+
+https://www.npmjs.com/policies/trademark
+npm logo is a registered trademark of npm, Inc.
+
+SourceTree logo is a registered trademark of Atlassian: 
+https://www.atlassian.com/legal/trademark
+
+Robomongo logo has no specific tradmark guidance but is maintained by Paralect and contributors:
+http://robomongo.org/
+
+MongoDB, Mongo, and the leaf logo are registered trademarks of MongoDB, Inc.:
 http://www.mongodb.com/legal/trademark-usage-guidelines
+
+Express logo has no specific tradmark guidance but is maintained by Express:
+http://expressjs.com/
+
+AngularJS logo has no specific tradmark guidance but is maintained by Google:
+https://angularjs.org/
+
+NodeJS logo is a registered trademark of Joyent: 
+https://nodejs.org/trademark-policy.pdf
+
+Jasmine logo has no specific tradmark guidance but is maintained by Jasmine:
+http://jasmine.github.io/
+
+Karma logo has no specific tradmark guidance but is maintained by Karma-Runner:
+http://karma-runner.github.io/
+
