@@ -1,7 +1,62 @@
 'use strict';
 
 angular.module('medCheckApp')
-  .controller('ProfilesCtrl', function ($scope, User, Profile, Allergen, $rootScope, Modal, Auth, localStorageService) {  
+  .controller('ProfilesCtrl', function ($scope, User, Profile, Allergen, $rootScope, Modal, Auth, localStorageService) {
+
+  // When registered or unregistered users perform a search from main, they are given the option
+  // to save their criteria to a new profile, these functions read in the main.controller search
+  // criteria.  LocalStorage is used in the event the user performs registration with oAuth (Google, Twitter..)
+  // to maintian state when leaving the domain to authenticate with those providers.
+  function getAge() {
+
+    if(localStorageService.get('newAge')){
+      $scope.IsThereLocalStorageSearchCriteria = true;
+      console.log(localStorageService.get('newAge'));
+      return localStorageService.get('newAge');
+    }
+    return "";
+  }
+
+  function getAllergens() {
+
+    if(localStorageService.get('newAllergens')){
+      $scope.IsThereLocalStorageSearchCriteria = true;
+
+      var arrAllergen = new Array(); //return array
+      var newAllergen = localStorageService.get('newAllergens'); //stored array values
+      var allergen;
+      var i = 0;
+
+      for (allergen in newAllergen){
+
+        //Create new instance of Allergin
+        var _allergen = new Allergen({
+          _name: String
+        });
+
+        //Populate allergen and load to Array
+        _allergen.name = angular.uppercase(newAllergen[allergen]);
+        arrAllergen[i] = _allergen;
+        i++;
+
+        //console.log(newAllergen[allergen]);
+      }
+
+      return arrAllergen;
+    }
+    return "";
+  }
+
+  function getIsPregnantNursing() {
+
+    if(localStorageService.get('newPreg')){
+      $scope.IsThereLocalStorageSearchCriteria = true;
+
+      console.log(localStorageService.get('newPreg'));
+      return localStorageService.get('newPreg');
+    }
+    return 0;
+  }
 
   $scope.frmProfile = {};
   $scope.frmProfile.name = "";
@@ -10,8 +65,6 @@ angular.module('medCheckApp')
   $scope.frmProfile.pregnant = getIsPregnantNursing();
   $scope.frmProfile.allergen = "";
   $scope.IsThereLocalStorageSearchCriteria = false; //Tracks if any user is building a profile based on main.controller search.
-  
-
 
   $rootScope.user = User.get(); 
   //$rootScope.user = Auth.getCurrentUser(); 
@@ -190,62 +243,6 @@ angular.module('medCheckApp')
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
   };
-  
-  // When registered or unregistered users perform a search from main, they are given the option
-  // to save their criteria to a new profile, these functions read in the main.controller search
-  // criteria.  LocalStorage is used in the event the user performs registration with oAuth (Google, Twitter..)
-  // to maintian state when leaving the domain to authenticate with those providers.
-  function getAge() {
-     
-      if(localStorageService.get('newAge')){
-        $scope.IsThereLocalStorageSearchCriteria = true;
-        console.log(localStorageService.get('newAge')); 
-        return localStorageService.get('newAge');
-      }
-      return "";
-  }
-  
-  function getAllergens() {      
-      
-      if(localStorageService.get('newAllergens')){
-        $scope.IsThereLocalStorageSearchCriteria = true;
-        
-        var arrAllergen = new Array(); //return array
-        var newAllergen = localStorageService.get('newAllergens'); //stored array values
-        var allergen;
-        var i = 0;
-        
-        for (allergen in newAllergen){
-          
-          //Create new instance of Allergin
-          var _allergen = new Allergen({
-            _name: String
-          }); 
-          
-          //Populate allergen and load to Array
-          _allergen.name = angular.uppercase(newAllergen[allergen]);
-          arrAllergen[i] = _allergen; 
-          i++;
-         
-            //console.log(newAllergen[allergen]);
-          }        
-     
-        return arrAllergen;
-      }
-      return "";
-  }
-          
-  function getIsPregnantNursing() { 
-  
-      if(localStorageService.get('newPreg')){
-        $scope.IsThereLocalStorageSearchCriteria = true;
-        
-        console.log(localStorageService.get('newPreg')); 
-        return localStorageService.get('newPreg');
-      }
-      return 0;
-  }
-  
   
 });
 
