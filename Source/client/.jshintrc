@@ -35,5 +35,6 @@
     "by": true,
     "toastr": true,
     "Quagga": true
-  }
+  },
+  "predef": ["angular"]
 }

@@ -6,7 +6,7 @@ describe('Controller: HelpCtrl', function() {
     beforeEach(module('medCheckApp'));
 
     var HelpCtrl,
-        scope
+        scope;
         //$httpBackend;
 		
 	// Initialize the controller and a mock scope

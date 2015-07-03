@@ -17,7 +17,7 @@
     <div class="top30"></div>
     <form class="form-inline" id="medicationSearchForm" novalidate name="medicationSearchForm" ng-submit="performSearch(medicationSearchForm.$valid)">
         <div class="form-group" ng-class="{'has-error has-feedback': medicationSearchForm.MedicationName.$error.required && medicationSearchForm.$submitted}">
-            <label class="control-label" for="medication">Medication/UPC</label>
+            <label class="control-label" for="MedicationName">Medication/UPC</label>
             <input class="form-control left10" type="text" name="MedicationName" id="MedicationName" placeholder="Enter medication name or UPC"
                    ng-model="SearchValue"
                    ng-change="SearchChanged()"

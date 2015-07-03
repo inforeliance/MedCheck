@@ -35,7 +35,7 @@ angular.module('medCheckApp')
       console.log('addAllergen passed validation');
       $scope.dirty = false;
     
-      //Create new instance of Allergin
+      //Create new instance of Allergen
       var _allergen = new Allergen({
         _name: String
       }); 
@@ -69,7 +69,7 @@ angular.module('medCheckApp')
           toastr.error('Something is amiss, unable to save profile.', 'Ah, Snap!');
         }
       });
-    };
+    }
   };
 
   $scope.confirmAllergenDelete = Modal.confirm.delete(function (objAllergen, objProfile) {
@@ -176,7 +176,7 @@ angular.module('medCheckApp')
         //Populate allergen and load to Array
         _allergen.name = 'Penecillin';
         arrAllergen[i] = _allergen;
-      };   
+      }
       
       // populate profile with data   
       _profile.profilename = angular.uppercase($scope.frmProfile.name);
@@ -215,7 +215,7 @@ angular.module('medCheckApp')
         }
 
       });
-    }; 
+    }
             
     // Returns a random number between min (inclusive) and max (exclusive)
     function getRandomArbitrary(min, max) {

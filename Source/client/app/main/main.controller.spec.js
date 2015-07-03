@@ -48,7 +48,7 @@ describe('Controller: MainCtrl', function() {
     });
 
     it('should not find products', function() {
-        scope.SearchChanged()
+        scope.SearchChanged();
         scope.UPC = "nonexistent product";
         scope.scanBarCode().then(function() {
             expect(scope.ShowNotFoundErrorMessage).toBe(true);

@@ -1,6 +1,6 @@
 'use strict';
 
-var root = "http://medcheck.rememberthetrash.com"
+var root = "http://medcheck.rememberthetrash.com";
 
 describe('The application', function() {
 

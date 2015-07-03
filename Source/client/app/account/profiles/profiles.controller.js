@@ -22,7 +22,7 @@ angular.module('medCheckApp')
     if(localStorageService.get('newAllergens')){
       $scope.IsThereLocalStorageSearchCriteria = true;
 
-      var arrAllergen = new Array(); //return array
+      var arrAllergen = [];
       var newAllergen = localStorageService.get('newAllergens'); //stored array values
       var allergen;
       var i = 0;
@@ -108,7 +108,7 @@ angular.module('medCheckApp')
           toastr.error('Something is amiss, unable to save profile.', 'Ah, Snap!');
         }
       });
-    };
+    }
   };
 
   $scope.confirmAllergenDelete = Modal.confirm.delete(function (objAllergen, objProfile) {
@@ -165,8 +165,13 @@ angular.module('medCheckApp')
         toastr.error('Something is amiss, unable to save profile.', 'Ah, Snap!');
       }
     });
-  }; 
-       
+  };
+
+  // Returns a random number between min (inclusive) and max (exclusive)
+  function getRandomArbitrary(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
   /**  Update existing User
    * 
    * This function does not update User, a local instance of user
@@ -202,7 +207,7 @@ angular.module('medCheckApp')
       _profile.gender = $scope.frmProfile.gender;
       _profile.pregnant = $scope.frmProfile.pregnant;
 
-      if ($scope.frmProfile.gender == 'Male')
+      if ($scope.frmProfile.gender === 'Male')
       { _profile.avatar = 'div-with-hipster' + getRandomArbitrary(1, 5); } //Random number 1-5 for dynamic male avatar demo
       else
       { _profile.avatar = 'div-with-hipster' + getRandomArbitrary(6, 10); } //Random number 6-10 for dynamic female avatar demo
@@ -236,11 +241,6 @@ angular.module('medCheckApp')
         }
 
       });
-    }; 
-            
-    // Returns a random number between min (inclusive) and max (exclusive)
-    function getRandomArbitrary(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
     }
   };
   

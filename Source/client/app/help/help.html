@@ -45,9 +45,9 @@
 
                 <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
                                             									'has-error': form.email.$invalid && submitted }">
-                    <label>What’s your email address? (Required)</label>
+                    <label for="email">What’s your email address? (Required)</label>
 
-                    <input type="email" name="email" class="form-control" ng-model="help.email" required />
+                    <input type="email" id="email" name="email" class="form-control" ng-model="help.email" required />
                     <p class="help-block" ng-show="form.email.$error.email && submitted">
                         Doesn't look like a valid email.
                     </p>
