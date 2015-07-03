@@ -11,3 +11,7 @@ echo "Stopping PID :"$nodepid
 kill -9 $nodepid
 done
 echo "Done"
+
+killall nodejs
+killall node
+killall grunt
