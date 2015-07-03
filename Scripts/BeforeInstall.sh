@@ -12,6 +12,6 @@ kill -9 $nodepid
 done
 echo "Done"
 
-killall nodejs
-killall node
-killall grunt
+killall -9 -q nodejs
+killall -9 -q node
+killall -9 -q grunt
