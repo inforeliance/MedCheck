@@ -55,7 +55,7 @@ User 1 | [Kelly Kalinkewicz](https://github.com/inforeliance/MedCheck/blob/maste
 User 2 | [Robert Infantino](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/Users/Robert Infantino.png)
 User 3 | [Jennifer Dunlap](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/Users/Jennifer Dunlap.png)
 
-### Wire Frames
+### Axure Wire Frames
 Artifact | Evidence 
 --- | --- 
 Axure Wireframes v1 | [Homescreen progression](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/Wire Frames/Axure Wireframes v1.png)
