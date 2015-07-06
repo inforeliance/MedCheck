@@ -1,6 +1,8 @@
 # Design Artifacts
 
 ### Co-creation, Brainstorming, Roleplaying, Rapid Prototyping
+Artifact | Evidence 
+--- | --- 
 Start Searching | [Whiteboard](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/Co-creation, Brainstorming, roleplaying, rapid prototyping/Start Searching.png)
 We Identify You| [Whiteboard](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/Co-creation, Brainstorming, roleplaying, rapid prototyping/We Identify You.png)
 What You Find | [Whiteboard](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/Co-creation, Brainstorming, roleplaying, rapid prototyping/What You Find.png)
