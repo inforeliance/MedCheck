@@ -3,7 +3,7 @@
 ### Video Use Case
 Artifact | Evidence 
 --- | --- 
-Source | [Source](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/medcheck.mp4)
+Source | [Local Video Source File](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/medcheck.mp4)
 YouTube Stream | [![MedCheck Use Case Demonstration](http://img.youtube.com/vi/zRFqj0vDgeQ/0.jpg)](https://www.youtube.com/watch?v=zRFqj0vDgeQ)]
 
 
