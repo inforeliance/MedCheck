@@ -8,7 +8,9 @@ Test Cases | [Tester Completed](https://github.com/inforeliance/MedCheck/blob/ma
 
 ## Run Unit Tests
 - Navidate to Source directory 
-- From a command prompt run 'grunt test'
+- From a command prompt run
+
+`grunt test`
 
 Artifact | Evidence 
 --- | --- 
