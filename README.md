@@ -27,11 +27,11 @@ To build a prototype that works on multiple devises and presents a responsive de
 
 Technology | Use 
 --- | --- 
-*QuaggaJS* | `Barcode-scanner entirely written in JavaScript supporting real- time localization and decoding of various types of barcodes such as EAN, CODE 128, CODE 39, EAN 8, UPC-A, UPC-C and CODABAR.  Quagga is used to allow users the alternative ability to scan UPC codes` 
-*MongoDB | `Document oriented database used to manage MedCheck user’s saved profiles.` 
-*NodeJS* | `Cross-platform runtime environment used to run MedCheck RESTful API` 
-*Jasmine* | `Behavior-driven JavaScript testing framework used to test MedCheck during development and continuous build process.` 
-*GruntJS* | `JavaScript task runner to automate project tasks and dependencies used to build MedCheck` 
+QuaggaJS | Barcode-scanner entirely written in JavaScript supporting real- time localization and decoding of various types of barcodes such as EAN, CODE 128, CODE 39, EAN 8, UPC-A, UPC-C and CODABAR.  Quagga is used to allow users the alternative ability to scan UPC codes 
+MongoDB | Document oriented database used to manage MedCheck user’s saved profiles. 
+NodeJS | Cross-platform runtime environment used to run MedCheck RESTful API
+Jasmine | Behavior-driven JavaScript testing framework used to test MedCheck during development and continuous build process. 
+GruntJS | JavaScript task runner to automate project tasks and dependencies used to build MedCheck 
 
 The prototype and underlying platforms are openly licensed, under the apache or creative commons license. You may find the full list of MedCheck’s Open-source technologies in the SOFTWARE.txt:
 https://github.com/inforeliance/MedCheck/blob/master/SOFTWARE.txt
