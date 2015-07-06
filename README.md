@@ -65,6 +65,6 @@ This prototype is the product of a highly talented team using proven Agile proce
 
 ## Criteria Evidence
 
-![Full Stack Pool Evidence](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/CriteriaEvidence.md)
+[Full Stack Pool Evidence](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/CriteriaEvidence.md)
 
 
