@@ -11,7 +11,7 @@ Final Diagram | [Final Diagram](https://github.com/inforeliance/MedCheck/blob/ma
 ### Continuous Monitoring
 Artifact | Evidence 
 --- | --- 
-Code Climate | [Screenshot](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/CodeClimateMonitoring.JPG)
+Code Climate | [Screenshot](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/CodeClimateMonitoring.png)
 Code Climate | [Live Link](https://codeclimate.com/github/inforeliance/MedCheck)
 
 ### PaaS Deployment
