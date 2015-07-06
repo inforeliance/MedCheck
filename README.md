@@ -3,7 +3,7 @@
 
  ![build image](https://travis-ci.org/inforeliance/MedCheck.svg "Build status") [![Code Climate](https://codeclimate.com/github/inforeliance/MedCheck/badges/gpa.svg)](https://codeclimate.com/github/inforeliance/MedCheck)
 
-## MedCheck
+## MedCheck Prototype URL:
 http://elb-medcheck-2043620629.us-east-1.elb.amazonaws.com/
 
 ## Introduction
