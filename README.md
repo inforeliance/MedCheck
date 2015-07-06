@@ -14,3 +14,22 @@ As a consumer, I want to ensure my family members do not get medications that ar
 
 [Selenium README link](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/SetupSeleniumTest.md)
 
+## Table Prep
+
+Technology | Use 
+--- | --- 
+*Tech Name* | `Use` 
+*Tech Name* | `Use` 
+*Tech Name* | `Use` 
+*Tech Name* | `Use` 
+*Tech Name* | `Use` 
+
+Item | Use 
+--- | --- 
+*Descriptor* | `Location` 
+*Descriptor* | `Location` 
+*Descriptor* | `Location` 
+*Descriptor* | `Location` 
+*Descriptor* | `Location` 
+
+

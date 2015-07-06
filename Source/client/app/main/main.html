@@ -53,7 +53,10 @@
             </div>
             <div class="row top10">
                 <div class="col-md-4">
-                    <button type="button" class="btn btn-success btn-block " ng-click="showAllergen = !showAllergen">Allergens</button>
+                    <button type="button" class="btn btn-success btn-block btn-chooser" ng-click="showAllergen = !showAllergen">
+                        <i class="pull-left fa fa-check-circle-o icon-2x vertical-middle" ng-class="{'visibility-hidden': !hasNonEmptyAllergen()}"></i>
+                        <div>Allergens</div>
+                    </button>
                     <div collapse="!showAllergen">
                         <div class="well well-lg">
                             <ul class="list-group">
@@ -77,7 +80,11 @@
                 </div>
                 <div class="top30 hidden-md hidden-lg"></div>
                 <div class="col-md-4">
-                    <button type="button" class="btn btn-success btn-block " ng-click="showAge = !showAge">Age Warnings </button>
+                    <button type="button" class="btn btn-success btn-block btn-chooser" ng-click="showAge = !showAge">
+                        <i class="pull-left fa fa-check-circle-o icon-2x vertical-middle" ng-class="{'visibility-hidden': selectedAge.selected == null }"></i>
+                        <div>Age Warnings</div>
+                    </button>
+
                     <div collapse="!showAge">
                         <div class="well well-lg">
                             <div ng-repeat="ageChoice in ageChoices">
@@ -96,7 +103,12 @@
                 <div class="top30 hidden-md hidden-lg"></div>
 
                 <div class="col-md-4">
-                    <button type="button" class="btn btn-success btn-block " ng-click="showPregnant = !showPregnant">Nursing/Pregnant Warnings</button>
+                    <button type="button" class="btn btn-success btn-block btn-chooser" ng-click="showPregnant = !showPregnant">
+                        <i class="pull-left fa fa-check-circle-o icon-2x vertical-middle" ng-class="{'visibility-hidden': !nursingOrPregnant }"></i>
+                        <div>
+                            Nursing/Pregnant Warnings
+                        </div>
+                    </button>
                     <div collapse="!showPregnant">
                         <div class="well well-lg">
                             <button type="button" class="icon-bigger btn btn-block" ng-model="nursingOrPregnant" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false" ng-class="nursingOrPregnant ? 'btn-primary' : 'btn-default'">
