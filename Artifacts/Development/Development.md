@@ -14,6 +14,13 @@ Artifact | Evidence
 Code Climate | [Screenshot](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/CodeClimateMonitoring.png)
 Code Climate | [Live Link](https://codeclimate.com/github/inforeliance/MedCheck)
 
+### Analytics
+Google | [Daily Report](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/GoogleAnalytics.pdf)
+Google Dashboard | [Overview](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/GoogleAnalyticsOverview.png)
+Google Dashboard | [Location Reporting](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/GoogleAnalyticsLocation.png)
+Google Dashboard | [Mobile Devices](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/GoogleAnalyticsMobile.png)
+
+
 ### PaaS Deployment
 
 ### Development Environment Container Deployment 
