@@ -15,6 +15,8 @@ Code Climate | [Screenshot](https://github.com/inforeliance/MedCheck/blob/master
 Code Climate | [Live Link](https://codeclimate.com/github/inforeliance/MedCheck)
 
 ### Analytics
+Artifact | Evidence 
+--- | --- 
 Google | [Daily Report](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/GoogleAnalytics.pdf)
 Google Dashboard | [Overview](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/GoogleAnalyticsOverview.png)
 Google Dashboard | [Location Reporting](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/GoogleAnalyticsLocation.png)
