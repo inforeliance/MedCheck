@@ -28,12 +28,6 @@ describe('The application', function() {
         element(by.css("button[type=submit")).click();
     });
 
-    it("should click the add button, or something", function() {
-        browser.get(root + "/sandbox");
-        browser.wait(element(by.css("button[type=submit]")).isPresent(), 2000);
-        element(by.css("button[type=submit]")).click()
-    });
-
     it("should show an information table when the barcode button is pressed", function() {
         browser.get(root);
         browser.wait(element(by.css("button")).isPresent(), 2000);
@@ -42,8 +36,8 @@ describe('The application', function() {
     });
 
     it("should show an error when invalid UPC is entered", function() {
-        element(by.model("UPC")).sendKeys("aaaaaaa");
-        element(by.css("button.btn.btn-primary")).click();
+        element(by.model("SearchValue")).sendKeys("aaaaaaa");
+        element(by.css(".search-button")).click();
         browser.wait(element(by.css("div.alert.alert-danger")).isPresent(), 2000);
     });
 });

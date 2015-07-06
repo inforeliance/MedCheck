@@ -1,19 +1,29 @@
 'use strict';
 
-describe('Controller: MainCtrl', function() {
+angular.module('httpReal', ['ng'])
+    .config(['$provide', function($provide) {
+        $provide.decorator('$httpBackend', function() {
+            return angular.injector(['ng']).get('$httpBackend');
+        });
+    }])
+    .service('httpReal', ['$rootScope', function($rootScope) {
+        this.submit = function() {
+            $rootScope.$digest();
+        };
+    }]);
 
+describe('Controller: MainCtrl', function() {
     // load the controller's module
-    beforeEach(module('medCheckApp'));
+    beforeEach(module('medCheckApp','httpReal'));
 
     var MainCtrl,
         scope,
-        $httpBackend;
+        httpReal;
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function(_$httpBackend_, $controller, $rootScope) {
-        $httpBackend = _$httpBackend_;
-        $httpBackend.expectGET('/api/things')
-            .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
+    beforeEach(inject(function($controller, $rootScope, _httpReal_) {
+
+        httpReal = _httpReal_;
 
         scope = $rootScope.$new();
         MainCtrl = $controller('MainCtrl', {
@@ -30,33 +40,64 @@ describe('Controller: MainCtrl', function() {
         expect(scope.ShowNotFoundErroMessage).not.toBe(true);
     });
 
-    it('should find products', function() {
+    it('should find a product with a valid UPC', function(done) {
         scope.SearchChanged();
-        scope.UPC = "0075609000935";
+        scope.SearchValue = "0075609000935";
         scope.scanBarCode().then(function() {
             expect(scope.ShowNotFoundErrorMessage).not.toBe(true);
+            done();
+        }, function(error){
+            expect(false).toBeTruthy();
+            done();
         });
+        httpReal.submit();
+    });
+
+    it('should find a product with a valid brand name', function(done) {
+        scope.SearchChanged();
+        scope.SearchValue = "advil";
+        scope.findBrand().then(function() {
+            expect(scope.BrandProductModels.length).not.toBe(0);
+            done();
+        }, function(error){
+            expect(false).toBeTruthy();
+            done();
+        });
+        httpReal.submit();
     });
     
-    it('should set the active product when a valid upc is passed', function () {
+    it('should set the active product when a valid upc is passed', function (done) {
         scope.SearchChanged();
-        scope.UPC = "0075609000935";
-        expect(scope.ProductModel).toBe(undefined);
+        scope.SearchValue = "0075609000935";
+        expect(scope.profileProductModels.length).toBe(0);
         scope.scanBarCode().then(function () {
-            expect(scope.ProductModel).not.toBe(null);
+            expect(scope.profileProductModels.length).toBe(1);
+            done();
+        }, function(error){
+            expect(false).toBeTruthy();
+            done();
         });
+        httpReal.submit();
     });
 
-    it('should not find products', function() {
+    it('should not find products when an invalid upc is passed', function(done) {
         scope.SearchChanged();
-        scope.UPC = "nonexistent product";
+        scope.SearchValue = "0075609000936"; //non existent UPC
+        expect(scope.profileProductModels.length).toBe(0);
         scope.scanBarCode().then(function() {
             expect(scope.ShowNotFoundErrorMessage).toBe(true);
+            expect(scope.profileProductModels.length).toBe(0);
+            done();
+        }, function(error){
+            expect(false).toBeTruthy();
+            done();
         });
+        httpReal.submit();
     });
 
-    it('should start with 1 allergen', function () {
+    it('should start with 1 allergen', function (done) {
         expect(scope.allergens.length).toBe(1);
+        done();
     });
 
     it('should reset the default allergen when removing the last one', function () {

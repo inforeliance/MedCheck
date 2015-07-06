@@ -123,7 +123,6 @@
             };
 
             $scope.removeAllergen = function (allergen) {
-                console.log(allergen);
                 $scope.allergens.splice($scope.allergens.indexOf(allergen), 1);
                 if ($scope.allergens.length === 0) {
                     $scope.addAllergen();
@@ -142,7 +141,7 @@
 
             $scope.findBrand = function () {
 
-                openFDA.findByBrandName($scope.SearchValue).then(
+                return openFDA.findByBrandName($scope.SearchValue).then(
                     function (products) {
                         $scope.BrandProductModels = products;
                         $location.hash('searchList');
