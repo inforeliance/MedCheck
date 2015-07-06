@@ -1,7 +1,8 @@
-# MedCheck ![build image](https://travis-ci.org/inforeliance/MedCheck.svg "Build status") [![Code Climate](https://codeclimate.com/github/inforeliance/MedCheck/badges/gpa.svg)](https://codeclimate.com/github/inforeliance/MedCheck)
-
 <img src="https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Project/IR%20MedCheck.png"
  alt="InforReliance and MedCheck logo" height="120px" title="InfoReliance MedCheck" align="right" />
+ 
+# MedCheck ![build image](https://travis-ci.org/inforeliance/MedCheck.svg "Build status") [![Code Climate](https://codeclimate.com/github/inforeliance/MedCheck/badges/gpa.svg)](https://codeclimate.com/github/inforeliance/MedCheck)
+
 
 ## Introduction
 We are very pleased to respond to this unique Request for Quotation 4QTFHS150004 for Agile Delivery Services (ADS I). Headquartered in Fairfax Virginia, InfoReliance is a leader in iterative development methodologies and experts in delivering user-centered design, agile software development and Development Operations for the Federal Government.  Today we are a prime BPA holder on contracts worth over $100M for the Department of Health and Human Services, the Department of Labor and the Department of Homeland Security. We have a history of solving difficult problems in creative ways for our clients and we are very proud to present our prototype and approach.   
