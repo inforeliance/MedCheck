@@ -15,7 +15,7 @@ Session 1| [Account](https://github.com/inforeliance/MedCheck/blob/master/Artifa
 Session 1 | [Home](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Feedback Session 1/User Feedback Session 1 - Home.png)
 Session 1 | [Search](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Feedback Session 1/User Feedback Session 1 - Search.png)
 Session 2 | [Home](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Feedback Session 2/User Feedback Session 2 - Home.png)
-Session 2 | [Search Results](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Feedback Session 2/User Feedback Session 2 - Search.png)
+Session 2 | [Search Results](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Feedback Session 2/User Feedback Session 2 - Search Results.png)
 Session 3 | [Home](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Feedback Session 3/User Feedback Session 3 -Home.png)
 Session 3 | [Search Results](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Feedback Session 3/User Feedback Session 3 Live.png)
 
