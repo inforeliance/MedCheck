@@ -30,7 +30,7 @@ The creative team provided the frontend development team landing, sub-page and a
 ![Architecture Diagram](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/ArchitecturalDiagram.png)
 
 During each sprint, MedCheck leveraged GitHub to capture, respond and track issues and new features to the system.  On a daily basis the team reviewed the backlog and addressed test defects/recommendations which once approved were entered into the sprint.  MedCheck continues to support this process by providing users information on the App Feedback page, to submit feedback and suggestions to improve the system. 
-To build a prototype that works on multiple devises and presents a responsive design, we leveraged Bootstrap’s grid system. As a result, MedCheck was developed with a responsive design and does not depreciate form or function when viewed through fragmentation of mobile devices and standard web browsers. Our use of modern and open-source technologies include the following: 
+To build a prototype that works on multiple devices and presents a responsive design, we leveraged Bootstrap’s grid system. As a result, MedCheck was developed with a responsive design and does not depreciate form or function when viewed through fragmentation of mobile devices and standard web browsers. Our use of modern and open-source technologies include the following: 
 
 
 Technology | Use 
