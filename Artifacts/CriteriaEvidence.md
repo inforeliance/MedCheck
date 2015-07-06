@@ -13,7 +13,6 @@ No. | Criteria | Evidence
 8 | created a prototype that works on multiple devices, and presents a responsive design | Our Response
 9 | used at least five modern and open-source technologies, regardless of architectural layer (frontend, backend, etc.) | Our Response
 10 | deployed the prototype on an Infrastructure as a Service (IaaS) or Platform as a Service (PaaS) provider, and indicated which provider they used | MedCheck is deployed to a PaaS utilizing AWS (Amazon Web Services).  The overarching PaaS architecture includes a Test and Production tier, each running an EC2 instance of Ubuntu Server on an Elastic Load Balancer which provides access to the Test and Dev environments.  AWS Code Deploy Services is also leveraged to accept latest commits from GitHub:  Test: http://elb-medcheck-test-547267783.us-east-1.elb.amazonaws.com/ Production: http://elb-medcheck-2043620629.us-east-1.elb.amazonaws.com/
-
 11 | wrote unit tests for their code | Our Response
 12 | set up or used a continuous integration system to automate the running of tests and continuously deployed their code to their IaaS or PaaS provider | Our Response
 13 | set up or used configuration management | Our Response
