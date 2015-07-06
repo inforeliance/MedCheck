@@ -11,6 +11,11 @@
 ### User Feedback
 
 ### User Personas
+Artifact | Evidence 
+--- | --- 
+Persona 1 | [Medical Professional](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Persona/User Persona - Medical Professional.png)
+Persona 2 | [Parent](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Persona/User Persona - Parent.png)
+Persona 3 | [Patient](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Persona/User Persona - Patient.png)
 
 ### Users
 Artifact | Evidence 
