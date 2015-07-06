@@ -1,3 +1,5 @@
+# MedCheck ![build image](https://travis-ci.org/inforeliance/MedCheck.svg "Build status") [![Code Climate](https://codeclimate.com/github/inforeliance/MedCheck/badges/gpa.svg)](https://codeclimate.com/github/inforeliance/MedCheck)
+
 ## Introduction
 We are very pleased to respond to this unique Request for Quotation 4QTFHS150004 for Agile Delivery Services (ADS I). Headquartered in Fairfax Virginia, InfoReliance is a leader in iterative development methodologies and experts in delivering user-centered design, agile software development and Development Operations for the Federal Government.  Today we are a prime BPA holder on contracts worth over $100M for the Department of Health and Human Services, the Department of Labor and the Department of Homeland Security. We have a history of solving difficult problems in creative ways for our clients and we are very proud to present our prototype and approach.   
 
@@ -57,44 +59,4 @@ In addition to CodeDeploy services, we also leverage CodeClimate to monitor over
 ## Conclusion
 This prototype is the product of a highly talented team using proven Agile processes to deliver real-world capability. Each member of the MedCheck team thoroughly enjoyed responding to this RFQ and we would consider it an honor to partner with 18F in support of your mission. 
 
-# DELETE ALL BELOW
-#----------------------------------
-
-
-
-# MedCheck ![build image](https://travis-ci.org/inforeliance/MedCheck.svg "Build status") [![Code Climate](https://codeclimate.com/github/inforeliance/MedCheck/badges/gpa.svg)](https://codeclimate.com/github/inforeliance/MedCheck)
-
-
-As a consumer, I want to ensure my family members do not get medications that are not good for me/them
-
-[![MedCheck Use Case Demonstration](http://img.youtube.com/vi/zRFqj0vDgeQ/0.jpg)](https://www.youtube.com/watch?v=zRFqj0vDgeQ)
-
-## Architecture
-![alt tag](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/ArchitecturalDiagram.png)
-
-## Docker setup
-
-[Docker README link](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/SetupDocker.md)
-
-## Selenium/e2e test setup
-
-[Selenium README link](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/SetupSeleniumTest.md)
-
-## Table Prep
-
-Technology | Use 
---- | --- 
-*Tech Name* | `Use` 
-*Tech Name* | `Use` 
-*Tech Name* | `Use` 
-*Tech Name* | `Use` 
-*Tech Name* | `Use` 
-
-Item | Use 
---- | --- 
-*Descriptor* | `Location` 
-*Descriptor* | `Location` 
-*Descriptor* | `Location` 
-*Descriptor* | `Location` 
-*Descriptor* | `Location` 
 
