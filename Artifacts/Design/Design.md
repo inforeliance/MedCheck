@@ -15,9 +15,9 @@
 ### Users
 Artifact | Evidence 
 --- | --- 
-Axure Wireframes v1 | [Homescreen progression](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/Users/Axure Wireframes v1.png)
-Axure Wireframes v2 | [Homescreen progression](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/Users/Axure Wireframes v2.png)
-Jennifer Dunlap | (https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/Users/Jennifer Dunlap.png)
+User 1 | [Kelly Kalinkewicz](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/Users/Kelly Kalinkewicz.png)
+User 2 | [Robert Infantino](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/Users/Robert Infantino.png)
+User 3 | [Jennifer Dunlap](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/Users/Jennifer Dunlap.png)
 
 ### Wire Frames
 Artifact | Evidence 
