@@ -1,7 +1,7 @@
 <img src="https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Project/IR%20MedCheck.png"
- alt="InforReliance and MedCheck logo" height="120px" title="InfoReliance MedCheck" align="right" /><BR><BR><BR>
+ alt="InforReliance and MedCheck logo" height="120px" title="InfoReliance MedCheck" align="left" /><BR><BR>
 
-# MedCheck ![build image](https://travis-ci.org/inforeliance/MedCheck.svg "Build status") [![Code Climate](https://codeclimate.com/github/inforeliance/MedCheck/badges/gpa.svg)](https://codeclimate.com/github/inforeliance/MedCheck)
+ ![build image](https://travis-ci.org/inforeliance/MedCheck.svg "Build status") [![Code Climate](https://codeclimate.com/github/inforeliance/MedCheck/badges/gpa.svg)](https://codeclimate.com/github/inforeliance/MedCheck)
 
 
 ## Introduction
