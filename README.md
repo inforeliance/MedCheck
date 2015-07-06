@@ -20,18 +20,18 @@ The home page for MedCheck received a full visual design. All other pages were k
 ## Development
 The creative team provided the frontend development team landing, sub-page and a style-guide sheet to reference for developing the MedCheck interfaces.  The developers spliced the comps into responsive design interfaces leveraged Bower as the front-end dependency manager implemented such packages as Bootstrap UI, Font Awesome and Toastr to deliver the final response and design of the vision style.  We provided our user group the opportunity to test working software during each sprint. This gave us immediate feedback on the usability of our code. An example of this was during Sprint 2 we quickly realize we needed to offer a better solution to inputting UPC information. As a result we leveraged quaggajs open source barcode scanner that exceeded user’s expectations.  
 
-ARCH DIAGRAM HERE
+![Architecture Diagram](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/ArchitecturalDiagram.png)
 
 During each sprint, MedCheck leveraged GitHub to capture, respond and track issues and new features to the system.  On a daily basis the development team reacted to tester input to rapidly make UI adjustment, which enhanced the overall user experience.  MedCheck continues to support this process by providing users information on the App Feedback page, to submit feedback and suggestions to improve the system. 
 To build a prototype that works on multiple devises and presents a responsive design, we leveraged grid systems in Bootstrap from twitter. As a result, MedCheck was developed with a responsive design and does not depreciate form or function when viewed through fragmentation of mobile devices and standard web browsers. Our use of modern and open-source technologies include the following: 
 
 Technology | Use 
 --- | --- 
-*QuaggaJS* | `Barcode-scanner entirely written in JavaScript supporting real- time localization and decoding of various types of barcodes such as EAN, CODE 128, CODE 39, EAN 8, UPC-A, UPC-C and CODABAR.  Quagga is used to allow users the alternative ability to scan UPC codes` 
-*MongoDB | `Document oriented database used to manage MedCheck user’s saved profiles.` 
-*NodeJS* | `Cross-platform runtime environment used to run MedCheck RESTful API` 
-*Jasmine* | `Behavior-driven JavaScript testing framework used to test MedCheck during development and continuous build process.` 
-*GruntJS* | `JavaScript task runner to automate project tasks and dependencies used to build MedCheck` 
+QuaggaJS | Barcode-scanner entirely written in JavaScript supporting real- time localization and decoding of various types of barcodes such as EAN, CODE 128, CODE 39, EAN 8, UPC-A, UPC-C and CODABAR.  Quagga is used to allow users the alternative ability to scan UPC codes 
+MongoDB | Document oriented database used to manage MedCheck user’s saved profiles.
+NodeJS | Cross-platform runtime environment used to run MedCheck RESTful API
+Jasmine | Behavior-driven JavaScript testing framework used to test MedCheck during development and continuous build process. 
+GruntJS | JavaScript task runner to automate project tasks and dependencies used to build MedCheck
 
 The prototype and underlying platforms are openly licensed, under the apache or creative commons license. You may find the full list of MedCheck’s Open-source technologies in the SOFTWARE.txt:
 https://github.com/inforeliance/MedCheck/blob/master/SOFTWARE.txt
