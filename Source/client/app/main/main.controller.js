@@ -27,6 +27,12 @@
             $scope.isRegistered = false;
             $scope.loggedIn = false;
 
+            $scope.hasNonEmptyAllergen = function(){
+                return _.filter($scope.allergens, function(allergen) {
+                    return allergen.name !== null && allergen.name !=="";
+                }).length>0;
+            };
+
             Auth.isLoggedInAsync(function (loggedIn) {
                 $scope.loggedIn = loggedIn;
                 if (loggedIn) {
