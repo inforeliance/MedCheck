@@ -8,7 +8,7 @@ During the kickoff we evaluated the project design requirements and established 
 
 Our development approach included implementing four (4 day) sprints with one release to production.  We held twice-daily scrum meetings due to the short timeline. During the meetings, we discussed our progress, our goals and any issues.  The team used Agilefant as the sprint planning tool. 
 
-![Sprint Plan](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Project Planning/SprintPlan.png)
+![Sprint Plan](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Project Planning/MedCheckHighLevelSchedule.png)
 
 
 ## Staffing
