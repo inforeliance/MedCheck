@@ -53,7 +53,7 @@ MedCheck’s code deploy and testing to a PaaS is completely automated, simply i
 
 AWS Elastic Load Balancers are configured for continues monitor for both the Test and Production environments.  Each ELB monitors the health of the EC2 instances and fault reports are triggered to the administrator in the event a fault is detected.
 
-In addition to CodeDeploy services, we also leverage CodeClimate to monitor overall code health of MedCheck, our live health status can be found [HERE](https://codeclimate.com/github/inforeliance/MedCheck).
+In addition to CodeDeploy services, we also leverage CodeClimate to monitor overall code health of MedCheck, our live health status can be found [HERE](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Development.md#continuous-monitoring).
 
 
 ## Conclusion
