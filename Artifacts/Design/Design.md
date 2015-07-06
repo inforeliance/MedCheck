@@ -36,5 +36,5 @@ User Feedback | [Session 1](https://github.com/inforeliance/MedCheck/blob/master
 User Feedback | [Session 2](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Feedback Session 2.png)
 User Feedback | [Session 3 part 1](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Feedback Session 3 Live.png)
 User Feedback | [Interview Questions](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Feedback Session 3.png)
-Interview | [](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Interview 1.png)
+Interview | [Live Interview](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Interview 1.png)
 
