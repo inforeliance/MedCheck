@@ -20,6 +20,8 @@ Device Layout | [Web & Mobile](https://github.com/inforeliance/MedCheck/blob/mas
 Guide | [Style Guide](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/Design Style Guide.png)
 
 ### User Personas
+Artifact | Evidence 
+--- | --- 
 Primary Persona | [The Parent](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Persona.png)
 TBD | [WAITING FROM JACOB](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Persona.png)
 TBD | [WAITING FROM JACOB](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/User Persona.png)
