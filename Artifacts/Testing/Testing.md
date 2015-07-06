@@ -3,7 +3,7 @@
 ## Test Cases
 Artifact | Evidence 
 --- | --- 
-Test Cases | [User Test Case Template](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/PageFunctionWhiteboard.JPG)
+Test Cases | [User Test Case Template](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Testing/Test Cases.docx)
 
 
 ## Selenium/e2e Test Setup
