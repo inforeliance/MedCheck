@@ -2,7 +2,7 @@
 
 ### Full Stack Pool
 No. | Criteria | Evidence 
---- | --- 
+--- | --- | ---
 1 | assigned one leader, gave that person authority and responsibility, and held that person accountable for the quality of the prototype submitted | Our Response
 2 | assembled a multidisciplinary and collaborative team including a minimum of 5 labor categories from the Development Pool labor categories to design and develop the prototype | Our Response
 3 | understand what people need, by including people in the prototype development and design process | Our Response
