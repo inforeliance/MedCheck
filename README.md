@@ -16,8 +16,20 @@ As a consumer, I want to ensure my family members do not get medications that ar
 
 ## Table Prep
 
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
+Technology | Use 
+--- | --- 
+*Tech Name* | `Use` 
+*Tech Name* | `Use` 
+*Tech Name* | `Use` 
+*Tech Name* | `Use` 
+*Tech Name* | `Use` 
+
+Item | Use 
+--- | --- 
+*Descriptor* | `Location` 
+*Descriptor* | `Location` 
+*Descriptor* | `Location` 
+*Descriptor* | `Location` 
+*Descriptor* | `Location` 
+
 
