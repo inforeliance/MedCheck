@@ -3,7 +3,8 @@
 ## Test Cases
 Artifact | Evidence 
 --- | --- 
-Test Cases | [Page Functionality Breakdown](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/PageFunctionWhiteboard.JPG)
+Test Cases | [User Test Case Template](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/PageFunctionWhiteboard.JPG)
+
 
 ## Selenium/e2e Test Setup
 - `npm install -g protractor`
