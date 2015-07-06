@@ -20,5 +20,5 @@ No. | Criteria | Evidence
 15 | deploy their software in a container (i.e., utilized operating-system-level virtualization) | Our Response
 16 | make use of a API, by either consuming or providing one RESTfully. | FDA Drug Label API is used to drive the primary search feature of MedCheck, API calls can be found in [openfda.js](https://github.com/inforeliance/MedCheck/blob/master/Source/client/app/openfda/openfda.js) 
 17 | used an iterative approach, where feedback informed subsequent work or versions of the prototype | Our Response
-18 | provided sufficient documentation to install and run their prototype on another machine | Development container instructions [Docker](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Development.md#development-environment-container-deployment) 
+18 | provided sufficient documentation to install and run their prototype on another machine | Development container instructions [Development Environment Container Deployment](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Development.md#development-environment-container-deployment) 
 19 | prototype and underlying platforms used to create and run the prototype are openly licensed and free of charge | Comprehensive FREE software list [SOFTWARE.txt](https://github.com/inforeliance/MedCheck/blob/master/SOFTWARE.txt) 
