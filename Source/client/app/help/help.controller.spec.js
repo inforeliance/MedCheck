@@ -11,20 +11,19 @@ describe('Controller: HelpCtrl', function() {
 		
 	// Initialize the controller and a mock scope
     beforeEach(inject(function(_$httpBackend_, $controller, $rootScope) {
-        //$httpBackend = _$httpBackend_;
-        //$httpBackend.expectGET('/api/things')
-        //    .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
-
         scope = $rootScope.$new();
         HelpCtrl = $controller('HelpCtrl', {
             $scope: scope
         });
     }));	
 
-	// fireTicket takes a form parameter, and this test was not passing one
-	/* it('should have a message body', function () {
-		scope.fireTicket();
-        expect(scope.help.issue.length).toBe(1);
-    }); */
+
+	it('should have a fire ticket function', function () {
+        expect(scope.fireTicket).toBeDefined();
+    });
+
+    it('should have options the user can pick from', function () {
+        expect(scope.options).toBeDefined();
+    });
 		
 });

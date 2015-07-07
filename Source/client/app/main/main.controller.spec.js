@@ -53,6 +53,27 @@ describe('Controller: MainCtrl', function() {
         httpReal.submit();
     });
 
+    it('should add a new allergen when the user presses the enter key', function() {
+        expect(scope.allergens.length).toBe(1);
+        var mockEvent = {preventDefault: function(){}};
+        scope.allergyKeyPress(13,scope.allergens[0], mockEvent);
+        expect(scope.allergens.length).toBe(2);
+    });
+
+    it('should not add a new allergen when the user presses something besides the enter key', function() {
+        expect(scope.allergens.length).toBe(1);
+        var mockEvent = {preventDefault: function(){}};
+        scope.allergyKeyPress(63,scope.allergens[0], mockEvent);
+        expect(scope.allergens.length).toBe(1);
+    });
+
+    it('should mark the allergen invalid ingredient flag to false when a key is pressed', function() {
+        scope.allergens[0].invalidIngredient = true;
+        var mockEvent = {preventDefault: function(){}};
+        scope.allergyKeyPress(63,scope.allergens[0], mockEvent);
+        expect(scope.allergens[0].invalidIngredient).toBe(false);
+    });
+
     it('should find a product with a valid brand name', function(done) {
         scope.SearchChanged();
         scope.SearchValue = "advil";
