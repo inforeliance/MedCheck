@@ -1,6 +1,8 @@
 
 ###InfoReliance MedCheck Project Team:
+
 **Product Manager**
+
 Our Product Manager (PM) is Project Management Professional (PMP) certified and is highly
 experienced in cross-functional team building and leadership, multi-cultural communications,
 large-scale detailed planning, change management, business development, proposal
@@ -10,6 +12,7 @@ The PM formulated our delivery strategy, kept the team informed of important dec
 our progress, and guided us through the successful delivery of the application.
 
 **Business Analyst**
+
 Our Business Analyst (BA) has broad expertise working with stakeholders and clients to gain indepth
 understanding of their needs. The BA facilitates user acceptance testing, conducts end
 user training, train the trainer sessions, and creates and delivers computer based training
@@ -22,6 +25,7 @@ shape and ready for the next sprint. The BA also performed verification and vali
 and tracked the project against our budget to ensure we stayed on track.
 
 **Technical Architect**
+
 Our Technical Architect (TA) has broad expertise rooted in software architecture, the
 development of web-based applications, and expertise in database development and operations
 including SQL Optimization. Our TA is a leader in the Cloud Services division with expertise in
@@ -33,6 +37,7 @@ configured continuous integration for the project using AWS Code Deploy and buil
 infrastructure to support MedCheck.
 
 **Interaction Designer/User Researcher/Usability Tester**
+
 Our Interaction Designer/User Researcher/Usability Tester’s (Designer) expertise consist of
 determining target audiences and objectives, analyzing user and business needs, and setting
 the scope and interface strategies. From personas and scenarios, storyboards, wireframes and
@@ -51,6 +56,7 @@ developers from beginning to end, and performed usability tests to ensure that t
 fulfilled.
 
 **Frontend Web Developer**
+
 Our Frontend Web Developer (FWD) has in-depth knowledge in designing and implementing
 robust and user-friendly web applications that require critical reliability, and data preservation.
 The FWD has experience in full system design, lifecycle prediction, cost benefit analysis, team
@@ -65,6 +71,7 @@ Finally, the FWD was in charge of ensuring that the application looked and worke
 multiple devices including tablets, phones, and desktop browsers.
 
 **Backend Web Developer**
+
 Our Backend Web Developer (BWD) is a full-stack backend developer with experience in
 distributed system RESTful APIs, web services and document-oriented + relational database
 management systems. As a seasoned web application and systems engineer, the BWD
