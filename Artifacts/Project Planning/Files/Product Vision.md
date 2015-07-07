@@ -1,4 +1,4 @@
-# Project Vision
+# Product Vision
 Currently the FDA reports the following statistics regarding Adverse Drug Reactions: 
 -	Over 2 MILLION serious ADRs yearly
 -	100,000 DEATHS yearly
