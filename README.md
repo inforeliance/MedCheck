@@ -59,7 +59,7 @@ MedCheck’s code deploy and and testing infrastructure as a service [IaaS](http
 
 AWS ELBs are configured for continuous monitoring of both test and production environments. Each ELB monitors the health of the EC2 instances and fault reports are triggered to the administrator in the event a fault is detected.
 
-In addition to CodeDeploy services, we also leveraged CodeClimate to monitor the overall code health of the application.  Our live health status can be found [HERE](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/Development.md#continuous-monitoring).
+In addition to CodeDeploy services, we also leveraged CodeClimate to monitor the overall code health of the application.  Our live health status can be found [HERE](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Development.md#continuous-monitoring).
 
 
 ## Conclusion
