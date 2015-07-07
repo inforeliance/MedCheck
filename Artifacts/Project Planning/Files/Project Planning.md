@@ -1,8 +1,7 @@
-
 ### MedCheck Project Planning Outline:
-
+<pre>
 **1. Product Vision:**
-    a. The MedCheck application confirms if FDA approved drugs are safe for you to take. Just enter the drug name or scan the drug barcode that you want to check, input your allergens, age, and/or regnancy status and you will see your personalized results.
+  	a. The MedCheck application confirms if FDA approved drugs are safe for you to take. Just enter the drug name or scan the drug barcode that you want to check, input your allergens, age, and/or regnancy status and you will see your personalized results.
 
 **2. Product Roadmap of Thematic User Story:**
     a. As a consumer of drugs, I want to see a prototype application that helps me make informed choices of the drugs that I/my family do/may consume.
@@ -35,3 +34,4 @@
       i. What are you going to work on today to support our sprint goals?
       ii. What did you accomplish today to support our sprint goals?
       iii. Do you have any issues/concerns/questions?
+</pre>
