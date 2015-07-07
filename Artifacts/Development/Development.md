@@ -22,6 +22,42 @@ Google Dashboard | [Overview](https://github.com/inforeliance/MedCheck/blob/mast
 Google Dashboard | [Location Reporting](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/GoogleAnalyticsLocation.png)
 Google Dashboard | [Mobile Devices](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/GoogleAnalyticsMobile.png)
 
+### Development Setup
+
+MedCheck requires the following software is installed:
+
+MongoDB, NodeJS, npm (ships with NodeJS), Bower and Grunt-CLI.  To check you have the latest or greater version, run the following command from terminal:
+
+`$  mongo --version && node --version && npm --version && bower --version && grunt --version`
+
+At the time of this document, the following are the versions used to build:
+
+`MongoDB shell version: 3.0.4
+node v0.12.3
+npm 2.10.1
+bower 1.4.1
+grunt-cli v0.1.13
+grunt v0.4.5`
+
+Download the MedCheck repo to your local development environment.  In Terminal, navigate to the `Source` directory and begin updating the project dependencies using the following commands:
+
+`$ npm update`
+
+`$ bower update`
+
+To run MedCheck in a browser run the following Grunt command:
+
+`$ grunt serve`
+
+To build MedCheck, run the following Grunt command:
+
+`$ grunt build`
+
+For Testing using Karma which will install on nmp update, verify unit tests with:
+
+`$ grunt test`
+
+
 ### Development Environment Container Deployment 
 
 On Windows, run docker commands inside `boot2docker` or a similar system.
