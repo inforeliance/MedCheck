@@ -71,7 +71,7 @@ This prototype is the product of a highly talented team using proven Agile proce
 
 ## Artifact References
 
-- [Closing MISSING LINK](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Closing/)
+- [Close Out](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Closeout/Retrospective.md)
 - [Design](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Design/Design.md)
 - [Development](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Development.md)
 - [Project Planning](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Project%20Planning/ProjectPlanning.md)
