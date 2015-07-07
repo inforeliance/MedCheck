@@ -22,9 +22,6 @@ Google Dashboard | [Overview](https://github.com/inforeliance/MedCheck/blob/mast
 Google Dashboard | [Location Reporting](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/GoogleAnalyticsLocation.png)
 Google Dashboard | [Mobile Devices](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/GoogleAnalyticsMobile.png)
 
-
-### PaaS Deployment
-
 ### Development Environment Container Deployment 
 
 On Windows, run docker commands inside `boot2docker` or a similar system.
