@@ -5,7 +5,7 @@ Artifact | Evidence
 --- | --- 
 Page Functions | [Page Functionality Breakdown](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/PageFunctionWhiteboard.JPG)
 Architecture Whiteboard | [Overall Architecture](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/ArchitectureWhiteboard.jpg)
-PaaS Planning | [AWS PaaS Planning](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/PaaSplanWhiteboard.jpg)
+PaaS Planning | [AWS IaaS Planning](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/IaaSplanWhiteboard.jpg)
 Final Diagram | [Final Diagram](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/ArchitecturalDiagram.png)
 
 ### Continuous Monitoring
