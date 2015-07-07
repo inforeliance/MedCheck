@@ -3,24 +3,24 @@
 ### Whiteboard & Brainstorming
 Artifact | Evidence 
 --- | --- 
-Page Functions | [Page Functionality Breakdown](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/PageFunctionWhiteboard.JPG)
-Architecture Whiteboard | [Overall Architecture](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/ArchitectureWhiteboard.jpg)
-PaaS Planning | [AWS PaaS Planning](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/PaaSplanWhiteboard.jpg)
-Final Diagram | [Final Diagram](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/ArchitecturalDiagram.png)
+Page Functions | [Page Functionality Breakdown](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/PageFunctionWhiteboard.JPG)
+Architecture Whiteboard | [Overall Architecture](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/ArchitectureWhiteboard.jpg)
+PaaS Planning | [AWS PaaS Planning](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/PaaSplanWhiteboard.jpg)
+Final Diagram | [Final Diagram](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/ArchitecturalDiagram.png)
 
 ### Continuous Monitoring
 Artifact | Evidence 
 --- | --- 
-Code Climate | [Screenshot](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/CodeClimateMonitoring.png)
+Code Climate | [Screenshot](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/CodeClimateMonitoring.png)
 Code Climate | [Live Link](https://codeclimate.com/github/inforeliance/MedCheck)
 
 ### Analytics
 Artifact | Evidence 
 --- | --- 
-Google | [Daily Report](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/GoogleAnalytics.pdf)
-Google Dashboard | [Overview](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/GoogleAnalyticsOverview.png)
-Google Dashboard | [Location Reporting](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/GoogleAnalyticsLocation.png)
-Google Dashboard | [Mobile Devices](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/GoogleAnalyticsMobile.png)
+Google | [Daily Report](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/GoogleAnalytics.pdf)
+Google Dashboard | [Overview](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/GoogleAnalyticsOverview.png)
+Google Dashboard | [Location Reporting](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/GoogleAnalyticsLocation.png)
+Google Dashboard | [Mobile Devices](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Development/Files/GoogleAnalyticsMobile.png)
 
 
 ### PaaS Deployment

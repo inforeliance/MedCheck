@@ -3,8 +3,8 @@
 ## Test Cases
 Artifact | Evidence 
 --- | --- 
-Test Cases | [User Test Case Template](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Testing/Test Cases.pdf)
-Test Cases | [Tester Completed](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Testing/MedCheck Test Case Scenarios_Glau1.pdf)
+Test Cases | [User Test Case Template](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Testing/Files/Test Cases.pdf)
+Test Cases | [Tester Completed](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Testing/Files/MedCheck Test Case Scenarios_Glau1.pdf)
 
 ## Run Unit Tests
 - Navidate to Source directory 
@@ -12,8 +12,8 @@ Test Cases | [Tester Completed](https://github.com/inforeliance/MedCheck/blob/ma
 
 Artifact | Evidence 
 --- | --- 
-Unit Test Begin | [Running Grunt Test](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Testing/UnitTesting.png)
-Unit Test Results | [Test Results](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Testing/UnitTestingResult.png)
+Unit Test Begin | [Running Grunt Test](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Testing/Files/UnitTesting.png)
+Unit Test Results | [Test Results](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Testing/Files/UnitTestingResult.png)
 
 
 ## Selenium/e2e Test Setup
