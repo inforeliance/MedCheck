@@ -53,7 +53,7 @@ To build MedCheck, run the following Grunt command:
 
 `$ grunt build`
 
-For Testing using Karma which will install on nmp update, verify unit tests with:
+For Testing using Karma which will install on npm update, verify unit tests with:
 
 `$ grunt test`
 
