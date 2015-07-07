@@ -7,4 +7,4 @@ Product Vision | [Vision](https://github.com/inforeliance/MedCheck/blob/master/A
 Schedule | [Sprints](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Project Planning/Files/Sprint Schedule.png)
 Project Planning | [Document](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Project Planning/Files/Project Planning.pdf)
 Agilifant | [Screenshots](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Project Planning/Files/Agilefant Screenshots.pdf)
-Project Team | [6 Multidiscipline Individuals](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Project Planning/Files/6 Multidiscipline Individuals.pdf)
+Project Team | [6 Multidiscipline Individuals](https://github.com/inforeliance/MedCheck/blob/master/Artifacts/Project Planning/Files/6 Multidiscipline Individuals.md)
